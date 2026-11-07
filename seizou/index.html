@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>製造 Day1 プロンプト集</title>
+<style>
+/* 研修テキストの続きとして読む一列のノート。朱は番号とボタンだけ */
+:root{
+  --bg:#fbfbfa; --paper:#ffffff; --fg:#1f1f1f; --sub:#5f5b58; --line:#d9d5d2; --acc:#b8431e; --acc-ink:#ffffff; --code:#f4f2f0;
+  --f-body:"BIZ UDPGothic","Hiragino Sans","Yu Gothic",sans-serif; --f-mono:"BIZ UDGothic","Hiragino Sans","Yu Gothic",monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#161514;--paper:#1f1e1c;--fg:#ecebe9;--sub:#a9a4a0;--line:#3a3734;--acc:#e0714a;--acc-ink:#1a0f0a;--code:#262422;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#161514;--paper:#1f1e1c;--fg:#ecebe9;--sub:#a9a4a0;--line:#3a3734;--acc:#e0714a;--acc-ink:#1a0f0a;--code:#262422;color-scheme:dark}
+body{background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:16px;line-height:1.7;padding-inline:16px;padding-block:20px 48px}
+.wrap{max-width:720px;margin:0 auto;display:flex;flex-direction:column;gap:28px}
+header h1{font-size:1.45rem;line-height:1.35;margin:4px 0 6px;text-wrap:balance}
+header p{margin:0;color:var(--sub);font-size:.92rem}
+.kicker{color:var(--acc);font-weight:700;font-size:.8rem;letter-spacing:.06em}
+.howto{border:1px solid var(--line);border-radius:10px;background:var(--paper);padding:14px 16px;font-size:.92rem}
+.howto ol{margin:6px 0 0;padding-left:1.3em}
+.jump{display:flex;flex-wrap:wrap;gap:6px}
+.jump a{min-width:2.4em;text-align:center;padding:4px 0;border:1px solid var(--line);border-radius:6px;color:var(--fg);text-decoration:none;font-variant-numeric:tabular-nums;background:var(--paper)}
+section{display:flex;flex-direction:column;gap:14px}
+h2{font-size:1.15rem;margin:8px 0 0;display:flex;flex-direction:column;gap:2px;border-bottom:1px solid var(--line);padding-bottom:8px}
+.eyebrow{font-size:.78rem;color:var(--acc);letter-spacing:.06em}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:14px 14px 16px;display:flex;flex-direction:column;gap:8px;scroll-margin-top:12px;min-width:0}
+.head{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap}
+.no{font-weight:700;color:var(--acc);font-variant-numeric:tabular-nums}
+.tool{font-size:.85rem;color:var(--sub);text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:2px 10px}
+h3{margin:0;font-size:1.02rem;line-height:1.45}
+pre{margin:0;white-space:pre-wrap;word-break:break-word;font-family:var(--f-mono);font-size:.86rem;line-height:1.65;background:var(--code);border-radius:8px;padding:12px;user-select:all;-webkit-user-select:all}
+.copy{align-self:stretch;appearance:none;border:0;border-radius:8px;background:var(--acc);color:var(--acc-ink);font:700 1rem var(--f-body);padding:12px;cursor:pointer}
+.copy.done{background:var(--fg);color:var(--bg)}
+.copy:focus-visible,.jump a:focus-visible,.tool:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
+.tbl{overflow-x:auto;min-width:0}
+table{border-collapse:collapse;width:100%;font-size:.84rem;font-variant-numeric:tabular-nums}
+th,td{border-bottom:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top}
+th{font-weight:700;border-bottom:1.5px solid var(--fg)}
+.note{margin:0;color:var(--sub);font-size:.78rem}
+footer{color:var(--sub);font-size:.8rem;border-top:1px solid var(--line);padding-top:12px}
+.demo{font-size:.78rem;color:var(--sub);border:1px dashed var(--line);border-radius:999px;padding:1px 9px}
+.file{font-size:.85rem;color:var(--sub)}
+.file a{color:var(--acc)}
+.dl{display:flex;flex-direction:column;gap:6px;margin:0;padding:0;list-style:none}
+.dl a{display:block;border:1px solid var(--line);border-radius:8px;padding:10px 12px;background:var(--paper);color:var(--fg);text-decoration:none}
+.dl a span{display:block;font-size:.8rem;color:var(--sub)}
+details{border:1px solid var(--line);border-radius:10px;background:var(--paper);padding:10px 14px}
+details summary{cursor:pointer;font-weight:700}
+details[open]{display:flex;flex-direction:column;gap:8px}
+details pre{max-height:320px;overflow:auto}
+*{box-sizing:border-box}
+
+.files-note{margin:0;color:var(--sub);font-size:.85rem}
+@media print{.copy,.jump,.tool{display:none}pre{user-select:text}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <div class="kicker">製造A：2026年11月12日（木）13:00〜16:00／製造B：2026年11月11日（水）9:30〜12:30　生産管理職向け 生成AI業務活用研修 Day1：工程管理の作業記録データ化と検算</div>
+  <h1>ダイコーゴム様 研修用プロンプト集（製造・Day1）</h1>
+  <p>スライドの「プロンプト No.」と同じ番号です。</p>
+</header>
+<div class="howto"><strong>使い方</strong>
+  <ol><li>演習のファイルをダウンロードする（スマホは、下の「コピーして貼る用」も使えます）</li><li>番号のボタンで使うプロンプトへ移動し「コピーする」</li><li>Claudeに貼り付け、＋ボタンからファイルを添付して送る</li><li>（　）の部分は、自分の内容に書き換える</li></ol>
+</div>
+<nav class="jump" aria-label="プロンプト番号"><a href="#p1">1</a><a href="#p1_2">1-2</a><a href="#p2">2</a><a href="#p2_2">2-2</a><a href="#p3">3</a><a href="#p3_2">3-2</a><a href="#p4">4</a><a href="#p5">5</a><a href="#p6">6</a><a href="#p6_2">6-2</a></nav>
+<section id="files"><h2><span class="eyebrow">最初にダウンロード</span>演習で使うファイル（すべて架空）</h2><ul class="dl"><li><a href="data/%E6%88%90%E5%BD%A2%E6%97%A5%E5%A0%B1_9%E6%9C%881%E6%97%A5%E3%80%9C4%E6%97%A5.csv" download>成形日報_9月1日〜4日.csv<span>No.1で使う（元データの日報）</span></a></li><li><a href="data/%E4%BD%9C%E6%A5%AD%E7%B5%8C%E6%AD%B4%E8%A1%A8_%E6%88%90%E5%BD%A2_9%E6%9C%88.xlsx" download>作業経歴表_成形_9月.xlsx<span>No.1・No.2で使う（式＝履歴式入り）</span></a></li><li><a href="data/%E4%BD%9C%E6%A5%AD%E7%B5%8C%E6%AD%B4%E8%A1%A8_%E6%88%90%E5%BD%A2_9%E6%9C%88_%E8%B2%BC%E3%82%8A%E4%BB%98%E3%81%91%E7%94%A8.txt" download>作業経歴表_成形_9月_貼り付け用.txt<span>スマホでExcelを開けない人向け（式をそのまま書き出したもの）</span></a></li><li><a href="data/%E6%88%90%E5%BD%A2%E6%97%A5%E5%A0%B1_9%E6%9C%887%E6%97%A5%E3%80%9C9%E6%97%A5.csv" download>成形日報_9月7日〜9日.csv<span>No.2で使う（追記する3日分）</span></a></li><li><a href="data/%E4%BD%9C%E6%A5%AD%E5%A0%B1%E5%91%8A%E6%9B%B8_9%E6%9C%8810%E6%97%A5_No01.jpg" download>作業報告書_9月10日_No01.jpg<span>No.3で使う（手書き風の作業報告書・5枚）</span></a></li><li><a href="data/%E4%BD%9C%E6%A5%AD%E5%A0%B1%E5%91%8A%E6%9B%B8_9%E6%9C%8810%E6%97%A5_No02.jpg" download>作業報告書_9月10日_No02.jpg<span>No.3で使う</span></a></li><li><a href="data/%E4%BD%9C%E6%A5%AD%E5%A0%B1%E5%91%8A%E6%9B%B8_9%E6%9C%8810%E6%97%A5_No03.jpg" download>作業報告書_9月10日_No03.jpg<span>No.3で使う</span></a></li><li><a href="data/%E4%BD%9C%E6%A5%AD%E5%A0%B1%E5%91%8A%E6%9B%B8_9%E6%9C%8810%E6%97%A5_No04.jpg" download>作業報告書_9月10日_No04.jpg<span>No.3で使う</span></a></li><li><a href="data/%E4%BD%9C%E6%A5%AD%E5%A0%B1%E5%91%8A%E6%9B%B8_9%E6%9C%8810%E6%97%A5_No05.jpg" download>作業報告書_9月10日_No05.jpg<span>No.3で使う</span></a></li><li><a href="data/%E4%BD%9C%E6%A5%AD%E7%B5%8C%E6%AD%B4%E8%A1%A8_%E6%88%90%E5%BD%A2_9%E6%9C%88_%E6%BC%94%E7%BF%92%E7%94%A8.xlsx" download>作業経歴表_成形_9月_演習用.xlsx<span>実践演習（No.6）で使う（9月9日まで正しく入っている）</span></a></li><li><a href="data/%E4%B8%AD%E9%96%93%E8%A1%A8_9%E6%9C%8810%E6%97%A5%E3%80%9C14%E6%97%A5_%E7%A2%BA%E5%AE%9A%E7%89%88.csv" download>中間表_9月10日〜14日_確定版.csv<span>実践演習（No.6）で使う（9月10日分＋9月11日・14日分の確定済み中間表）</span></a></li></ul><details><summary>成形日報_9月1日〜4日.csv（コピーして貼る用）</summary><pre id="c1">日付,品番,品名,作業者No,成形数,不良数
+2026/9/1,SG-1001,Oリング P10,101,60,3
+2026/9/1,SG-1002,Oリング P12,104,45,3
+2026/9/1,SG-1005,パッキン A,102,42,3
+2026/9/1,SG-1008,グロメット 20,104,24,3
+2026/9/1,SG-1012,ダストブーツ,101,60,3
+2026/9/1,SG-1018,防振ゴム M8,105,60,0
+2026/9/1,SG-1027,Oリング G25,105,24,2
+2026/9/1,SG-1030,パッキン B,102,42,2
+2026/9/1,SG-1033,グロメット 30,103,40,1
+2026/9/1,SG-1039,ブッシュ 10,104,60,1
+2026/9/1,SG-1042,シール 8,106,40,0
+2026/9/1,SG-1045,パッキン C,101,45,0
+2026/9/1,SG-1048,Oリング P20,101,48,2
+2026/9/1,SG-1051,グロメット 12,103,55,3
+2026/9/1,SG-1054,ダンパー,106,40,2
+2026/9/1,SG-1057,ワッシャー 6,106,42,1
+2026/9/2,SG-1001,Oリング P10,104,36,1
+2026/9/2,SG-1005,パッキン A,101,50,3
+2026/9/2,SG-1008,グロメット 20,104,55,3
+2026/9/2,SG-1012,ダストブーツ,105,32,0
+2026/9/2,SG-1021,キャップ 15,103,30,0
+2026/9/2,SG-1024,チューブ φ6,101,52,1
+2026/9/2,SG-1030,パッキン B,104,42,0
+2026/9/2,SG-1036,ストッパー,105,36,2
+2026/9/2,SG-1039,ブッシュ 10,102,42,2
+2026/9/2,SG-1042,シール 8,102,35,0
+2026/9/2,SG-1045,パッキン C,104,48,0
+2026/9/2,SG-1048,Oリング P20,104,50,0
+2026/9/2,SG-1057,ワッシャー 6,104,55,0
+2026/9/3,SG-1008,グロメット 20,103,42,1
+2026/9/3,SG-1015,ガスケット 50角,104,48,0
+2026/9/3,SG-1021,キャップ 15,105,40,1
+2026/9/3,SG-1024,チューブ φ6,104,48,1
+2026/9/3,SG-1030,パッキン B,105,24,1
+2026/9/3,SG-1036,ストッパー,101,36,0
+2026/9/3,SG-1045,パッキン C,101,32,3
+2026/9/3,SG-1057,ワッシャー 6,101,52,0
+2026/9/4,SG-1002,Oリング P12,103,60,3
+2026/9/4,SG-1005,パッキン A,105,30,3
+2026/9/4,SG-1008,グロメット 20,102,36,0
+2026/9/4,SG-1012,ダストブーツ,106,48,0
+2026/9/4,SG-1015,ガスケット 50角,104,55,0
+2026/9/4,SG-1021,キャップ 15,103,30,0
+2026/9/4,SG-1024,チューブ φ6,102,42,3
+2026/9/4,SG-1027,Oリング G25,105,35,1
+2026/9/4,SG-1036,ストッパー,101,24,0
+2026/9/4,SG-1039,ブッシュ 10,102,24,2
+2026/9/4,SG-1042,シール 8,104,48,2
+2026/9/4,SG-1045,パッキン C,106,35,2
+2026/9/4,SG-1048,Oリング P20,106,35,1
+2026/9/4,SG-1051,グロメット 12,103,52,1
+2026/9/4,SG-1057,ワッシャー 6,102,55,0
+</pre><button type="button" class="copy" data-target="c1">コピーする</button></details><details><summary>作業経歴表_成形_9月_貼り付け用.txt（コピーして貼る用）</summary><pre id="c3">【研修用の架空データ】作業経歴表_成形_9月（セルの中身＝式をそのまま書き出したもの）
+品番	品名	9月 成形数（履歴式）	9月 不良数（履歴式）	最終追記日
+SG-1001	Oリング P10	=60+36	=3+1	9/2
+SG-1002	Oリング P12	=45+60	=3+3	9/4
+SG-1005	パッキン A	=42+50+30	=3+3+3	9/4
+SG-1008	グロメット 20	=24+55+36	=3+3+1+0	9/4
+SG-1012	ダストブーツ	=60+32+48	=3+0+0	9/4
+SG-1015	ガスケット 50角	=48+55	=0+0	9/4
+SG-1018	防振ゴム M8	=60	=0	9/1
+SG-1021	キャップ 15	=30+30+40+30	=0+1+0	9/4
+SG-1024	チューブ φ6	=52+48+42	=1+1+3	9/4
+SG-1027	Oリング G25	=24+53	=2+1	9/4
+SG-1030	パッキン B	=42+42+24	=2+0+1	9/3
+SG-1033	グロメット 30	=40	=1	9/1
+SG-1036	ストッパー	=36+36+24	=2+0+0	9/4
+SG-1039	ブッシュ 10	=60+42+24	=1+2+2	9/4
+SG-1042	シール 8	=40+35+48	=0+0+2	9/4
+SG-1045	パッキン C	=45+48+32+35	=0+0+3+2	9/4
+SG-1048	Oリング P20	=48+50+35	=2+0+1	9/4
+SG-1051	グロメット 12	=55+52	=3+1	9/4
+SG-1054	ダンパー	=40	=2	9/1
+SG-1057	ワッシャー 6	=42+55+52+55	=1+0+0+0	9/4
+</pre><button type="button" class="copy" data-target="c3">コピーする</button></details><details><summary>成形日報_9月7日〜9日.csv（コピーして貼る用）</summary><pre id="c4">日付,品番,品名,作業者No,成形数,不良数
+2026/9/7,SG-1005,パッキン A,102,30,0
+2026/9/7,SG-1015,ガスケット 50角,105,50,0
+2026/9/7,SG-1018,防振ゴム M8,104,52,0
+2026/9/7,SG-1030,パッキン B,104,40,1
+2026/9/7,SG-1033,グロメット 30,101,24,3
+2026/9/7,SG-1036,ストッパー,104,40,1
+2026/9/7,SG-1042,シール 8,102,48,0
+2026/9/7,SG-1045,パッキン C,102,32,0
+2026/9/7,SG-1048,Oリング P20,105,48,0
+2026/9/7,SG-1054,ダンパー,104,45,3
+2026/9/8,SG-1008,グロメット 20,104,45,0
+2026/9/8,SG-1015,ガスケット 50角,104,48,0
+2026/9/8,SG-1018,防振ゴム M8,105,45,1
+2026/9/8,SG-1024,チューブ φ6,103,45,1
+2026/9/8,SG-1027,Oリング G25,104,48,2
+2026/9/8,SG-1030,パッキン B,106,35,0
+2026/9/8,SG-1039,ブッシュ 10,103,60,1
+2026/9/8,SG-1042,シール 8,105,60,2
+2026/9/8,SG-1045,パッキン C,105,48,2
+2026/9/8,SG-1048,Oリング P20,102,36,2
+2026/9/8,SG-1051,グロメット 12,105,40,2
+2026/9/9,SG-1001,Oリング P10,102,24,3
+2026/9/9,SG-1005,パッキン A,101,50,2
+2026/9/9,SG-1008,グロメット 20,101,35,2
+2026/9/9,SG-1015,ガスケット 50角,102,36,0
+2026/9/9,SG-1021,キャップ 15,101,55,3
+2026/9/9,SG-1024,チューブ φ6,102,40,0
+2026/9/9,SG-1030,パッキン B,101,30,0
+2026/9/9,SG-1036,ストッパー,102,36,0
+2026/9/9,SG-1042,シール 8,105,24,1
+2026/9/9,SG-1045,パッキン C,101,35,0
+2026/9/9,SG-1048,Oリング P20,106,50,2
+2026/9/9,SG-1054,ダンパー,103,45,0
+2026/9/9,SG-1057,ワッシャー 6,106,60,1
+</pre><button type="button" class="copy" data-target="c4">コピーする</button></details><details><summary>中間表_9月10日〜14日_確定版.csv（コピーして貼る用）</summary><pre id="c11">報告書No,行,日付,作業者No,工程,品番,品名,開始,終了,成形数,不良数,確認状況
+01,1,2026/9/10,101,成形,SG-1001,Oリング P10,8:30,10:15,48,1,確定
+01,2,2026/9/10,101,成形,SG-1024,チューブ φ6,10:30,12:00,36,0,確定
+01,3,2026/9/10,101,成形,SG-1039,ブッシュ 10,13:00,（記入なし）,50,2,確定
+02,1,2026/9/10,102,成形,SG-1002,Oリング P12,8:30,11:00,15,0,確定
+02,2,2026/9/10,102,成形,SG-1015,ガスケット 50角,11:10,15:30,42,3,確定
+03,1,2026/9/10,103,成形,SG-1008,グロメット 20,8:30,12:00,40,0,確定
+03,2,2026/9/10,103,成形,SG-1036,ストッパー,13:00,17:00,60,1,確定
+04,1,2026/9/10,104,成形,SG-1027,Oリング G25,8:30,12:00,46,2,確定
+04,2,2026/9/10,104,成形,SG-1042,シール 8,13:00,17:00,52,0,確定
+05,1,2026/9/10,105,成形,SG-1033,グロメット 30,8:30,12:00,32,1,確定
+05,2,2026/9/10,105,成形,SG-1012,ダストブーツ,13:00,17:00,45,1,確定
+06,1,2026/9/11,101,成形,SG-1042,シール 8,8:30,12:00,42,1,確定
+06,2,2026/9/11,101,成形,SG-1036,ストッパー,13:00,17:00,40,0,確定
+07,1,2026/9/11,102,成形,SG-1054,ダンパー,8:30,12:00,50,0,確定
+07,2,2026/9/11,102,成形,SG-1012,ダストブーツ,13:00,17:00,40,0,確定
+08,1,2026/9/11,103,成形,SG-1015,ガスケット 50角,8:30,12:00,45,0,確定
+08,2,2026/9/11,103,成形,SG-1057,ワッシャー 6,13:00,17:00,36,1,確定
+09,1,2026/9/11,104,成形,SG-1024,チューブ φ6,8:30,12:00,45,1,確定
+09,2,2026/9/11,104,成形,SG-1051,グロメット 12,13:00,17:00,42,2,確定
+11,1,2026/9/14,101,成形,SG-1024,チューブ φ6,8:30,12:00,45,1,確定
+11,2,2026/9/14,101,成形,SG-1005,パッキン A,13:00,17:00,55,0,確定
+12,1,2026/9/14,102,成形,SG-1030,パッキン B,8:30,12:00,48,2,確定
+12,2,2026/9/14,102,成形,SG-1015,ガスケット 50角,13:00,17:00,55,1,確定
+13,1,2026/9/14,103,成形,SG-1042,シール 8,8:30,12:00,30,1,確定
+13,2,2026/9/14,103,成形,SG-1051,グロメット 12,13:00,17:00,40,2,確定
+14,1,2026/9/14,104,成形,SG-1002,Oリング P12,8:30,12:00,40,1,確定
+14,2,2026/9/14,104,成形,SG-1018,防振ゴム M8,13:00,17:00,48,0,確定
+</pre><button type="button" class="copy" data-target="c11">コピーする</button></details></section>
+<section id="s1"><h2><span class="eyebrow">1コマ目（70分）</span>生産実績データの検算と、履歴式（=50+20…）を保った追記</h2><article class="card" id="p1">
+  <div class="head"><span class="no">No.1</span><a class="tool" href="https://claude.ai/" target="_blank" rel="noopener">Claudeで使う ↗</a></div>
+  <h3>日報と作業経歴表を品番別に照合する</h3>
+  <p class="files-note">転記済みの表が、元の日報と合っているかを確かめるとき</p><div class="file">添付するファイル：<a href="data/%E6%88%90%E5%BD%A2%E6%97%A5%E5%A0%B1_9%E6%9C%881%E6%97%A5%E3%80%9C4%E6%97%A5.csv" download>成形日報_9月1日〜4日.csv</a>・<a href="data/%E4%BD%9C%E6%A5%AD%E7%B5%8C%E6%AD%B4%E8%A1%A8_%E6%88%90%E5%BD%A2_9%E6%9C%88.xlsx" download>作業経歴表_成形_9月.xlsx</a></div>
+  <pre id="tp1">あなたは生産管理の担当者です。添付の2つのファイルを照合してください。
+・成形日報_9月1日〜4日.csv：元データ（作業者の日報）
+・作業経歴表_成形_9月.xlsx：日報から転記した表。成形数・不良数のセルは「=50+20+…」の足し算の式
+
+【やること】
+1. 日報の成形数・不良数を、品番別に合計する（記録の件数も数える）
+2. 作業経歴表の各セルの式を計算し、品番別の値を出す（式の中の「+」でつないだ数の個数も数える）
+3. 品番ごとに「日報の合計／日報の件数／作業経歴表の値／式の数の個数／差」を1つの表にする
+4. 成形数の総合計も、日報と作業経歴表で比べる
+
+【ルール】
+・表示されている値ではなく、セルの式を計算して比べる
+・差がある品番だけを、最後にもう一度まとめる
+・ファイルは書き換えない。結果は表で示すだけにする</pre>
+  <button type="button" class="copy" data-target="tp1">コピーする</button>
+</article><article class="card" id="p1_2">
+  <div class="head"><span class="no">No.1-2</span><a class="tool" href="https://claude.ai/" target="_blank" rel="noopener">Claudeで使う ↗</a></div>
+  <h3>合わない品番の式を分解して、原因の日を特定する（No.1の続き）</h3>
+  <p class="files-note">No.1で差が見つかった品番の、どの日が違うかを調べるとき</p>
+  <pre id="tp1_2">差があった品番について、作業経歴表の式を「+」で区切って1つずつの数に分けてください。日報の同じ品番の記録（日付順）と横に並べ、どの日の数が合わないかを示してください。
+
+・表：品番／式の何番目／式の数／日報の日付／日報の数／一致
+・原因の候補（転記漏れ・二重転記・数字の入れ替わり・品番違い）を1つ選び、理由を1行で書く
+・式には日付が書いていないので、並び順で照らし合わせる。並びが合わない所は推測で日付を決めず「要確認」と書く
+・最後に、品番ごとに「どこが／なぜ／どう直すか」を3行で書く</pre>
+  <button type="button" class="copy" data-target="tp1_2">コピーする</button>
+</article><article class="card" id="p2">
+  <div class="head"><span class="no">No.2</span><a class="tool" href="https://claude.ai/" target="_blank" rel="noopener">Claudeで使う ↗</a></div>
+  <h3>履歴式を保って、3日分を追記したファイルを作る</h3>
+  <p class="files-note">日報の数を、作業経歴表の式を崩さずに足していくとき</p><div class="file">添付するファイル：<a href="data/%E4%BD%9C%E6%A5%AD%E7%B5%8C%E6%AD%B4%E8%A1%A8_%E6%88%90%E5%BD%A2_9%E6%9C%88.xlsx" download>作業経歴表_成形_9月.xlsx</a>・<a href="data/%E6%88%90%E5%BD%A2%E6%97%A5%E5%A0%B1_9%E6%9C%887%E6%97%A5%E3%80%9C9%E6%97%A5.csv" download>成形日報_9月7日〜9日.csv</a></div>
+  <pre id="tp2">あなたは生産管理の担当者です。添付の作業経歴表（Excel）に、成形日報_9月7日〜9日.csv の成形数と不良数を追記したファイルを作ってください。
+
+【追記のルール】
+・既存の式は消さない。式の末尾に「+当日の数」を日付順に足す（例：=48+52 → =48+52+35）
+・合計した数値で上書きしない。必ず式のまま残す
+・日報にない品番の式は変えない
+・「最終追記日」の列を、その品番で最後に足した日付にする
+・ほかの列・シート名・列の並びは変えない
+
+【出すもの】
+1. 追記後のExcelファイル（ファイル名の末尾に「_追記済」を付ける）
+2. 追記一覧の表：品番／列（成形数・不良数）／追記前の式／追記後の式／足した数
+3. 追記した件数と、足した成形数・不良数の合計（件数＝足した数の個数。成形数の列で数える。日報の行数と同じになる）</pre>
+  <button type="button" class="copy" data-target="tp2">コピーする</button>
+</article><article class="card" id="p2_2">
+  <div class="head"><span class="no">No.2-2</span><a class="tool" href="https://claude.ai/" target="_blank" rel="noopener">Claudeで使う ↗</a></div>
+  <h3>追記結果をAIに点検させる（No.2の続き）</h3>
+  <p class="files-note">AIが作ったExcelを、人が確認する前に点検させるとき</p>
+  <pre id="tp2_2">さきほど作った「_追記済」のファイルを、最初に添付した元の作業経歴表と比べて点検してください。
+
+・成形数・不良数の全セルが「=」で始まる式のままか（数値だけのセルがあれば一覧にする）
+・追記前の式の内容が、追記後の式の先頭にそのまま残っているか（崩れている品番を一覧にする）
+・追記した件数と、足した成形数・不良数の合計が、成形日報_9月7日〜9日.csv と一致するか
+・日報にない品番の式が変わっていないか
+
+結果は表で示し、最後に「点検結果：問題なし／要確認（理由）」を1行で書いてください。</pre>
+  <button type="button" class="copy" data-target="tp2_2">コピーする</button>
+</article></section><section id="s2"><h2><span class="eyebrow">2コマ目（70分）</span>手書き作業報告書の読み取りと中間データ化</h2><article class="card" id="p3">
+  <div class="head"><span class="no">No.3</span><a class="tool" href="https://claude.ai/" target="_blank" rel="noopener">Claudeで使う ↗</a></div>
+  <h3>作業報告書5枚を、中間表と要確認一覧にする</h3>
+  <p class="files-note">手書きの作業報告書を、確認しやすい表にするとき</p><div class="file">添付するファイル：<a href="data/%E4%BD%9C%E6%A5%AD%E5%A0%B1%E5%91%8A%E6%9B%B8_9%E6%9C%8810%E6%97%A5_No01.jpg" download>作業報告書_9月10日_No01.jpg</a>・<a href="data/%E4%BD%9C%E6%A5%AD%E5%A0%B1%E5%91%8A%E6%9B%B8_9%E6%9C%8810%E6%97%A5_No02.jpg" download>作業報告書_9月10日_No02.jpg</a>・<a href="data/%E4%BD%9C%E6%A5%AD%E5%A0%B1%E5%91%8A%E6%9B%B8_9%E6%9C%8810%E6%97%A5_No03.jpg" download>作業報告書_9月10日_No03.jpg</a>・<a href="data/%E4%BD%9C%E6%A5%AD%E5%A0%B1%E5%91%8A%E6%9B%B8_9%E6%9C%8810%E6%97%A5_No04.jpg" download>作業報告書_9月10日_No04.jpg</a>・<a href="data/%E4%BD%9C%E6%A5%AD%E5%A0%B1%E5%91%8A%E6%9B%B8_9%E6%9C%8810%E6%97%A5_No05.jpg" download>作業報告書_9月10日_No05.jpg</a></div>
+  <pre id="tp3">あなたは工程管理の担当者です。添付は手書きの作業報告書（5枚）です。1行に1件の中間表（CSV）を作ってください。
+
+【列】報告書No／行／日付／作業者No／工程／品番／品名／開始／終了／成形数／不良数／確認状況
+
+【ルール】
+・推測で埋めない。読めない・自信がない値は空欄にし、確認状況を「要確認」にする
+・品番はハンコで押されている。かすれて読めない桁があれば、その品番は空欄にする
+・線で消して書き直してある数字は、書き直した後の数を入れ、確認状況を「要確認（訂正あり）」にする
+・何も書いていない欄は「（記入なし）」と書き、確認状況を「要確認」にする
+・1と7、0と6、4と9は特に注意して読む
+
+【別に出すもの】
+要確認一覧：報告書No／行／項目／読み取り候補／理由
+最後に、中間表の件数と、成形数・不良数の合計を書いてください（空欄は0として数えず、件数だけ書く）。</pre>
+  <button type="button" class="copy" data-target="tp3">コピーする</button>
+</article><article class="card" id="p3_2">
+  <div class="head"><span class="no">No.3-2</span><a class="tool" href="https://claude.ai/" target="_blank" rel="noopener">Claudeで使う ↗</a></div>
+  <h3>要確認の箇所を、もう一度見直させる（No.3の続き）</h3>
+  <p class="files-note">要確認の箇所について、人が原票を見るときの見どころを知りたいとき</p>
+  <pre id="tp3_2">要確認一覧の各項目について、もう一度画像を見て、読み取り候補を2つまで挙げ、それぞれの見え方の根拠を書いてください（例：1の上のはねが長く、7にも見える）。
+決めきれないものは決めないでください。
+最後に「原票で人が確認すべき箇所」を、報告書No・行・項目の短い一覧にしてください。</pre>
+  <button type="button" class="copy" data-target="tp3_2">コピーする</button>
+</article><article class="card" id="p4">
+  <div class="head"><span class="no">No.4</span><a class="tool" href="https://claude.ai/" target="_blank" rel="noopener">Claudeで使う ↗</a></div>
+  <h3>確定した値を中間表に反映し、変更点を出す（No.3の続き）</h3>
+  <p class="files-note">原票を見て人が決めた値を、中間表に入れるとき</p>
+  <pre id="tp4">原票を見て、次のとおり値を確定しました。中間表に反映し、該当する行の確認状況を「確定」にしてください。
+変更した箇所を一覧にしてください（報告書No／行／項目／変更前／変更後）。
+
+【確定した値】
+（例：No.02の1行目 成形数＝15）
+（例：No.03の1行目 不良数＝0）
+（ここに自分で確認した値を書く）
+
+要確認が残っている行があれば、最後に一覧で示してください。
+最後に、中間表の件数・成形数の合計・不良数の合計を示してください。反映後の中間表はCSVファイルでください。</pre>
+  <button type="button" class="copy" data-target="tp4">コピーする</button>
+</article><article class="card" id="p5">
+  <div class="head"><span class="no">No.5</span><a class="tool" href="https://claude.ai/" target="_blank" rel="noopener">Claudeで使う ↗</a></div>
+  <h3>中間表を3つの記録表に振り分ける（No.4の続き）</h3>
+  <p class="files-note">確定した中間表から、作業経歴・工数・進捗の3つの表を作るとき</p>
+  <pre id="tp5">確定した中間表をもとに、次の3つの表をCSVファイルで作ってください。
+
+① 作業経歴用：品番／日付／成形数／不良数
+② 工数用：作業者No／日付／品番／開始／終了／作業時間（分）
+③ 進捗用：品番／工程／日付／成形数（累計にしない）
+
+【ルール】
+・照合の手がかりは「品番・日付・工程」。中間表の報告書Noと行も各表の最後の列に残す
+・作業時間は開始と終了から計算する。終了が（記入なし）の行は作業時間を空欄にし、備考に「要確認」と書く
+・中間表にない値は作らない
+
+最後に、振り分けの前後で「件数」と「成形数の合計」が一致するかを、中間表と3つの表で並べて示してください。</pre>
+  <button type="button" class="copy" data-target="tp5">コピーする</button>
+</article></section><section id="ex"><h2><span class="eyebrow">実践演習（25分）</span>作業経歴表への追記と検算</h2><article class="card" id="p6">
+  <div class="head"><span class="no">No.6</span><a class="tool" href="https://claude.ai/" target="_blank" rel="noopener">Claudeで使う ↗</a></div>
+  <h3>演習：中間表3日分を作業経歴表に追記する</h3>
+  <p class="files-note">実践演習で、中間表の内容を作業経歴表に追記するとき</p><div class="file">添付するファイル：<a href="data/%E4%BD%9C%E6%A5%AD%E7%B5%8C%E6%AD%B4%E8%A1%A8_%E6%88%90%E5%BD%A2_9%E6%9C%88_%E6%BC%94%E7%BF%92%E7%94%A8.xlsx" download>作業経歴表_成形_9月_演習用.xlsx</a>・<a href="data/%E4%B8%AD%E9%96%93%E8%A1%A8_9%E6%9C%8810%E6%97%A5%E3%80%9C14%E6%97%A5_%E7%A2%BA%E5%AE%9A%E7%89%88.csv" download>中間表_9月10日〜14日_確定版.csv</a></div>
+  <pre id="tp6">あなたは生産管理の担当者です。添付の作業経歴表（Excel）に、添付の中間表（9月10日・11日・14日の3日分）の成形数と不良数を追記したファイルを作ってください。
+
+【追記のルール】
+・既存の式は消さない。式の末尾に「+当日の数」を日付順に足す（例：=48+52 → =48+52+46）
+・同じ品番が複数の日に出てくるときは、日付順にその数だけ足す（例：=48+52 → =48+52+46+40）
+・合計した数値で上書きしない。必ず式のまま残す
+・中間表にない品番の式は変えない
+・「最終追記日」の列を、その品番で最後に足した日付にする（追記した品番のみ）
+・ほかの列・シート名・列の並びは変えない
+
+【出すもの】
+1. 追記後のExcelファイル（ファイル名の末尾に「_3日分追記済」）
+2. 追記一覧の表：品番／列／日付／追記前の式／追記後の式／足した数
+3. 追記した件数と、足した成形数・不良数の合計（件数＝足した数の個数。成形数の列で数える。中間表の行数と同じになる）</pre>
+  <button type="button" class="copy" data-target="tp6">コピーする</button>
+</article><article class="card" id="p6_2">
+  <div class="head"><span class="no">No.6-2</span><a class="tool" href="https://claude.ai/" target="_blank" rel="noopener">Claudeで使う ↗</a></div>
+  <h3>演習：検算して、結果を1行で報告する（No.6の続き）</h3>
+  <p class="files-note">実践演習で、追記の結果を検算して報告するとき</p>
+  <pre id="tp6_2">さきほど作った追記後のファイルを検算してください。
+
+① 成形数・不良数の全セルが式のままか（数値だけのセルがあれば一覧に）
+② 追記した件数（足した数の個数）と、成形数・不良数の合計が、中間表と一致するか
+③ 複数日に出てくる品番は、日付順に日数分足され、最終追記日が最後の日になっているか
+④ 追記前の式が、追記後の式の先頭にそのまま残っているか
+⑤ 品番別の9月の成形数の合計（式を計算した値）の表
+
+最後に「検算結果：一致／不一致（理由）」を1行で書いてください。</pre>
+  <button type="button" class="copy" data-target="tp6_2">コピーする</button>
+</article></section>
+<footer>演習データはすべて研修用の架空のものです。© 2026 がだんだん株式会社</footer>
+</div>
+<script>
+document.querySelectorAll('.copy').forEach(function(b){
+  var label=b.textContent;
+  b.addEventListener('click',function(){
+    var el=document.getElementById(b.dataset.target), text=el.textContent;
+    function ok(){b.textContent='コピーしました';b.classList.add('done');setTimeout(function(){b.textContent=label;b.classList.remove('done')},2000)}
+    function fallback(){var r=document.createRange();r.selectNodeContents(el);var s=window.getSelection();s.removeAllRanges();s.addRange(r);b.textContent='選択しました。長押しでコピー'}
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(text).then(ok,fallback)}else{fallback()}
+  });
+});
+</script>
+</body>
+</html>
