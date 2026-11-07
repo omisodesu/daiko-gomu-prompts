@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>営業 Day1 プロンプト集</title>
+<style>
+/* 研修テキストの続きとして読む一列のノート。朱は番号とボタンだけ */
+:root{
+  --bg:#fbfbfa; --paper:#ffffff; --fg:#1f1f1f; --sub:#5f5b58; --line:#d9d5d2; --acc:#b8431e; --acc-ink:#ffffff; --code:#f4f2f0;
+  --f-body:"BIZ UDPGothic","Hiragino Sans","Yu Gothic",sans-serif; --f-mono:"BIZ UDGothic","Hiragino Sans","Yu Gothic",monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#161514;--paper:#1f1e1c;--fg:#ecebe9;--sub:#a9a4a0;--line:#3a3734;--acc:#e0714a;--acc-ink:#1a0f0a;--code:#262422;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#161514;--paper:#1f1e1c;--fg:#ecebe9;--sub:#a9a4a0;--line:#3a3734;--acc:#e0714a;--acc-ink:#1a0f0a;--code:#262422;color-scheme:dark}
+body{background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:16px;line-height:1.7;padding-inline:16px;padding-block:20px 48px}
+.wrap{max-width:720px;margin:0 auto;display:flex;flex-direction:column;gap:28px}
+header h1{font-size:1.45rem;line-height:1.35;margin:4px 0 6px;text-wrap:balance}
+header p{margin:0;color:var(--sub);font-size:.92rem}
+.kicker{color:var(--acc);font-weight:700;font-size:.8rem;letter-spacing:.06em}
+.howto{border:1px solid var(--line);border-radius:10px;background:var(--paper);padding:14px 16px;font-size:.92rem}
+.howto ol{margin:6px 0 0;padding-left:1.3em}
+.jump{display:flex;flex-wrap:wrap;gap:6px}
+.jump a{min-width:2.4em;text-align:center;padding:4px 0;border:1px solid var(--line);border-radius:6px;color:var(--fg);text-decoration:none;font-variant-numeric:tabular-nums;background:var(--paper)}
+section{display:flex;flex-direction:column;gap:14px}
+h2{font-size:1.15rem;margin:8px 0 0;display:flex;flex-direction:column;gap:2px;border-bottom:1px solid var(--line);padding-bottom:8px}
+.eyebrow{font-size:.78rem;color:var(--acc);letter-spacing:.06em}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:14px 14px 16px;display:flex;flex-direction:column;gap:8px;scroll-margin-top:12px;min-width:0}
+.head{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap}
+.no{font-weight:700;color:var(--acc);font-variant-numeric:tabular-nums}
+.tool{font-size:.85rem;color:var(--sub);text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:2px 10px}
+h3{margin:0;font-size:1.02rem;line-height:1.45}
+pre{margin:0;white-space:pre-wrap;word-break:break-word;font-family:var(--f-mono);font-size:.86rem;line-height:1.65;background:var(--code);border-radius:8px;padding:12px;user-select:all;-webkit-user-select:all}
+.copy{align-self:stretch;appearance:none;border:0;border-radius:8px;background:var(--acc);color:var(--acc-ink);font:700 1rem var(--f-body);padding:12px;cursor:pointer}
+.copy.done{background:var(--fg);color:var(--bg)}
+.copy:focus-visible,.jump a:focus-visible,.tool:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
+.tbl{overflow-x:auto;min-width:0}
+table{border-collapse:collapse;width:100%;font-size:.84rem;font-variant-numeric:tabular-nums}
+th,td{border-bottom:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top}
+th{font-weight:700;border-bottom:1.5px solid var(--fg)}
+.note{margin:0;color:var(--sub);font-size:.78rem}
+footer{color:var(--sub);font-size:.8rem;border-top:1px solid var(--line);padding-top:12px}
+.demo{font-size:.78rem;color:var(--sub);border:1px dashed var(--line);border-radius:999px;padding:1px 9px}
+.file{font-size:.85rem;color:var(--sub)}
+.file a{color:var(--acc)}
+.dl{display:flex;flex-direction:column;gap:6px;margin:0;padding:0;list-style:none}
+.dl a{display:block;border:1px solid var(--line);border-radius:8px;padding:10px 12px;background:var(--paper);color:var(--fg);text-decoration:none}
+.dl a span{display:block;font-size:.8rem;color:var(--sub)}
+details{border:1px solid var(--line);border-radius:10px;background:var(--paper);padding:10px 14px}
+details summary{cursor:pointer;font-weight:700}
+details[open]{display:flex;flex-direction:column;gap:8px}
+details pre{max-height:320px;overflow:auto}
+*{box-sizing:border-box}
+
+.files-note{margin:0;color:var(--sub);font-size:.85rem}
+@media print{.copy,.jump,.tool{display:none}pre{user-select:text}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <div class="kicker">2026年11月12日（木）9:30〜12:30　営業職向け 生成AI業務活用研修 Day1：法人営業：問い合わせ対応と見積前ヒアリング</div>
+  <h1>ダイコーゴム様 研修用プロンプト集（営業・Day1）</h1>
+  <p>スライドの「プロンプト No.」と同じ番号です。</p>
+</header>
+<div class="howto"><strong>使い方</strong>
+  <ol><li>演習のファイルをダウンロードする（スマホは、下の「コピーして貼る用」も使えます）</li><li>番号のボタンで使うプロンプトへ移動し「コピーする」</li><li>Claudeに貼り付け、＋ボタンからファイルを添付して送る</li><li>（　）の部分は、自分の内容に書き換える</li></ol>
+</div>
+<nav class="jump" aria-label="プロンプト番号"><a href="#p1">1</a><a href="#p2">2</a><a href="#p3">3</a><a href="#p4">4</a><a href="#p5">5</a><a href="#p5_2">5-2</a><a href="#p6">6</a><a href="#p7">7</a><a href="#p7_2">7-2</a></nav>
+<section id="files"><h2><span class="eyebrow">最初にダウンロード</span>演習で使うファイル（すべて架空）</h2><ul class="dl"><li><a href="data/%E8%A9%A6%E4%BD%9C%E4%BE%9D%E9%A0%BC%E3%83%A1%E3%83%BC%E3%83%AB_O%E3%83%AA%E3%83%B3%E3%82%B0_%E5%8E%9F%E6%96%87.txt" download>試作依頼メール_Oリング_原文.txt<span>No.1で使う（伏せ字にする前の架空のメール）</span></a></li><li><a href="data/%E8%A9%A6%E4%BD%9C%E4%BE%9D%E9%A0%BC%E3%83%A1%E3%83%BC%E3%83%AB_O%E3%83%AA%E3%83%B3%E3%82%B0_%E4%BC%8F%E3%81%9B%E5%AD%97%E6%B8%88%E3%81%BF_%E4%BA%88%E5%82%99.txt" download>試作依頼メール_Oリング_伏せ字済み_予備.txt<span>No.2・No.3で使う（伏せ字がうまくいかなかった人・スマホの人向けの予備）</span></a></li><li><a href="data/%E5%9B%B3%E9%9D%A2%E6%83%85%E5%A0%B1_O%E3%83%AA%E3%83%B3%E3%82%B0%E8%A9%A6%E4%BD%9C_%E4%BC%9A%E7%A4%BE%E5%90%8D%E3%81%AA%E3%81%97.png" download>図面情報_Oリング試作_会社名なし.png<span>No.2・No.3で添付する（表題欄の会社名を消した図面）</span></a></li><li><a href="data/AI%E3%81%AE%E5%9B%9E%E7%AD%94_%E8%AA%A4%E3%82%8A%E3%81%82%E3%82%8A_%E8%AC%9B%E5%B8%AB%E9%85%8D%E5%B8%83.txt" download>AIの回答_誤りあり_講師配布.txt<span>No.3で使う（講師が誤りを混ぜたAIの回答）</span></a></li><li><a href="data/%E5%95%8F%E3%81%84%E5%90%88%E3%82%8F%E3%81%9B_8%E4%BB%B6.txt" download>問い合わせ_8件.txt<span>No.4で使う（架空の問い合わせ8件）</span></a></li><li><a href="data/%E5%95%8F%E3%81%84%E5%90%88%E3%82%8F%E3%81%9B_No1%E3%81%A8No6.txt" download>問い合わせ_No1とNo6.txt<span>No.5で使う（8件のうちNo.1・No.6だけ）</span></a></li><li><a href="data/%E5%95%8F%E3%81%84%E5%90%88%E3%82%8F%E3%81%9B_No3.txt" download>問い合わせ_No3.txt<span>No.6で使う（8件のうちNo.3だけ）</span></a></li><li><a href="data/%E6%BC%94%E7%BF%92_%E5%95%8F%E3%81%84%E5%90%88%E3%82%8F%E3%81%9B_3%E4%BB%B6.txt" download>演習_問い合わせ_3件.txt<span>実践演習（No.7）で使う（架空の問い合わせ3件）</span></a></li></ul><details><summary>試作依頼メール_Oリング_原文.txt（コピーして貼る用）</summary><pre id="c1">件名：Oリング試作のお願い（新型ポンプ用）
+
+サンプルゴム工業株式会社
+営業ご担当者様
+
+いつもお世話になっております。
+株式会社みなと油圧 開発課の山田です。
+
+当社で開発中の新型ポンプ（納入先：東西重工株式会社 向け）に使うOリングについて、
+試作をお願いできないかと思いご連絡しました。
+
+■ 仕様
+・材質はNBR（ニトリルゴム）で考えています
+・硬度：A70（±5）
+・寸法：内径 24.4mm（±0.25）、線径 3.1mm（±0.10）
+・規格：JIS B 2401 G25 相当
+・使用環境：作動油（鉱物油系）の中で使用、使用温度 -10〜80℃
+・数量：まずは試作で 100個、評価がよければ量産で月 2,000個程度を見込んでいます
+
+図面情報を添付します（図面番号 ZU-0021 Rev.A）。
+
+なお、現在の購入先からは 1個 42円 で購入しており、
+みなと油圧としては同程度の価格を希望しています。
+
+お見積りとあわせて、試作が可能かどうかご回答いただけますと幸いです。
+
+──────────────
+株式会社みなと油圧 開発課
+山田 太郎
+TEL 000-1111-2222
+yamada@example-minato.invalid
+──────────────
+</pre><button type="button" class="copy" data-target="c1">コピーする</button></details><details><summary>試作依頼メール_Oリング_伏せ字済み_予備.txt（コピーして貼る用）</summary><pre id="c2">件名：Oリング試作のお願い（新型ポンプ用）
+
+サンプルゴム工業株式会社
+営業ご担当者様
+
+いつもお世話になっております。
+取引先A 開発課の担当者Bです。
+
+当社で開発中の新型ポンプ（納入先：納入先C 向け）に使うOリングについて、
+試作をお願いできないかと思いご連絡しました。
+
+■ 仕様
+・材質はNBR（ニトリルゴム）で考えています
+・硬度：A70（±5）
+・寸法：内径 24.4mm（±0.25）、線径 3.1mm（±0.10）
+・規格：JIS B 2401 G25 相当
+・使用環境：作動油（鉱物油系）の中で使用、使用温度 -10〜80℃
+・数量：まずは試作で 100個、評価がよければ量産で月 2,000個程度を見込んでいます
+
+図面情報を添付します（図面番号 ZU-0021 Rev.A）。
+
+なお、現在の購入先からは 1個 単価X で購入しており、
+取引先Aとしては同程度の価格を希望しています。
+
+お見積りとあわせて、試作が可能かどうかご回答いただけますと幸いです。
+
+──────────────
+取引先A 開発課
+担当者B
+──────────────
+</pre><button type="button" class="copy" data-target="c2">コピーする</button></details><details><summary>AIの回答_誤りあり_講師配布.txt（コピーして貼る用）</summary><pre id="c4">【研修用】AIが作った要件抽出表（講師が誤りを混ぜてあります。原文・図面情報と照らして誤りを見つけてください）
+
+| 項目 | 抽出した値 | 原文の該当箇所 |
+|---|---|---|
+| 品名 | Oリング（試作） | 「Oリングについて、試作をお願いできないか」 |
+| 材質 | EPDM | 「材質はNBR（ニトリルゴム）で考えています」 |
+| 硬度 | A70（±5） | 「硬度：A70（±5）」 |
+| 内径 | 24.4mm（±0.25） | 「内径 24.4mm（±0.25）」 |
+| 線径 | 3.1cm（±0.10） | 「線径 3.1mm（±0.10）」 |
+| 規格 | JIS B 2104 G25 相当 | 「規格：JIS B 2401 G25 相当」 |
+| 使用環境 | 作動油（鉱物油系）・-10〜80℃ | 「作動油（鉱物油系）の中で使用、使用温度 -10〜80℃」 |
+| 数量 | 試作 1,000個／量産 月2,000個 | 「まずは試作で 100個、評価がよければ量産で月 2,000個程度」 |
+| 納期 | 受注後2週間 | 「試作品は2週間程度でお願いできれば」 |
+| 図面 | あり（ZU-0021 Rev.A） | 「図面情報を添付します（図面番号 ZU-0021 Rev.A）」 |
+</pre><button type="button" class="copy" data-target="c4">コピーする</button></details><details><summary>問い合わせ_8件.txt（コピーして貼る用）</summary><pre id="c5">【研修用・架空】問い合わせフォームとメールで届いた問い合わせ（8件）
+※ 会社名・人名はすべて架空で、記号に置き換えてあります
+
+---
+No.1（メール）法人：取引先B社 設備課
+油圧ユニットに使うパッキンの見積をお願いします。図面を添付します（図面番号 B-102）。
+材質はNBRでお願いします。数量は月 500個です。用途は油圧ユニットのシリンダー部です。
+できるだけ安くしていただけると助かります。
+
+---
+No.2（フォーム）法人：取引先C社 品質保証課
+御社で扱っているゴム材質の一覧と、それぞれの耐熱温度が分かる資料があれば送ってください。
+社内の材料選定の参考にしたいと考えています。
+
+---
+No.3（フォーム）個人：Dさん
+昭和の終わりごろの国産クーペに乗っています。トランクのふちのゴムがぼろぼろで、雨の日に水が入ってきます。
+1本だけでも作ってもらえますか？ 純正品はもう売っていないようです。
+
+---
+No.4（メール）業者：E社（ホームページ制作）
+貴社のホームページを拝見しました。スマートフォンで見にくい部分があり、問い合わせを逃している可能性があります。
+弊社では月額 3万円からホームページの改善を行っております。一度お打ち合わせの機会をいただけないでしょうか。
+
+---
+No.5（フォーム）法人：取引先F社 保全係
+古い機械のゴム部品が傷んできました。現物はありますが、図面はありません。
+同じものを作ることはできるのでしょうか。
+
+---
+No.6（メール）法人：取引先G社 購買課
+Oリングの見積をお願いします。内径 30.0mm、線径 3.5mm、材質 NBR、数量 1,000個です。
+12月中旬までに納品いただけると助かります。
+
+---
+No.7（メール）業者：H社（人材派遣）
+製造業向けの人材派遣を行っております。繁忙期の人手不足でお困りではありませんか。
+御社の工場向けに、すぐにご紹介できる方がおります。
+
+---
+No.8（メール）法人：I商事 営業部
+お客様（ポンプメーカー）から引き合いがあり、ダイヤフラムの同等品を作れるかを知りたいです。
+年間で数千個程度になる見込みです。図面は後日お送りします。まずは概算の価格を教えてください。
+</pre><button type="button" class="copy" data-target="c5">コピーする</button></details><details><summary>問い合わせ_No1とNo6.txt（コピーして貼る用）</summary><pre id="c6">No.1（メール）法人：取引先B社 設備課
+油圧ユニットに使うパッキンの見積をお願いします。図面を添付します（図面番号 B-102）。
+材質はNBRでお願いします。数量は月 500個です。用途は油圧ユニットのシリンダー部です。
+できるだけ安くしていただけると助かります。
+
+---
+No.6（メール）法人：取引先G社 購買課
+Oリングの見積をお願いします。内径 30.0mm、線径 3.5mm、材質 NBR、数量 1,000個です。
+12月中旬までに納品いただけると助かります。
+</pre><button type="button" class="copy" data-target="c6">コピーする</button></details><details><summary>問い合わせ_No3.txt（コピーして貼る用）</summary><pre id="c7">No.3（フォーム）個人：Dさん
+昭和の終わりごろの国産クーペに乗っています。トランクのふちのゴムがぼろぼろで、雨の日に水が入ってきます。
+1本だけでも作ってもらえますか？ 純正品はもう売っていないようです。
+</pre><button type="button" class="copy" data-target="c7">コピーする</button></details><details><summary>演習_問い合わせ_3件.txt（コピーして貼る用）</summary><pre id="c8">【研修用・架空】実践演習の問い合わせ（3件）
+※ 会社名・人名はすべて架空で、記号に置き換えてあります
+
+---
+演習1（メール）法人：取引先J社 生産技術課
+今使っているガスケットを別の会社に切り替えたいと考えています。
+材質は耐熱のものでお願いします。使用温度は最高 150℃くらいです。数量は月 300枚程度です。
+図面は後日お送りします。
+来月中には必ず納品してほしいのと、単価は今より1割安くしてほしいです。
+
+---
+演習2（フォーム）法人：K商事 営業課
+お客様から、Oリングの引き合いをいただいています。
+材質はシリコン、寸法は内径 30mm・線径 35mm、数量は 200個です。
+ガソリンのタンクまわりで使うそうです。硬度の指定は聞いていません。
+
+---
+演習3（フォーム）個人：Lさん
+1985年式の国産クーペのドアのまわりのゴムが切れてしまいました。
+長さは分からないのですが、写真ならあります。1台分だけほしいです。
+</pre><button type="button" class="copy" data-target="c8">コピーする</button></details></section>
+<section id="s1"><h2><span class="eyebrow">1コマ目（70分）</span>問い合わせ・見積条件の要件抽出と誤り検出（寸法・材質・規格）</h2><article class="card" id="p1">
+  <div class="head"><span class="no">No.1</span><a class="tool" href="https://claude.ai/" target="_blank" rel="noopener">Claudeで使う ↗</a></div>
+  <h3>伏せ字の残りを点検する</h3>
+  <p class="files-note">問い合わせメールを伏せ字にした後、AIに要件を抜き出させる前</p>
+  <pre id="tp1">あなたは法人営業の補助担当です。以下は、顧客名・担当者名・単価などを記号に置き換えた問い合わせメールです（研修用の架空のメール）。AIに要件を抜き出させる前の点検をしてください。
+
+【やること】
+1. 伏せた記号（取引先A・担当者B・単価X など）の一覧
+2. まだ残っている社名・人名・金額・電話番号・メールアドレスの一覧。あれば、その行をそのまま抜き出す
+3. 要件として残した項目の一覧（材質・硬度・寸法・規格・使用環境・数量・図面番号など）
+
+【ルール】
+・宛先の自社名（サンプルゴム工業）は伏せなくてよい。一覧に入れない
+・伏せた記号の中身を推測しない
+・文章は書き換えない
+
+【伏せ字にしたメール】
+（ここに貼り付け）</pre>
+  <button type="button" class="copy" data-target="tp1">コピーする</button>
+</article><article class="card" id="p2">
+  <div class="head"><span class="no">No.2</span><a class="tool" href="https://claude.ai/" target="_blank" rel="noopener">Claudeで使う ↗</a></div>
+  <h3>寸法・材質・規格を表に抜き出す</h3>
+  <p class="files-note">試作・見積の依頼から、見積の条件を表にまとめるとき</p><div class="file">添付するファイル：<a href="data/%E5%9B%B3%E9%9D%A2%E6%83%85%E5%A0%B1_O%E3%83%AA%E3%83%B3%E3%82%B0%E8%A9%A6%E4%BD%9C_%E4%BC%9A%E7%A4%BE%E5%90%8D%E3%81%AA%E3%81%97.png" download>図面情報_Oリング試作_会社名なし.png</a></div>
+  <pre id="tp2">あなたは法人営業の補助担当です。以下の試作依頼メール（伏せ字済み・研修用の架空のメール）と、添付の図面情報から、見積の条件を表に抜き出してください。
+
+【項目】
+材質／硬度／内径・公差／線径・公差／規格／使用環境（流体・温度）／数量（試作と量産を分ける）／納期／図面（番号・改訂）
+
+【ルール】
+・各項目に、メールの該当箇所と図面の該当箇所を、そのまま引用して並べる
+・寸法には必ず単位を付ける。公差は±で書く
+・記載がない項目は推測せず「記載なし」と書く
+・メールと図面で値が違う項目は、どちらかを選ばず両方を書き「要確認」とする
+・伏せた記号（取引先A など）の中身は推測しない
+
+【出すもの】
+表：項目／値／メールの該当箇所／図面の該当箇所／確認
+最後に「要確認」と「記載なし」の項目を一覧にしてください（お客様に聞き返す候補）。
+
+【伏せ字にしたメール】
+（ここに貼り付け）</pre>
+  <button type="button" class="copy" data-target="tp2">コピーする</button>
+</article><article class="card" id="p3">
+  <div class="head"><span class="no">No.3</span><a class="tool" href="https://claude.ai/" target="_blank" rel="noopener">Claudeで使う ↗</a></div>
+  <h3>誤りを混ぜたAIの回答を、原文と照合させる</h3>
+  <p class="files-note">AIが作った要件の表を、原文と図面で確かめるとき（先に自分の目で確かめてから使う）</p><div class="file">添付するファイル：<a href="data/%E5%9B%B3%E9%9D%A2%E6%83%85%E5%A0%B1_O%E3%83%AA%E3%83%B3%E3%82%B0%E8%A9%A6%E4%BD%9C_%E4%BC%9A%E7%A4%BE%E5%90%8D%E3%81%AA%E3%81%97.png" download>図面情報_Oリング試作_会社名なし.png</a></div>
+  <pre id="tp3">あなたは法人営業の確認担当です。以下の【AIの回答】（要件抽出表）を、【元のメール】と添付の図面情報と1項目ずつ照合して、誤りを見つけてください。
+
+【ルール】
+・項目ごとに「一致／誤り／要確認」を付ける。誤りは、正しい値と理由を書く
+・「原文の該当箇所」に書かれた引用が、元のメールに本当にあるかも確かめる。ない場合は「原文にない引用」と書く
+・単位、規格番号の数字、数量の桁、材質と使用環境の組み合わせを特に見る
+・メールと図面で値が違う項目は「要確認」とし、両方の値を書く
+
+【出すもの】
+表：項目／AIの回答の値／正しい値／判定／理由
+最後に、誤りの件数と、誤りの種類（単位・材質・規格・桁・原文にない値・食い違い）ごとの数を書いてください。
+
+【AIの回答】
+（ここに貼り付け）
+
+【元のメール（伏せ字済み）】
+（ここに貼り付け）</pre>
+  <button type="button" class="copy" data-target="tp3">コピーする</button>
+</article></section><section id="s2"><h2><span class="eyebrow">2コマ目（70分）</span>問い合わせの仕分けと、見積前ヒアリングの返信メール</h2><article class="card" id="p4">
+  <div class="head"><span class="no">No.4</span><a class="tool" href="https://claude.ai/" target="_blank" rel="noopener">Claudeで使う ↗</a></div>
+  <h3>問い合わせ8件を、判定理由つきで仕分ける</h3>
+  <p class="files-note">届いた問い合わせを、対応の優先度を決めるために仕分けるとき</p>
+  <pre id="tp4">あなたは法人営業の補助担当です。以下の問い合わせ（研修用の架空のもの）を、4つの区分に仕分けてください。
+
+【区分と判定条件】
+・見込み案件：見積・試作の依頼で、数量が書いてあり、かつ図面・寸法・現物のどれかがある（後日送付を含む）。個人の1点ものは除く
+・相談：作れるかの確認や、個人の1点もの・少量の相談で、見積の条件がまだそろっていない
+・情報収集：資料・材質一覧・概算の価格だけを求めている
+・売り込み：当社に商品やサービスを売り込む内容
+
+【ルール】
+・数量と、図面・寸法・現物のどれが書いてあるかを、問い合わせごとに書く
+・2つの区分に当てはまりそうなときは、両方の候補と理由を書き、区分は「人が判断」とする
+・問い合わせにない事情は推測しない
+
+【出すもの】
+表：No／区分／法人・個人／数量／図面・寸法・現物／判定理由／見込み案件なら次に聞き返す項目
+最後に、区分ごとの件数を書いてください。
+
+【問い合わせ】
+（ここに貼り付け）</pre>
+  <button type="button" class="copy" data-target="tp4">コピーする</button>
+</article><article class="card" id="p5">
+  <div class="head"><span class="no">No.5</span><a class="tool" href="https://claude.ai/" target="_blank" rel="noopener">Claudeで使う ↗</a></div>
+  <h3>見込み案件2件への、見積前ヒアリングの返信メール</h3>
+  <p class="files-note">見積に進めそうな問い合わせに、足りない情報を聞き返すとき</p>
+  <pre id="tp5">あなたはゴム製品メーカー（研修用の架空の会社「サンプルゴム工業」）の法人営業担当です。以下の問い合わせ（見込み案件）について、見積前に聞き返す返信メールの下書きを作ってください。
+
+【やること】
+1. 見積に必要な項目（材質・硬度・寸法または図面・数量・使用環境（温度・触れる液体）・納期）のうち、書いてあるもの／足りないものを、問い合わせごとに表にする
+2. その表をもとに、返信メールの下書きを問い合わせごとに作る
+
+【メールのルール】
+・最初に、いただいた条件を箇条書きで確認する
+・足りない項目を、見積に欠かせないものから順に、番号付きで1つずつ聞く
+・答え方が分かりにくい質問には、選択肢や例を添える（例：使用温度は「常温／80℃くらい／それ以上」）
+・値引き・納期・製作の可否は約束しない（例：「仕様を確認のうえ、改めてご回答いたします」「価格はお見積りでご案内いたします」）
+・問い合わせにない数値や条件をこちらから書かない
+・宛名と署名は（取引先名）（担当者名）（自分の名前）のままにする
+
+【問い合わせ】
+（ここに貼り付け）</pre>
+  <button type="button" class="copy" data-target="tp5">コピーする</button>
+</article><article class="card" id="p5_2">
+  <div class="head"><span class="no">No.5-2</span><a class="tool" href="https://claude.ai/" target="_blank" rel="noopener">Claudeで使う ↗</a></div>
+  <h3>返信メールの約束表現を点検する（No.5の続き）</h3>
+  <p class="files-note">返信メールを送る前に、約束表現や聞き漏れがないか確かめるとき</p>
+  <pre id="tp5_2">さきほど作った返信メールを、1通ずつ点検してください。
+
+① 値引き・納期・製作の可否を約束している表現（あれば、その文と、約束しない言い換え案）
+② 問い合わせにない数値や条件を、こちらから書いていないか（質問の選択肢として示す例は除く）
+③ 見積に必要な項目（材質・硬度・寸法または図面・数量・使用環境・納期）の聞き漏れがないか
+④ 専門用語が多すぎないか
+
+結果は表で示し、最後に「点検結果：問題なし／要修正（理由）」を1通ずつ書いてください。メールの書き直しはしないでください。</pre>
+  <button type="button" class="copy" data-target="tp5_2">コピーする</button>
+</article><article class="card" id="p6">
+  <div class="head"><span class="no">No.6</span><a class="tool" href="https://claude.ai/" target="_blank" rel="noopener">Claudeで使う ↗</a></div>
+  <h3>旧車の個人のお客様への返信メール</h3>
+  <p class="files-note">部品に詳しくない個人のお客様から、少量の注文や相談が来たとき</p>
+  <pre id="tp6">あなたはゴム製品メーカー（研修用の架空の会社「サンプルゴム工業」）の担当者です。以下は、旧車の補修部品を探している個人のお客様からの問い合わせです。分かりやすい返信メールの下書きを作ってください。
+
+【ルール】
+・専門用語は使わず、言い換える（例：断面形状 → ゴムを切った切り口の形、線径 → ゴムの太さ、ウェザーストリップ → ドアやトランクのふちのゴム）
+・測ってほしい場所と、測り方（どこからどこまでを、何で測るか）を具体的に書く
+・撮ってほしい写真（全体・切り口・定規を当てたもの）を書く
+・車の年式・車種など、ほかに教えてほしいことも番号付きで聞く
+・作れるか・価格・納期は約束しない。写真と寸法を見てから回答すると書く
+・やさしく、短い文で書く。宛名は（お客様名）様のままにする
+
+【問い合わせ】
+（ここに貼り付け）</pre>
+  <button type="button" class="copy" data-target="tp6">コピーする</button>
+</article></section><section id="ex"><h2><span class="eyebrow">実践演習（25分）</span>見積前確認シートと返信メール一式</h2><article class="card" id="p7">
+  <div class="head"><span class="no">No.7</span><a class="tool" href="https://claude.ai/" target="_blank" rel="noopener">Claudeで使う ↗</a></div>
+  <h3>演習：問い合わせ3件の見積前確認シートと返信メール一式</h3>
+  <p class="files-note">実践演習で、仕分け・確認シート・返信メールを一度に作るとき</p>
+  <pre id="tp7">あなたはゴム製品メーカー（研修用の架空の会社「サンプルゴム工業」）の法人営業担当です。以下の問い合わせ3件（研修用の架空のもの）について、次の3つを作ってください。メールは送信しません。
+
+【1. 仕分け】
+見込み案件／相談／情報収集／売り込み に分け、判定理由を書く。2つに当てはまりそうなときは両方と理由を書き「人が判断」とする
+・見込み案件：見積・試作の依頼で、数量が書いてあり、かつ図面・寸法・現物のどれかがある（後日送付を含む）。個人の1点ものは除く
+・相談：作れるかの確認や、個人の1点もの・少量の相談で、見積の条件がまだそろっていない
+・情報収集：資料・材質一覧・概算の価格だけを求めている
+・売り込み：当社に商品やサービスを売り込む内容
+
+【2. 見積前確認シート】
+問い合わせごとに、項目（材質・硬度・寸法または図面・数量・使用環境・納期）／分かっていること（原文の引用）／不足・要確認／聞き方 を表にする。
+・寸法・材質・使用環境の組み合わせでおかしな点があれば「要確認」とし、理由を書く（こちらで直さない）
+・記載がない項目は推測せず「記載なし」
+・この段階では表をチャットに出すだけにする（Excelファイルにはしない）
+
+【3. 返信メールの下書き（3通）】
+・最初にいただいた条件を確認し、足りない項目を番号付きで聞く
+・値引き・納期・製作の可否は約束しない
+・個人のお客様には専門用語を使わず、測り方と写真の撮り方を具体的に書く
+・宛名と署名は（　）のままにする
+
+【問い合わせ】
+（ここに貼り付け）</pre>
+  <button type="button" class="copy" data-target="tp7">コピーする</button>
+</article><article class="card" id="p7_2">
+  <div class="head"><span class="no">No.7-2</span><a class="tool" href="https://claude.ai/" target="_blank" rel="noopener">Claudeで使う ↗</a></div>
+  <h3>演習：送信前の点検（No.7の続き）</h3>
+  <p class="files-note">実践演習で、返信メールと確認シートを送信前に点検するとき</p>
+  <pre id="tp7_2">さきほど作った見積前確認シートと返信メール3通を、送信前の点検として確かめてください。
+
+① 値引き・納期・製作の可否を約束している表現（あれば、その文と言い換え案）
+② 問い合わせにない数値や条件を書いていないか（確認シート・メールの両方。質問の選択肢として示す例は除く）
+③ 確認シートの「要確認」が、メールの質問にすべて入っているか
+④ 寸法・材質・使用環境のおかしな点を、勝手に直した値で書いていないか
+⑤ 個人のお客様あてのメールに、専門用語が残っていないか
+
+結果は表で示し、最後に「点検結果：送信してよい／要修正（理由）」を1通ずつ書いてください。
+
+点検で問題がなければ、最後に見積前確認シートをExcelファイル（見積前確認シート_演習.xlsx）で出してください。</pre>
+  <button type="button" class="copy" data-target="tp7_2">コピーする</button>
+</article></section>
+<footer>演習データはすべて研修用の架空のものです。© 2026 がだんだん株式会社</footer>
+</div>
+<script>
+document.querySelectorAll('.copy').forEach(function(b){
+  var label=b.textContent;
+  b.addEventListener('click',function(){
+    var el=document.getElementById(b.dataset.target), text=el.textContent;
+    function ok(){b.textContent='コピーしました';b.classList.add('done');setTimeout(function(){b.textContent=label;b.classList.remove('done')},2000)}
+    function fallback(){var r=document.createRange();r.selectNodeContents(el);var s=window.getSelection();s.removeAllRanges();s.addRange(r);b.textContent='選択しました。長押しでコピー'}
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(text).then(ok,fallback)}else{fallback()}
+  });
+});
+</script>
+</body>
+</html>
