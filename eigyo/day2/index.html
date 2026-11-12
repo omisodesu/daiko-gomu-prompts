@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>営業 Day2 プロンプト集</title>
+<style>
+/* 研修テキストの続きとして読む一列のノート。朱は番号とボタンだけ */
+:root{
+  --bg:#fbfbfa; --paper:#ffffff; --fg:#1f1f1f; --sub:#5f5b58; --line:#d9d5d2; --acc:#b8431e; --acc-ink:#ffffff; --code:#f4f2f0;
+  --f-body:"BIZ UDPGothic","Hiragino Sans","Yu Gothic",sans-serif; --f-mono:"BIZ UDGothic","Hiragino Sans","Yu Gothic",monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#161514;--paper:#1f1e1c;--fg:#ecebe9;--sub:#a9a4a0;--line:#3a3734;--acc:#e0714a;--acc-ink:#1a0f0a;--code:#262422;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#161514;--paper:#1f1e1c;--fg:#ecebe9;--sub:#a9a4a0;--line:#3a3734;--acc:#e0714a;--acc-ink:#1a0f0a;--code:#262422;color-scheme:dark}
+body{background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:16px;line-height:1.7;padding-inline:16px;padding-block:20px 48px}
+.wrap{max-width:720px;margin:0 auto;display:flex;flex-direction:column;gap:28px}
+header h1{font-size:1.45rem;line-height:1.35;margin:4px 0 6px;text-wrap:balance}
+header p{margin:0;color:var(--sub);font-size:.92rem}
+.kicker{color:var(--acc);font-weight:700;font-size:.8rem;letter-spacing:.06em}
+.howto{border:1px solid var(--line);border-radius:10px;background:var(--paper);padding:14px 16px;font-size:.92rem}
+.howto ol{margin:6px 0 0;padding-left:1.3em}
+.jump{display:flex;flex-wrap:wrap;gap:6px}
+.jump a{min-width:2.4em;text-align:center;padding:4px 0;border:1px solid var(--line);border-radius:6px;color:var(--fg);text-decoration:none;font-variant-numeric:tabular-nums;background:var(--paper)}
+section{display:flex;flex-direction:column;gap:14px}
+h2{font-size:1.15rem;margin:8px 0 0;display:flex;flex-direction:column;gap:2px;border-bottom:1px solid var(--line);padding-bottom:8px}
+.eyebrow{font-size:.78rem;color:var(--acc);letter-spacing:.06em}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:14px 14px 16px;display:flex;flex-direction:column;gap:8px;scroll-margin-top:12px;min-width:0}
+.head{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap}
+.no{font-weight:700;color:var(--acc);font-variant-numeric:tabular-nums}
+.tool{font-size:.85rem;color:var(--sub);text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:2px 10px}
+h3{margin:0;font-size:1.02rem;line-height:1.45}
+pre{margin:0;white-space:pre-wrap;word-break:break-word;font-family:var(--f-mono);font-size:.86rem;line-height:1.65;background:var(--code);border-radius:8px;padding:12px;user-select:all;-webkit-user-select:all}
+.copy{align-self:stretch;appearance:none;border:0;border-radius:8px;background:var(--acc);color:var(--acc-ink);font:700 1rem var(--f-body);padding:12px;cursor:pointer}
+.copy.done{background:var(--fg);color:var(--bg)}
+.copy:focus-visible,.jump a:focus-visible,.tool:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
+.tbl{overflow-x:auto;min-width:0}
+table{border-collapse:collapse;width:100%;font-size:.84rem;font-variant-numeric:tabular-nums}
+th,td{border-bottom:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top}
+th{font-weight:700;border-bottom:1.5px solid var(--fg)}
+.note{margin:0;color:var(--sub);font-size:.78rem}
+footer{color:var(--sub);font-size:.8rem;border-top:1px solid var(--line);padding-top:12px}
+.demo{font-size:.78rem;color:var(--sub);border:1px dashed var(--line);border-radius:999px;padding:1px 9px}
+.file{font-size:.85rem;color:var(--sub)}
+.file a{color:var(--acc)}
+.dl{display:flex;flex-direction:column;gap:6px;margin:0;padding:0;list-style:none}
+.dl a{display:block;border:1px solid var(--line);border-radius:8px;padding:10px 12px;background:var(--paper);color:var(--fg);text-decoration:none}
+.dl a span{display:block;font-size:.8rem;color:var(--sub)}
+details{border:1px solid var(--line);border-radius:10px;background:var(--paper);padding:10px 14px}
+details summary{cursor:pointer;font-weight:700}
+details[open]{display:flex;flex-direction:column;gap:8px}
+details pre{max-height:320px;overflow:auto}
+*{box-sizing:border-box}
+
+.files-note{margin:0;color:var(--sub);font-size:.85rem}
+@media print{.copy,.jump,.tool{display:none}pre{user-select:text}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <div class="kicker">2026年11月19日（木）13:00〜16:00　営業職向け 生成AI業務活用研修 Day2：法人・旧車営業：新規開拓の調査と提案文書</div>
+  <h1>ダイコーゴム様 研修用プロンプト集（営業・Day2）</h1>
+  <p>スライドの「プロンプト No.」と同じ番号です。</p>
+</header>
+<div class="howto"><strong>使い方</strong>
+  <ol><li>演習のファイルをダウンロードする（スマホは、下の「コピーして貼る用」も使えます）</li><li>番号のボタンで使うプロンプトへ移動し「コピーする」</li><li>Claudeに貼り付け、＋ボタンからファイルを添付して送る</li><li>（　）の部分は、自分の内容に書き換える</li></ol>
+</div>
+<nav class="jump" aria-label="プロンプト番号"><a href="#p1">1</a><a href="#p2">2</a><a href="#p3">3</a><a href="#p4">4</a><a href="#p4_2">4-2</a><a href="#p5">5</a><a href="#p6">6</a><a href="#p6_2">6-2</a><a href="#p7">7</a><a href="#p8">8</a><a href="#p8_2">8-2</a></nav>
+<section id="files"><h2><span class="eyebrow">最初にダウンロード</span>演習で使うファイル（すべて架空）</h2><ul class="dl"><li><a href="data/%E5%8F%96%E5%BC%95%E3%83%91%E3%82%BF%E3%83%BC%E3%83%B3_%E6%9E%B6%E7%A9%BA.txt" download>取引パターン_架空.txt<span>No.1で使う（講師が用意した架空の取引パターン2つ）</span></a></li><li><a href="data/%E9%96%8B%E6%8B%93%E5%80%99%E8%A3%9C10%E7%A4%BE_%E4%BC%81%E6%A5%AD%E8%B3%87%E6%96%99.txt" download>開拓候補10社_企業資料.txt<span>No.2・No.4〜No.6・No.8で使う（架空の10社の資料）</span></a></li><li><a href="data/%E5%AF%BE%E5%BF%9C%E7%AF%84%E5%9B%B2%E3%83%A1%E3%83%A2_%E3%82%B5%E3%83%B3%E3%83%97%E3%83%AB%E3%82%B4%E3%83%A0%E5%B7%A5%E6%A5%AD.txt" download>対応範囲メモ_サンプルゴム工業.txt<span>No.4〜No.8で使う（提案文書に書いてよい事実）</span></a></li></ul><details><summary>取引パターン_架空.txt（コピーして貼る用）</summary><pre id="c1">【研修用・架空】サンプルゴム工業の、うまくいった取引のパターン（講師が用意したもの）
+
+■ パターン1（法人）
+・相手：食品の包装機械を作っている装置メーカー（従業員 約80名、県内）
+・きっかけ：お客様の工場で使っている包装機械のパッキンが廃番になり、同じ形のものを探していた
+・取引の入口：設計部門からのメールでの問い合わせ。図面と現物があった
+・内容：NBR のパッキンを試作 50個 → 量産 月 500個
+・続いた理由：機械の改良のたびに、新しいシール部品の相談が来るようになった
+
+■ パターン2（旧車ショップ）
+・相手：昭和の国産車の整備・レストアをしている小さな整備工場（スタッフ 4名、隣の県）
+・きっかけ：お客様の車のドアまわりのゴムが劣化し、純正部品がもう手に入らなかった
+・取引の入口：店主からの電話。メールは使っておらず、図や写真は FAX で届いた
+・内容：現物を採寸して、ウェザーストリップを 1台分（4本）製作
+・続いた理由：同じ車種のお客様が多く、年に数回、同じ形の注文が来るようになった
+</pre><button type="button" class="copy" data-target="c1">コピーする</button></details><details><summary>開拓候補10社_企業資料.txt（コピーして貼る用）</summary><pre id="c2">【研修用・架空】開拓候補 10社の企業資料（すべて架空。会社名は記号。インターネットからは集めていません）
+※ 各社の【出典】は、講師が用意した架空の資料の名前です
+
+---
+A社（法人）
+事業内容：飲料・食品向けの充填機・包装機械の設計・製造。部品の多くは外部から購入している
+設備・工程：機械加工、組立。ゴム部品は社内で作っていない
+地域：県内　従業員：約120名
+問い合わせ窓口：ホームページの問い合わせフォーム（メール可）
+【出典】A社 会社案内（架空）p.2「事業内容」、p.5「お問い合わせ」
+
+---
+B社（法人）
+事業内容：工業用ポンプ・バルブの販売商社。メーカー約30社の製品を扱う
+設備・工程：倉庫と配送のみ。製造はしていない
+地域：隣の県　従業員：約40名
+問い合わせ窓口：代表メール、営業部 FAX
+【出典】B社 ホームページ（架空）「会社概要」
+
+---
+C社（法人）
+事業内容：プラスチック容器の射出成形。金型は外注
+設備・工程：射出成形機 20台。ゴムの部品は扱っていない
+地域：県内　従業員：約60名
+問い合わせ窓口：電話のみ（ホームページに問い合わせフォームなし）
+【出典】C社 会社案内（架空）p.1「会社紹介」
+
+---
+D社（法人）
+事業内容：農業機械の部品の製造・補修部品の販売
+設備・工程：板金、溶接、組立。古い機種の補修部品の問い合わせが多い
+地域：県内　従業員：約200名
+問い合わせ窓口：記載なし
+【出典】D社 展示会パンフレット（架空）「製品紹介」
+
+---
+E社（法人）
+事業内容：半導体製造装置向けの部品の加工
+設備・工程：精密切削。クリーンルームで使うシール部品は海外から輸入
+地域：県外（遠方）　従業員：約300名
+問い合わせ窓口：問い合わせフォーム（メール可）
+【出典】E社 ホームページ（架空）「事業紹介」「調達方針」
+
+---
+F社（法人）
+事業内容：食品工場向けの搬送コンベヤの製造
+設備・工程：組立、据え付け。ベルトやローラーのゴム部品は複数の会社から購入
+地域：隣の県　従業員：約70名
+問い合わせ窓口：問い合わせフォーム（メール可）
+【出典】F社 会社案内（架空）p.3「製品」、p.6「購買のご案内」
+
+---
+G（旧車の整備・板金店）
+内容：昭和40〜60年代の国産車の整備・板金・レストア
+扱う車種：国産のセダン・クーペが中心
+お客様の困りごと：純正のゴム部品が手に入らず、ドアまわりのゴムの劣化で雨漏りに困るお客様が多い
+地域：県内　スタッフ：3名
+問い合わせ窓口：電話・FAX（メールアドレスの記載なし）
+【出典】G 店頭チラシ（架空）
+
+---
+H（板金店）
+内容：事故車の板金・塗装。最近は旧車の全塗装も受けている
+扱う車種：国産車全般。旧車は年に10台ほど
+地域：隣の県　スタッフ：6名
+問い合わせ窓口：メール・電話
+【出典】H ホームページ（架空）「施工事例」
+
+---
+I（旧車ショップ）
+内容：輸入車（2000年以降のもの）の販売・整備
+扱う車種：欧州車が中心。国産旧車は扱っていない
+地域：県内　スタッフ：5名
+問い合わせ窓口：メール・電話
+【出典】I ホームページ（架空）「取扱車種」
+
+---
+J（旧車ショップ）
+内容：昭和の国産スポーツカーの部品販売（通信販売）。整備はしていない
+扱う車種：国産スポーツカー。ゴム部品は「欠品が多い」と記載
+地域：県外　スタッフ：2名
+問い合わせ窓口：メール（FAX不可）
+【出典】J 通販サイト（架空）「店舗案内」「よくある質問」
+</pre><button type="button" class="copy" data-target="c2">コピーする</button></details><details><summary>対応範囲メモ_サンプルゴム工業.txt（コピーして貼る用）</summary><pre id="c3">【研修用・架空】サンプルゴム工業 対応範囲メモ（提案文書に使ってよい事実はここに書いてあることだけ）
+
+■ 対応できる材質
+・NBR（ニトリルゴム）、EPDM、シリコン：対応できる
+・フッ素ゴム：対応できる場合がある（要相談。材料の取り寄せに時間がかかることがある）
+
+■ 寸法の目安
+・Oリング・パッキン：内径 3mm〜300mm 程度
+・押出の長物（ウェザーストリップなど）：断面 30mm 角程度まで、長さは相談
+
+■ ロット
+・試作は 1個から
+・量産は月 100個程度から（品物によって相談）
+
+■ 工程
+・成形・カット・抜き・検査・仕上げを社内で行う
+・現物からの採寸・図面起こしに対応できる（現物をお預かりする）
+
+■ 事例（架空。社名は出さない）
+・包装機械メーカー様：廃番になったパッキンを現物と図面から再現。試作 50個 → 量産 月 500個
+・旧車の整備工場様：劣化したドアまわりのゴムを現物から採寸し、1台分を製作。同じ車種で繰り返しの注文あり
+
+■ 書いてはいけないこと
+・価格、値引き、納期の確約（「〇日でお届け」など）
+・「すべての材質に対応」「どんな形でも作れる」などの言い切り
+・他社の名前、他社との比較
+</pre><button type="button" class="copy" data-target="c3">コピーする</button></details></section>
+<section id="s1"><h2><span class="eyebrow">1コマ目（70分）</span>新規開拓先の企業調査と送付先管理表（法人と旧車ショップの両方）</h2><article class="card" id="p1">
+  <div class="head"><span class="no">No.1</span><a class="tool" href="https://claude.ai/" target="_blank" rel="noopener">Claudeで使う ↗</a></div>
+  <h3>取引パターンから、顧客像を文章にする</h3>
+  <p class="files-note">新規開拓で狙う相手の条件を決めるとき</p><div class="file">使うファイル（添付するか、中身を貼り付け）：<a href="data/%E5%8F%96%E5%BC%95%E3%83%91%E3%82%BF%E3%83%BC%E3%83%B3_%E6%9E%B6%E7%A9%BA.txt" download>取引パターン_架空.txt</a></div>
+  <pre id="tp1">あなたはゴム部品メーカー（研修用の架空の会社「サンプルゴム工業」）の営業担当です。以下の架空の取引パターン（法人・旧車ショップ 各1例）から、新規開拓で狙う顧客像を作ってください。
+
+【やること】
+・法人向けと、旧車ショップ・板金店向けの2つの顧客像を作る
+・それぞれ「業種」「工程・作業」「地域」「取引の入口」の4つの条件を、1〜2文で書く
+・条件ごとに、取引パターンのどこから考えたかを引用する
+
+【前提】
+・地域は「県内・隣の県」とする
+・法人の業種は、食品の包装機械に限らず「ゴムのシール・パッキンを使う機械メーカー」として広げてよい
+
+【ルール】
+・取引パターンにないことは推測せず「要確認」と書く
+・会社名や個人名は書かない
+
+【取引パターン】
+（ここに貼り付け）</pre>
+  <button type="button" class="copy" data-target="tp1">コピーする</button>
+</article><article class="card" id="p2">
+  <div class="head"><span class="no">No.2</span><a class="tool" href="https://claude.ai/" target="_blank" rel="noopener">Claudeで使う ↗</a></div>
+  <h3>架空の10社を、顧客像に照らして評価する（No.1の続き）</h3>
+  <p class="files-note">開拓候補の会社やお店の資料を、狙う相手の条件に照らして評価するとき</p><div class="file">使うファイル（添付するか、中身を貼り付け）：<a href="data/%E9%96%8B%E6%8B%93%E5%80%99%E8%A3%9C10%E7%A4%BE_%E4%BC%81%E6%A5%AD%E8%B3%87%E6%96%99.txt" download>開拓候補10社_企業資料.txt</a></div>
+  <pre id="tp2">以下の架空の10社の企業資料を、さきほどの顧客像（法人向け・旧車ショップ向け）に照らして評価してください。
+（顧客像を書き直した場合は、ここに直した顧客像を貼る）
+
+【評価のしかた】
+・優先度：A（4つの条件すべてに資料の根拠がある）／B（1つでも記載なし・要確認がある、または一部だけ合う）／C（合わない）
+・各社に、当てはまる条件と当てはまらない条件を書く
+・根拠として、資料の【出典】と記載の場所（ページ・見出し）を必ず書く
+
+【ルール】
+・業種名だけで判断しない。工程・作業・扱う車種まで見る
+・資料にないことは推測せず「記載なし」「要確認」と書く
+・問い合わせ窓口（メール・FAX・電話）は、資料に書いてあるものだけを書く
+
+【出すもの】
+表：社名／区分（法人・ショップ）／優先度／当てはまる条件／当てはまらない条件／根拠（出典と場所）／問い合わせ窓口／要確認
+
+【企業資料】
+（ここに貼り付け）</pre>
+  <button type="button" class="copy" data-target="tp2">コピーする</button>
+</article><article class="card" id="p3">
+  <div class="head"><span class="no">No.3</span><a class="tool" href="https://claude.ai/" target="_blank" rel="noopener">Claudeで使う ↗</a></div>
+  <h3>送付先管理表を作り、優先順位を付ける（No.2の続き）</h3>
+  <p class="files-note">評価した候補を、送付と反応を追える管理表にするとき</p>
+  <pre id="tp3">さきほどの評価をもとに、送付先管理表を作ってください。
+
+【列】
+社名／区分／優先度／連絡手段／送付日／手段／反応／次回連絡時期／メモ（出典・要確認）
+
+【ルール】
+・連絡手段は資料に書いてあるものだけを書く。メールがなくFAXがある相手は「FAX送付先」と書く
+・電話だけの相手は、メモに「電話のみ」と書く
+・問い合わせ窓口の記載がない相手は「要確認」
+・優先度A→B→Cの順に並べる。Cの相手は、メモに「送付対象外」と理由を書く
+・送付日・反応・次回連絡時期は空欄にする（これから人が書く）
+
+【出すもの】
+送付先管理表のExcelファイル（ファイル名：送付先管理表_新規開拓.xlsx）と、優先度ごとの件数</pre>
+  <button type="button" class="copy" data-target="tp3">コピーする</button>
+</article></section><section id="s2"><h2><span class="eyebrow">2コマ目（70分）</span>提案メール・FAX・提案書（A4 1枚）の作成と修正</h2><article class="card" id="p4">
+  <div class="head"><span class="no">No.4</span><a class="tool" href="https://claude.ai/" target="_blank" rel="noopener">Claudeで使う ↗</a></div>
+  <h3>相手のタイプ別に、初回の提案メールを作る</h3>
+  <p class="files-note">新規の相手に、最初の提案メールを送る下書きを作るとき</p><div class="file">使うファイル（添付するか、中身を貼り付け）：<a href="data/%E5%AF%BE%E5%BF%9C%E7%AF%84%E5%9B%B2%E3%83%A1%E3%83%A2_%E3%82%B5%E3%83%B3%E3%83%97%E3%83%AB%E3%82%B4%E3%83%A0%E5%B7%A5%E6%A5%AD.txt" download>対応範囲メモ_サンプルゴム工業.txt</a>・<a href="data/%E9%96%8B%E6%8B%93%E5%80%99%E8%A3%9C10%E7%A4%BE_%E4%BC%81%E6%A5%AD%E8%B3%87%E6%96%99.txt" download>開拓候補10社_企業資料.txt</a></div>
+  <pre id="tp4">あなたはゴム部品メーカー（研修用の架空の会社「サンプルゴム工業」）の営業担当です。以下の【対応範囲メモ】にある事実だけを使って、3つの相手（すべて架空）に送る初回の提案メールの下書きを作ってください。メールは送信しません。
+
+【相手】
+・装置メーカー：A社
+・商社：B社
+・旧車の板金店：H
+（相手の資料は【相手の資料】に貼る。ファイルを添付した場合は、この3社だけを使う）
+
+【書き方】
+・相手が気にすること（装置メーカー：部品の安定供給・廃番への対応／商社：お客様に紹介できる仕入れ先か／旧車の板金店：お客様の車を直せるか）に合わせて、伝える事実と事例を変える
+・できることは、材質・寸法の範囲・ロット・工程を具体的に書く。条件付きの項目は条件もそのまま書く
+・各300字程度。件名も付ける
+・宛名と署名は（　）のままにする
+
+【ルール】
+・価格・値引き・納期の確約は書かない
+・対応範囲メモにない事実・数値・言い切りは使わない
+・相手の課題は、相手の資料にあることだけを根拠にする
+
+【対応範囲メモ】
+（ここに貼り付け）
+
+【相手の資料】
+（A社・B社・Hの部分を貼り付け）</pre>
+  <button type="button" class="copy" data-target="tp4">コピーする</button>
+</article><article class="card" id="p4_2">
+  <div class="head"><span class="no">No.4-2</span><a class="tool" href="https://claude.ai/" target="_blank" rel="noopener">Claudeで使う ↗</a></div>
+  <h3>事実と違う表現・約束の表現を点検する（No.4の続き）</h3>
+  <p class="files-note">提案文書を送る前に、事実と違う表現や約束がないか確かめるとき</p>
+  <pre id="tp4_2">さきほどの3通を、【対応範囲メモ】と1文ずつ照らして点検してください。
+
+【点検すること】
+① メモにない事実・数値・言い切り（「すべて」「どんな形でも」「短納期」など）
+② 価格・値引き・納期の約束
+③ 条件付きの項目（フッ素ゴムは要相談、量産は月100個程度から など）の条件が抜けていないか
+④ 相手の課題が、相手の資料にないことを書いていないか
+
+【出すもの】
+・表：メール／問題のある文／問題の種類（①〜④）／メモに沿った言い換え案
+・最後に「点検結果：問題なし／要修正」を1通ずつ
+・要修正のメールは、言い換え案を反映した版を作る</pre>
+  <button type="button" class="copy" data-target="tp4_2">コピーする</button>
+</article><article class="card" id="p5">
+  <div class="head"><span class="no">No.5</span><a class="tool" href="https://claude.ai/" target="_blank" rel="noopener">Claudeで使う ↗</a></div>
+  <h3>メールを使わない相手への、FAX送付状を作る</h3>
+  <p class="files-note">メールを使っていない相手に、FAXで提案を送るとき</p><div class="file">使うファイル（添付するか、中身を貼り付け）：<a href="data/%E5%AF%BE%E5%BF%9C%E7%AF%84%E5%9B%B2%E3%83%A1%E3%83%A2_%E3%82%B5%E3%83%B3%E3%83%97%E3%83%AB%E3%82%B4%E3%83%A0%E5%B7%A5%E6%A5%AD.txt" download>対応範囲メモ_サンプルゴム工業.txt</a>・<a href="data/%E9%96%8B%E6%8B%93%E5%80%99%E8%A3%9C10%E7%A4%BE_%E4%BC%81%E6%A5%AD%E8%B3%87%E6%96%99.txt" download>開拓候補10社_企業資料.txt</a></div>
+  <pre id="tp5">あなたはゴム部品メーカー（研修用の架空の会社「サンプルゴム工業」）の営業担当です。以下の【対応範囲メモ】の事実だけを使って、FAX送付先の旧車の整備・板金店（G）に送るFAX送付状の文面を作ってください。送信はしません。
+
+【組み立て】
+・相手の課題（例：純正のゴム部品が手に入らない）→ 対応範囲 → 事例 → 進め方（問い合わせ方法）の順
+・A4 1枚に収まる量（400字程度まで）。見出しと箇条書きで読みやすく
+・FAXで文字がつぶれないよう、1文を短くし、見出しは14pt以上・本文は12pt以上、余白を多めにする
+
+【必ず書くこと】
+・問い合わせ方法（電話・FAXの番号は（　）のまま）
+・送ってほしいもの（ゴムの現物、全体と切り口の写真 など）
+
+【ルール】
+・価格・値引き・納期の確約は書かない
+・対応範囲メモにない事実は書かない。相手の課題は相手の資料にあることだけ
+・専門用語は言い換える（例：ウェザーストリップ → ドアやトランクのふちのゴム）
+
+【出すもの】
+Wordファイル（ファイル名：FAX送付状_G.docx。A4 1枚）
+
+【対応範囲メモ】
+（ここに貼り付け）
+
+【相手の資料】
+（Gの部分を貼り付け。ファイルを添付した場合は、Gだけを使う）</pre>
+  <button type="button" class="copy" data-target="tp5">コピーする</button>
+</article><article class="card" id="p6">
+  <div class="head"><span class="no">No.6</span><a class="tool" href="https://claude.ai/" target="_blank" rel="noopener">Claudeで使う ↗</a></div>
+  <h3>A4 1枚の提案書を作る</h3>
+  <p class="files-note">対応範囲と事例が伝わる、1枚の提案書を作るとき</p><div class="file">使うファイル（添付するか、中身を貼り付け）：<a href="data/%E5%AF%BE%E5%BF%9C%E7%AF%84%E5%9B%B2%E3%83%A1%E3%83%A2_%E3%82%B5%E3%83%B3%E3%83%97%E3%83%AB%E3%82%B4%E3%83%A0%E5%B7%A5%E6%A5%AD.txt" download>対応範囲メモ_サンプルゴム工業.txt</a>・<a href="data/%E9%96%8B%E6%8B%93%E5%80%99%E8%A3%9C10%E7%A4%BE_%E4%BC%81%E6%A5%AD%E8%B3%87%E6%96%99.txt" download>開拓候補10社_企業資料.txt</a></div>
+  <pre id="tp6">あなたはゴム部品メーカー（研修用の架空の会社「サンプルゴム工業」）の営業担当です。以下の【対応範囲メモ】の事実だけを使って、装置メーカー（F社）向けのA4 1枚の提案書を作ってください。
+
+【構成】
+1. 表題
+2. 相手の課題（F社の資料に書いてあることを根拠にする。推測で課題を作らない）
+3. 対応範囲（材質・寸法の範囲・ロット・工程。条件付きの項目は条件も書く）
+4. 事例（対応範囲メモの事例から、F社に合うもの）
+5. 進め方（問い合わせ方法、送ってほしいもの。連絡先は（　）のまま）
+
+【ルール】
+・価格・値引き・納期の確約は書かない
+・対応範囲メモにない事実・言い切りは書かない
+
+【出すもの】
+A4 1枚に収めたWordファイル（ファイル名：提案書_F社.docx）
+
+【対応範囲メモ】
+（ここに貼り付け）
+
+【相手の資料】
+（F社の部分を貼り付け。ファイルを添付した場合は、F社だけを使う）</pre>
+  <button type="button" class="copy" data-target="tp6">コピーする</button>
+</article><article class="card" id="p6_2">
+  <div class="head"><span class="no">No.6-2</span><a class="tool" href="https://claude.ai/" target="_blank" rel="noopener">Claudeで使う ↗</a></div>
+  <h3>読み手の目で改善点を指摘させ、直す（No.6の続き）</h3>
+  <p class="files-note">作った提案書を、相手の立場で読み直して直すとき</p>
+  <pre id="tp6_2">さきほどの提案書を、F社の購買担当者になったつもりで読み、改善点を5つまで挙げてください。
+
+【見ること】
+・分かりにくい言葉、足りない情報、多すぎる情報
+・読んで問い合わせたくなるか、何を送ればよいかが分かるか
+
+【ルール】
+・改善点を反映した版を作る。ただし【対応範囲メモ】にない事実は足さない（足りない情報は「お問い合わせください」の形にする）
+・直した版も、メモにない表現・約束の表現がないか点検する
+
+【出すもの】
+1. 改善点の一覧（どこを、なぜ、どう直すか）
+2. 直した版の本文（チャットに文章で出す。ファイルにはしない）
+3. 点検の結果（問題なし／要修正）</pre>
+  <button type="button" class="copy" data-target="tp6_2">コピーする</button>
+</article><article class="card" id="p7">
+  <div class="head"><span class="no">No.7</span><a class="tool" href="https://claude.ai/" target="_blank" rel="noopener">Claudeで使う ↗</a></div>
+  <h3>1か月後と季節の案内の、フォローの文面を作る</h3>
+  <p class="files-note">初回の提案に反応がなかった相手に、間隔を空けて連絡するとき</p><div class="file">使うファイル（添付するか、中身を貼り付け）：<a href="data/%E5%AF%BE%E5%BF%9C%E7%AF%84%E5%9B%B2%E3%83%A1%E3%83%A2_%E3%82%B5%E3%83%B3%E3%83%97%E3%83%AB%E3%82%B4%E3%83%A0%E5%B7%A5%E6%A5%AD.txt" download>対応範囲メモ_サンプルゴム工業.txt</a></div>
+  <pre id="tp7">あなたはゴム部品メーカー（研修用の架空の会社「サンプルゴム工業」）の営業担当です。初回の提案メールに反応がなかった相手（架空）に送る、フォローの文面を2通作ってください。送信はしません。
+
+【相手】（例：装置メーカーのA社。初回メールで、廃番部品の再現の事例を伝えた）
+
+【2通】
+・1通目：初回から1か月後。前回の要点を短く伝え、相手に合いそうな事例を1つ
+・2通目：季節の案内。機械の点検の時期に合わせて、ゴム部品の劣化の確認をすすめる
+
+【ルール】
+・各200字程度。しつこく感じない書き方にする
+・【対応範囲メモ】にない事実、価格・値引き・納期の約束は書かない
+・宛名と署名は（　）のままにする
+
+【対応範囲メモ】
+（ここに貼り付け）</pre>
+  <button type="button" class="copy" data-target="tp7">コピーする</button>
+</article></section><section id="ex"><h2><span class="eyebrow">実践演習（25分）</span>架空の開拓先5社への提案文書（送信しない）</h2><article class="card" id="p8">
+  <div class="head"><span class="no">No.8</span><a class="tool" href="https://claude.ai/" target="_blank" rel="noopener">Claudeで使う ↗</a></div>
+  <h3>演習：架空の5社への提案文書一式を作る</h3>
+  <p class="files-note">実践演習で、5社分の提案文書を一度に作るとき</p><div class="file">使うファイル（添付するか、中身を貼り付け）：<a href="data/%E5%AF%BE%E5%BF%9C%E7%AF%84%E5%9B%B2%E3%83%A1%E3%83%A2_%E3%82%B5%E3%83%B3%E3%83%97%E3%83%AB%E3%82%B4%E3%83%A0%E5%B7%A5%E6%A5%AD.txt" download>対応範囲メモ_サンプルゴム工業.txt</a>・<a href="data/%E9%96%8B%E6%8B%93%E5%80%99%E8%A3%9C10%E7%A4%BE_%E4%BC%81%E6%A5%AD%E8%B3%87%E6%96%99.txt" download>開拓候補10社_企業資料.txt</a></div>
+  <pre id="tp8">あなたはゴム部品メーカー（研修用の架空の会社「サンプルゴム工業」）の営業担当です。送付先管理表から選んだ架空の相手に送る提案文書一式を、以下の【対応範囲メモ】の事実だけを使って作ってください。送信はしません。
+
+【相手】
+・メールで送る5社：（法人3社・旧車ショップ等2社を書く。管理表がない場合：A社・B社・F社・H・J）
+・FAXで送る1社：（FAX送付先を書く。管理表がない場合：G）
+
+【作るもの】
+1. 提案メールの下書き5通（各300字程度・件名つき）
+2. FAX送付状1通（400字程度まで。課題→対応範囲→事例→進め方）
+3. A4提案書1枚（メールで送る法人1社あて。800字程度まで。表題／相手の課題／対応範囲／事例／進め方）
+
+【ルール】
+・相手ごとに、相手が気にすることに合わせて伝える事実と事例を変える
+・相手の課題は、相手の資料にあることだけを根拠にする
+・価格・値引き・納期の確約、メモにない事実・言い切りは書かない
+・宛名・連絡先は（　）のままにする
+・最後に、6社それぞれに「なぜこの相手を選んだか」を1行で書く
+
+【対応範囲メモ】
+（ここに貼り付け）
+
+【相手の資料】
+（6社の部分を貼り付け。ファイルを添付した場合は、この6社だけを使う）</pre>
+  <button type="button" class="copy" data-target="tp8">コピーする</button>
+</article><article class="card" id="p8_2">
+  <div class="head"><span class="no">No.8-2</span><a class="tool" href="https://claude.ai/" target="_blank" rel="noopener">Claudeで使う ↗</a></div>
+  <h3>演習：送信前の点検（No.8の続き）</h3>
+  <p class="files-note">実践演習で、提案文書一式を送信前に点検するとき</p>
+  <pre id="tp8_2">さきほどの提案文書一式を、送信前の点検として確かめてください。
+
+【点検すること】
+① 対応範囲メモにない事実・数値・言い切り
+② 価格・値引き・納期の約束
+③ 条件付きの項目の条件の抜け
+④ 社名・宛名・内容の取り違え（A社あての文にほかの社の内容が混ざっていないか）
+⑤ FAX送付状（400字程度まで）と提案書（800字程度まで）の量、問い合わせ方法と送ってほしいものがあるか
+
+【出すもの】
+・表：文書／問題のある文／問題の種類（①〜⑤）／言い換え案
+・最後に「点検結果：送ってよい下書き／要修正」を文書ごとに
+・要修正の文書は、問題のある文だけを直した形で示す（全文を書き直さない）</pre>
+  <button type="button" class="copy" data-target="tp8_2">コピーする</button>
+</article></section>
+<footer>演習データはすべて研修用の架空のものです。© 2026 がだんだん株式会社</footer>
+</div>
+<script>
+document.querySelectorAll('.copy').forEach(function(b){
+  var label=b.textContent;
+  b.addEventListener('click',function(){
+    var el=document.getElementById(b.dataset.target), text=el.textContent;
+    function ok(){b.textContent='コピーしました';b.classList.add('done');setTimeout(function(){b.textContent=label;b.classList.remove('done')},2000)}
+    function fallback(){var r=document.createRange();r.selectNodeContents(el);var s=window.getSelection();s.removeAllRanges();s.addRange(r);b.textContent='選択しました。長押しでコピー'}
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(text).then(ok,fallback)}else{fallback()}
+  });
+});
+</script>
+</body>
+</html>
