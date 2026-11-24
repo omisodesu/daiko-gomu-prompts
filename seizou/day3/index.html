@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>製造 Day3 プロンプト集</title>
+<style>
+/* 研修テキストの続きとして読む一列のノート。朱は番号とボタンだけ */
+:root{
+  --bg:#fbfbfa; --paper:#ffffff; --fg:#1f1f1f; --sub:#5f5b58; --line:#d9d5d2; --acc:#b8431e; --acc-ink:#ffffff; --code:#f4f2f0;
+  --f-body:"BIZ UDPGothic","Hiragino Sans","Yu Gothic",sans-serif; --f-mono:"BIZ UDGothic","Hiragino Sans","Yu Gothic",monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#161514;--paper:#1f1e1c;--fg:#ecebe9;--sub:#a9a4a0;--line:#3a3734;--acc:#e0714a;--acc-ink:#1a0f0a;--code:#262422;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#161514;--paper:#1f1e1c;--fg:#ecebe9;--sub:#a9a4a0;--line:#3a3734;--acc:#e0714a;--acc-ink:#1a0f0a;--code:#262422;color-scheme:dark}
+body{background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:16px;line-height:1.7;padding-inline:16px;padding-block:20px 48px}
+.wrap{max-width:720px;margin:0 auto;display:flex;flex-direction:column;gap:28px}
+header h1{font-size:1.45rem;line-height:1.35;margin:4px 0 6px;text-wrap:balance}
+header p{margin:0;color:var(--sub);font-size:.92rem}
+.kicker{color:var(--acc);font-weight:700;font-size:.8rem;letter-spacing:.06em}
+.howto{border:1px solid var(--line);border-radius:10px;background:var(--paper);padding:14px 16px;font-size:.92rem}
+.howto ol{margin:6px 0 0;padding-left:1.3em}
+.jump{display:flex;flex-wrap:wrap;gap:6px}
+.jump a{min-width:2.4em;text-align:center;padding:4px 0;border:1px solid var(--line);border-radius:6px;color:var(--fg);text-decoration:none;font-variant-numeric:tabular-nums;background:var(--paper)}
+section{display:flex;flex-direction:column;gap:14px}
+h2{font-size:1.15rem;margin:8px 0 0;display:flex;flex-direction:column;gap:2px;border-bottom:1px solid var(--line);padding-bottom:8px}
+.eyebrow{font-size:.78rem;color:var(--acc);letter-spacing:.06em}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:14px 14px 16px;display:flex;flex-direction:column;gap:8px;scroll-margin-top:12px;min-width:0}
+.head{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap}
+.no{font-weight:700;color:var(--acc);font-variant-numeric:tabular-nums}
+.tool{font-size:.85rem;color:var(--sub);text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:2px 10px}
+h3{margin:0;font-size:1.02rem;line-height:1.45}
+pre{margin:0;white-space:pre-wrap;word-break:break-word;font-family:var(--f-mono);font-size:.86rem;line-height:1.65;background:var(--code);border-radius:8px;padding:12px;user-select:all;-webkit-user-select:all}
+.copy{align-self:stretch;appearance:none;border:0;border-radius:8px;background:var(--acc);color:var(--acc-ink);font:700 1rem var(--f-body);padding:12px;cursor:pointer}
+.copy.done{background:var(--fg);color:var(--bg)}
+.copy:focus-visible,.jump a:focus-visible,.tool:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
+.tbl{overflow-x:auto;min-width:0}
+table{border-collapse:collapse;width:100%;font-size:.84rem;font-variant-numeric:tabular-nums}
+th,td{border-bottom:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top}
+th{font-weight:700;border-bottom:1.5px solid var(--fg)}
+.note{margin:0;color:var(--sub);font-size:.78rem}
+footer{color:var(--sub);font-size:.8rem;border-top:1px solid var(--line);padding-top:12px}
+.demo{font-size:.78rem;color:var(--sub);border:1px dashed var(--line);border-radius:999px;padding:1px 9px}
+.file{font-size:.85rem;color:var(--sub)}
+.file a{color:var(--acc)}
+.dl{display:flex;flex-direction:column;gap:6px;margin:0;padding:0;list-style:none}
+.dl a{display:block;border:1px solid var(--line);border-radius:8px;padding:10px 12px;background:var(--paper);color:var(--fg);text-decoration:none}
+.dl a span{display:block;font-size:.8rem;color:var(--sub)}
+details{border:1px solid var(--line);border-radius:10px;background:var(--paper);padding:10px 14px}
+details summary{cursor:pointer;font-weight:700}
+details[open]{display:flex;flex-direction:column;gap:8px}
+details pre{max-height:320px;overflow:auto}
+*{box-sizing:border-box}
+
+.files-note{margin:0;color:var(--sub);font-size:.85rem}
+@media print{.copy,.jump,.tool{display:none}pre{user-select:text}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <div class="kicker">製造A：2026年12月10日（木）9:30〜12:30／製造B：2026年12月8日（火）13:00〜16:00　生産管理職向け 生成AI業務活用研修 Day3：生産管理の月別生産計画の繰越と更新</div>
+  <h1>ダイコーゴム様 研修用プロンプト集（製造・Day3）</h1>
+  <p>スライドの「プロンプト No.」と同じ番号です。</p>
+</header>
+<div class="howto"><strong>使い方</strong>
+  <ol><li>演習のファイルをダウンロードする（スマホは、下の「コピーして貼る用」も使えます）</li><li>番号のボタンで使うプロンプトへ移動し「コピーする」</li><li>Claudeに貼り付け、＋ボタンからファイルを添付して送る</li><li>（　）の部分は、自分の内容に書き換える</li></ol>
+</div>
+<nav class="jump" aria-label="プロンプト番号"><a href="#p1">1</a><a href="#p2">2</a><a href="#p3">3</a><a href="#p4">4</a><a href="#p5">5</a><a href="#p6">6</a><a href="#p7">7</a><a href="#p7_2">7-2</a><a href="#p7_3">7-3</a></nav>
+<section id="files"><h2><span class="eyebrow">最初にダウンロード</span>演習で使うファイル（すべて架空）</h2><ul class="dl"><li><a href="data/%E7%94%9F%E7%94%A3%E8%A8%88%E7%94%BB_10%E6%9C%88%E3%80%9C3%E6%9C%88.xlsx" download>生産計画_10月〜3月.xlsx<span>No.1で使う（6か月の生産計画。月初・月末の在庫は電卓で入れた値）</span></a></li><li><a href="data/%E4%BA%88%E5%82%99_%E7%94%9F%E7%94%A3%E8%A8%88%E7%94%BB_10%E6%9C%88%E3%80%9C3%E6%9C%88_%E5%BC%8F%E5%85%A5%E3%82%8A.xlsx" download>予備_生産計画_10月〜3月_式入り.xlsx<span>No.2・No.3を新しいチャットから始めるときの予備（No.1・No.3の結果の見本）</span></a></li><li><a href="data/%E6%9C%88%E5%88%A5%E8%A8%88%E7%94%BB_2026%E5%B9%B49%E6%9C%88.xlsx" download>月別計画_2026年9月.xlsx<span>No.5・No.6・実践演習（No.7）で使う（9月の計画。月末在庫は予測）</span></a></li><li><a href="data/%E6%9C%88%E5%88%A5%E8%A8%88%E7%94%BB_2026%E5%B9%B410%E6%9C%88.xlsx" download>月別計画_2026年10月.xlsx<span>No.5・No.6・No.7で使う</span></a></li><li><a href="data/%E6%9C%88%E5%88%A5%E8%A8%88%E7%94%BB_2026%E5%B9%B411%E6%9C%88.xlsx" download>月別計画_2026年11月.xlsx<span>No.5・No.6・No.7で使う</span></a></li><li><a href="data/%E6%9C%88%E5%88%A5%E8%A8%88%E7%94%BB_2026%E5%B9%B412%E6%9C%88.xlsx" download>月別計画_2026年12月.xlsx<span>No.5・No.6・No.7で使う</span></a></li><li><a href="data/%E6%A4%9C%E7%AE%97%E7%B7%B4%E7%BF%92_%E5%8F%8D%E6%98%A0%E5%BE%8C%E3%81%AE4%E3%81%8B%E6%9C%88%E3%81%A8%E5%B7%AE%E5%88%86%E3%83%AD%E3%82%B0.xlsx" download>検算練習_反映後の4か月と差分ログ.xlsx<span>No.6で使う（AIが反映した結果と差分ログの例。No.5がうまくいかなかったときも、これで検算の練習ができる）</span></a></li><li><a href="data/%E4%BA%88%E5%82%99_%E6%9C%88%E5%88%A5%E8%A8%88%E7%94%BB_9%E6%9C%88%E3%80%9C12%E6%9C%88_%E5%A4%89%E6%9B%B4%E4%BE%9D%E9%A0%BC3%E4%BB%B6%E5%8F%8D%E6%98%A0%E5%BE%8C.xlsx" download>予備_月別計画_9月〜12月_変更依頼3件反映後.xlsx<span>No.7-2・No.7-3を新しいチャットから始めるときの予備（No.7の反映後の4か月の見本）</span></a></li><li><a href="data/%E4%BA%88%E5%82%99_%E5%B7%AE%E5%88%86%E3%83%AD%E3%82%B0_%E5%A4%89%E6%9B%B4%E4%BE%9D%E9%A0%BC3%E4%BB%B6.csv" download>予備_差分ログ_変更依頼3件.csv<span>No.7-2・No.7-3を新しいチャットから始めるときの予備（No.7の差分ログの見本）</span></a></li><li><a href="data/%E5%A4%89%E6%9B%B4%E4%BE%9D%E9%A0%BC_3%E4%BB%B6.csv" download>変更依頼_3件.csv<span>3コマ目のハンズオンと実践演習（No.7）で使う（注文変更2件・棚卸確定1件）</span></a></li></ul><details><summary>予備_差分ログ_変更依頼3件.csv（コピーして貼る用）</summary><pre id="c9">No,ファイル,セル,取引先・品番,項目,変更前,変更後,変更理由（依頼No）
+1,月別計画_2026年9月.xlsx,計画!F13,C社 SG-1036,月末在庫,250,190,No.3
+2,月別計画_2026年10月.xlsx,計画!C13,C社 SG-1036,月初在庫,250,190,No.3
+3,月別計画_2026年10月.xlsx,計画!F13,C社 SG-1036,月末在庫,350,290,No.3
+4,月別計画_2026年11月.xlsx,計画!E8,B社 SG-1021,納品数,3000,3300,No.1
+5,月別計画_2026年11月.xlsx,計画!F8,B社 SG-1021,月末在庫,400,100,No.1
+6,月別計画_2026年11月.xlsx,計画!C13,C社 SG-1036,月初在庫,350,290,No.3
+7,月別計画_2026年11月.xlsx,計画!F13,C社 SG-1036,月末在庫,350,290,No.3
+8,月別計画_2026年12月.xlsx,計画!C8,B社 SG-1021,月初在庫,400,100,No.1
+9,月別計画_2026年12月.xlsx,計画!F8,B社 SG-1021,月末在庫,400,100,No.1
+10,月別計画_2026年12月.xlsx,計画!C13,C社 SG-1036,月初在庫,350,290,No.3
+11,月別計画_2026年12月.xlsx,計画!F13,C社 SG-1036,月末在庫,350,290,No.3
+12,月別計画_2026年12月.xlsx,計画!E14,C社 SG-1039,納品数,1700,1500,No.2
+13,月別計画_2026年12月.xlsx,計画!F14,C社 SG-1039,月末在庫,220,420,No.2
+</pre><button type="button" class="copy" data-target="c9">コピーする</button></details><details><summary>変更依頼_3件.csv（コピーして貼る用）</summary><pre id="c10">No,種類,取引先,品番,変える項目,変更前,変更後,受付日,備考
+1,注文変更,B社,SG-1021,11月の納品数,3000,3300,10/2,11月の納品が300個ふえる
+2,注文変更,C社,SG-1039,12月の納品数,1700,1500,10/2,12月の納品が200個へる
+3,棚卸確定,C社,SG-1036,9月末の在庫,250,190,10/1,9月末の在庫が確定（予測より60少ない）
+</pre><button type="button" class="copy" data-target="c10">コピーする</button></details></section>
+<section id="s1"><h2><span class="eyebrow">1コマ目（55分）</span>月別生産計画の在庫繰越を式で表す（目標在庫は手入力のまま）</h2><article class="card" id="p1">
+  <div class="head"><span class="no">No.1</span><a class="tool" href="https://claude.ai/" target="_blank" rel="noopener">Claudeで使う ↗</a></div>
+  <h3>6か月の計画の繰越を、式に置き換える</h3>
+  <p class="files-note">電卓で出していた月初・月末の在庫を、前の月を参照する式にしたいとき</p><div class="file">使うファイル：<a href="data/%E7%94%9F%E7%94%A3%E8%A8%88%E7%94%BB_10%E6%9C%88%E3%80%9C3%E6%9C%88.xlsx" download>生産計画_10月〜3月.xlsx</a></div>
+  <pre id="tp1">あなたは生産管理の担当者です。添付のExcel（サンプルゴム工業の架空の生産計画。10月〜3月の6か月、3取引先×5品番）は、月初在庫と月末在庫を電卓で計算して手で入れています。これを式に置き換えてください。
+
+【表の構造】
+・「生産計画」シート。1行目が見出し、2〜16行目が15品番
+・A列 取引先、B列 品番、C列 材料、D列 1個あたり材料量（kg）、E列 9月末在庫（手入力）
+・F列から右に、月ごとに5列ずつ：月初在庫／生産数／納品数／月末在庫／目標在庫（10月がF〜J列、11月がK〜O列、12月がP〜T列、1月がU〜Y列、2月がZ〜AD列、3月がAE〜AI列）
+
+【入れる式】
+・月末在庫＝その月の月初在庫＋生産数−納品数
+・月初在庫＝前の月の月末在庫（10月の月初在庫は、E列の9月末在庫）
+・結果の例：2行目（A社 SG-1002）の10月の月末在庫 I2 は =F2+G2-H2、11月の月初在庫 K2 は =I2
+
+【ルール】
+・式を入れるのは、月初在庫と月末在庫の列だけ。目標在庫・生産数・納品数・9月末在庫は手入力のまま、数字を変えない
+・見出しの最後に（式）または（手入力）を付け、式の列は薄い灰色にして区別する
+・非表示のシートや列、別のシートでの計算は作らない。式はセルに見える形で入れる
+・マクロは使わない
+・式を入れる前の値を控えておき、式の結果と比べる。違っていても、式の結果を手で直さない
+
+【出すもの】
+1. 式を入れたExcelファイル（ファイル名：生産計画_10月〜3月_式入り.xlsx）。ファイルが作れない場合は、入れた式の一覧（セル・式）をチャットに出す
+2. 2行目で式を入れたセルの一覧と、その意味（1行ずつ）
+3. 元の値と式の結果が違ったセルの一覧：セル／取引先・品番／月・項目／元の値／式の結果（違いがなければ「なし」）
+4. 目標在庫・生産数・納品数・9月末在庫の列が、元のファイルと同じかの確認結果</pre>
+  <button type="button" class="copy" data-target="tp1">コピーする</button>
+</article><article class="card" id="p2">
+  <div class="head"><span class="no">No.2</span><a class="tool" href="https://claude.ai/" target="_blank" rel="noopener">Claudeで使う ↗</a></div>
+  <h3>確定値を変えたら、どのセルが変わるかを確かめる（No.1の続き）</h3>
+  <p class="files-note">確定した数が予測と違ったとき、影響がどこまで及ぶかを先に知りたいとき（上限で止まったら、予備の式入りファイルを添付して、新しいチャットでNo.2から始める）</p><div class="file">使うファイル：<a href="data/%E4%BA%88%E5%82%99_%E7%94%9F%E7%94%A3%E8%A8%88%E7%94%BB_10%E6%9C%88%E3%80%9C3%E6%9C%88_%E5%BC%8F%E5%85%A5%E3%82%8A.xlsx" download>予備_生産計画_10月〜3月_式入り.xlsx</a></div>
+  <pre id="tp2">さきほどの式入りの計画で（新しいチャットで始める場合は、添付の予備の式入りファイルを使う）、A社 SG-1002 の9月末在庫（E2）を、確定値の100（今は200）に変えた場合を考えます。ファイルはまだ変えないでください。
+
+【やること】
+1. E2 を 200→100 にしたとき、値が変わるセルをすべて挙げる
+2. それぞれの変更前と変更後の値を書く
+3. 変わらないもの（生産数・納品数・目標在庫、ほかの品番）も確認する
+
+【ルール】
+・推測で書かない。式をたどって答える
+・ファイルは書き換えない
+
+【出すもの】
+1. 表：セル／月／項目／変更前／変更後
+2. 変わるセルの数
+3. 変更後の月末在庫が、目標在庫を下回る月（なければ「なし」）</pre>
+  <button type="button" class="copy" data-target="tp2">コピーする</button>
+</article><article class="card" id="p3">
+  <div class="head"><span class="no">No.3</span><a class="tool" href="https://claude.ai/" target="_blank" rel="noopener">Claudeで使う ↗</a></div>
+  <h3>月別・材料別の必要量を、式で出す（No.1の続き）</h3>
+  <p class="files-note">決めた生産数から、月ごと・材料ごとの材料の必要量を出すとき（上限で止まったら、予備の式入りファイルを添付して、新しいチャットでNo.3から始める）</p><div class="file">使うファイル：<a href="data/%E4%BA%88%E5%82%99_%E7%94%9F%E7%94%A3%E8%A8%88%E7%94%BB_10%E6%9C%88%E3%80%9C3%E6%9C%88_%E5%BC%8F%E5%85%A5%E3%82%8A.xlsx" download>予備_生産計画_10月〜3月_式入り.xlsx</a></div>
+  <pre id="tp3">さきほどの式入りの計画に（新しいチャットで始める場合は、添付の予備の式入りファイルを使う。予備には「材料の必要量」シートがすでにあるので、式の確認だけ行う）、材料の必要量を出すシートを足してください。
+
+【やること】
+・新しいシート「材料の必要量」を作る。A列に材料（M-01・M-02・M-03）、B〜G列に10月〜3月
+・必要量（kg）＝その月の生産数×1個あたり材料量（D列）を、材料（C列）ごとに合計する式を入れる
+・結果の例：M-01 の10月＝C列が M-01 の品番について「10月の生産数×D列」を足した数
+
+【ルール】
+・生産計画シートの数字は変えない
+・値を書き込まず、式で出す。非表示のシートや列は作らない
+・単位は kg。見出しに単位を書く
+
+【出すもの】
+1. Excelファイル（ファイル名：生産計画_10月〜3月_材料入り.xlsx）。ファイルが作れない場合は、式と結果の表をチャットに出す
+2. 入れた式と、その意味
+3. 材料・月ごとの必要量（kg）の表
+4. A社 SG-1005 の11月の生産数（L3）を300増やしたら、どの材料の何月が何kg変わるか</pre>
+  <button type="button" class="copy" data-target="tp3">コピーする</button>
+</article></section><section id="s2"><h2><span class="eyebrow">2コマ目（55分）</span>確定値の変更を複数月へ反映し、差分ログで確かめる</h2><article class="card" id="p4">
+  <div class="head"><span class="no">No.4</span><a class="tool" href="https://claude.ai/" target="_blank" rel="noopener">Claudeで使う ↗</a></div>
+  <h3>自分で書いた反映の指示の、抜けを質問させる</h3>
+  <p class="files-note">AIに作業を頼む前に、自分の指示文に足りないところがないかを確かめたいとき</p>
+  <pre id="tp4">あなたは生産管理の担当者です。これから、月別の計画ファイル4本（9月〜12月）に、確定した値の変更を反映する作業を頼みます。まだ作業はしないでください。
+
+下の【指示文】を読んで、作業を正しく進めるために足りないところを、質問してください。
+
+【確かめてほしいこと】
+・次の4つの要素が書かれているか：照合キー（どの列で行を探すか）／反映する列／範囲（どのファイル・どの行まで、何を変えないか）／検算方法
+
+【ルール】
+・質問は5つまで
+・質問ごとに、4つの要素のどれについての質問かを書く
+・作業の結果や数字を推測で書かない
+
+【指示文】
+（ここに貼り付け）</pre>
+  <button type="button" class="copy" data-target="tp4">コピーする</button>
+</article><article class="card" id="p5">
+  <div class="head"><span class="no">No.5</span><a class="tool" href="https://claude.ai/" target="_blank" rel="noopener">Claudeで使う ↗</a></div>
+  <h3>4本のファイルに反映し、差分ログを出させる</h3>
+  <p class="files-note">確定した値を、月別のファイルの後ろの月まで反映するとき</p><div class="file">使うファイル：<a href="data/%E6%9C%88%E5%88%A5%E8%A8%88%E7%94%BB_2026%E5%B9%B49%E6%9C%88.xlsx" download>月別計画_2026年9月.xlsx</a>・<a href="data/%E6%9C%88%E5%88%A5%E8%A8%88%E7%94%BB_2026%E5%B9%B410%E6%9C%88.xlsx" download>月別計画_2026年10月.xlsx</a>・<a href="data/%E6%9C%88%E5%88%A5%E8%A8%88%E7%94%BB_2026%E5%B9%B411%E6%9C%88.xlsx" download>月別計画_2026年11月.xlsx</a>・<a href="data/%E6%9C%88%E5%88%A5%E8%A8%88%E7%94%BB_2026%E5%B9%B412%E6%9C%88.xlsx" download>月別計画_2026年12月.xlsx</a></div>
+  <pre id="tp5">あなたは生産管理の担当者です。添付の4つのファイル（サンプルゴム工業の架空の月別計画_2026年9月〜12月）に、確定した9月末の在庫を反映してください。
+各ファイルの「計画」シート：A列 取引先、B列 品番、C列 月初在庫、D列 生産数、E列 納品数、F列 月末在庫、G列 目標在庫（1行目は見出し。値だけで式はない）
+
+【変更】
+A社 SG-1002 の9月末の在庫が、予測（200）より100少ない100で確定した
+
+【照合キー】
+取引先（A列）と品番（B列）が、両方とも一致する行
+
+【反映する列】
+・9月のファイル：月末在庫（F列）を確定値にする
+・10月〜12月のファイル：月初在庫（C列）＝前の月のファイルの月末在庫、月末在庫（F列）＝月初在庫＋生産数−納品数
+
+【範囲】
+・9月〜12月の4本の、A社 SG-1002 の行だけ
+・生産数・納品数・目標在庫、ほかの品番の行は変えない
+
+【検算方法】
+・作業の前に、変わるはずのセルの数を数えて書く。差分ログの件数と比べる
+・各ファイルの月初在庫・生産数・納品数・月末在庫・目標在庫の列の合計を、反映の前と後で比べる
+
+【ルール】
+・元のファイルは上書きしない。ファイル名の最後に「_反映後」を付けて出す
+・数字は推測しない。分からないところは「要確認」と書く
+
+【出すもの】
+1. 作業の前に数えた、変わるはずのセルの数
+2. 反映後のファイル4本。ファイルが作れない場合は、変わる行だけをチャットに表で出す
+3. 差分ログ（CSV。ファイル名：差分ログ_SG-1002.csv。列：No／ファイル／セル／取引先・品番／項目／変更前／変更後／変更理由）。CSVが作れない場合は表をチャットに出す
+4. 差分ログの件数と、1の数が合っているか
+5. 列の合計の比較表：ファイル／列／反映前／反映後／差</pre>
+  <button type="button" class="copy" data-target="tp5">コピーする</button>
+</article><article class="card" id="p6">
+  <div class="head"><span class="no">No.6</span><a class="tool" href="https://claude.ai/" target="_blank" rel="noopener">Claudeで使う ↗</a></div>
+  <h3>抜き取り検算・合計の比較・ログにない変更を確かめる</h3>
+  <p class="files-note">AIが反映した結果と差分ログを、人が確かめるとき（自分の反映結果を確かめるときは、検算練習のファイルのかわりに、反映後の4本と差分ログを添付する）</p><div class="file">使うファイル：<a href="data/%E6%9C%88%E5%88%A5%E8%A8%88%E7%94%BB_2026%E5%B9%B49%E6%9C%88.xlsx" download>月別計画_2026年9月.xlsx</a>・<a href="data/%E6%9C%88%E5%88%A5%E8%A8%88%E7%94%BB_2026%E5%B9%B410%E6%9C%88.xlsx" download>月別計画_2026年10月.xlsx</a>・<a href="data/%E6%9C%88%E5%88%A5%E8%A8%88%E7%94%BB_2026%E5%B9%B411%E6%9C%88.xlsx" download>月別計画_2026年11月.xlsx</a>・<a href="data/%E6%9C%88%E5%88%A5%E8%A8%88%E7%94%BB_2026%E5%B9%B412%E6%9C%88.xlsx" download>月別計画_2026年12月.xlsx</a>・<a href="data/%E6%A4%9C%E7%AE%97%E7%B7%B4%E7%BF%92_%E5%8F%8D%E6%98%A0%E5%BE%8C%E3%81%AE4%E3%81%8B%E6%9C%88%E3%81%A8%E5%B7%AE%E5%88%86%E3%83%AD%E3%82%B0.xlsx" download>検算練習_反映後の4か月と差分ログ.xlsx</a></div>
+  <pre id="tp6">あなたは生産管理の担当者です。添付のファイルのうち、月別計画_2026年9月〜12月の4本は反映の前、「検算練習_反映後の4か月と差分ログ.xlsx」は反映の後の中身（シート 9月〜12月）と、そのときの差分ログ（シート「差分ログ」）です（どれもサンプルゴム工業の架空データ）。反映がログのとおりかを確かめてください。
+
+【やること】
+1. 抜き取り検算：差分ログから3件（9月・10月・12月のファイルから1件ずつ）を選び、その行の 月初在庫＋生産数−納品数 を式で書いて、ログの変更後の値と合うかを確かめる（9月の月末在庫は、ログの変更理由と合うかを確かめる）
+2. 合計の比較：月ごと・列ごとに、反映前と反映後の合計、その差を並べる
+3. ログにない変更：反映前と反映後の全部のセルを比べ、値が変わったのに差分ログにないセルを挙げる
+
+【ルール】
+・どちらのファイルも書き換えない
+・見つけたものの原因は決めつけない。数字は推測しない
+
+【出すもの】
+1. 抜き取り3件の計算式と、合っているか
+2. 合計の比較表：月／列／反映前／反映後／差（差がログから考えられる数と違う列に印を付ける）
+3. ログにない変更の一覧：ファイル（月）／セル／取引先・品番／項目／反映前／反映後。なければ「なし」</pre>
+  <button type="button" class="copy" data-target="tp6">コピーする</button>
+</article></section><section id="ex"><h2><span class="eyebrow">実践演習（25分）</span>確定値の反映と、変更点の報告</h2><article class="card" id="p7">
+  <div class="head"><span class="no">No.7</span><a class="tool" href="https://claude.ai/" target="_blank" rel="noopener">Claudeで使う ↗</a></div>
+  <h3>演習：変更依頼3件を反映し、差分ログを出す</h3>
+  <p class="files-note">注文変更や棚卸の確定を、月別の計画にまとめて反映するとき</p><div class="file">使うファイル：<a href="data/%E6%9C%88%E5%88%A5%E8%A8%88%E7%94%BB_2026%E5%B9%B49%E6%9C%88.xlsx" download>月別計画_2026年9月.xlsx</a>・<a href="data/%E6%9C%88%E5%88%A5%E8%A8%88%E7%94%BB_2026%E5%B9%B410%E6%9C%88.xlsx" download>月別計画_2026年10月.xlsx</a>・<a href="data/%E6%9C%88%E5%88%A5%E8%A8%88%E7%94%BB_2026%E5%B9%B411%E6%9C%88.xlsx" download>月別計画_2026年11月.xlsx</a>・<a href="data/%E6%9C%88%E5%88%A5%E8%A8%88%E7%94%BB_2026%E5%B9%B412%E6%9C%88.xlsx" download>月別計画_2026年12月.xlsx</a>・<a href="data/%E5%A4%89%E6%9B%B4%E4%BE%9D%E9%A0%BC_3%E4%BB%B6.csv" download>変更依頼_3件.csv</a></div>
+  <pre id="tp7">あなたは生産管理の担当者です。添付の月別計画4本（サンプルゴム工業の架空データ。2026年9月〜12月）に、変更依頼_3件.csv の3件を反映してください。
+各ファイルの「計画」シート：A列 取引先、B列 品番、C列 月初在庫、D列 生産数、E列 納品数、F列 月末在庫、G列 目標在庫（値だけで式はない）
+
+【照合キー】
+取引先と品番が、両方とも一致する行
+
+【反映する列】
+・注文変更：その月の納品数（E列）を変更後の数にし、その月の月末在庫を計算し直す。翌月からの月初在庫・月末在庫も直す
+・棚卸確定：9月の月末在庫（F列）を確定の数にし、10月からの月初在庫・月末在庫を直す
+・月末在庫＝月初在庫＋生産数−納品数、翌月の月初在庫＝前の月の月末在庫
+
+【範囲】
+・9月〜12月の4本の、依頼にある品番の行だけ
+・生産数・目標在庫、依頼にない品番は変えない
+
+【検算方法】
+・作業の前に、変わるはずのセルの数を、依頼ごとに数えて書く
+・差分ログの件数と比べる
+
+【ルール】
+・元のファイルは上書きしない。ファイル名の最後に「_反映後」を付けて出す
+・依頼の「変更前」の数がファイルの数と違ったら、その依頼は反映せずに知らせる
+・数字は推測しない。分からないところは「要確認」と書く
+
+【出すもの】
+1. 作業の前に数えた、変わるはずのセルの数（依頼ごと・合計）
+2. 反映後のファイル4本。ファイルが作れない場合は、変わる行だけをチャットに表で出す
+3. 差分ログ（CSV。ファイル名：差分ログ_変更依頼3件.csv。列：No／ファイル／セル／取引先・品番／項目／変更前／変更後／変更理由（依頼No））。CSVが作れない場合は表をチャットに出す
+4. 差分ログの件数と、1の合計が合っているか</pre>
+  <button type="button" class="copy" data-target="tp7">コピーする</button>
+</article><article class="card" id="p7_2">
+  <div class="head"><span class="no">No.7-2</span><a class="tool" href="https://claude.ai/" target="_blank" rel="noopener">Claudeで使う ↗</a></div>
+  <h3>演習：差分ログを検算する（No.7の続き）</h3>
+  <p class="files-note">反映の結果を、抜き取りと合計の比較で確かめるとき（上限で止まったら、元の月別計画4本と、予備_月別計画_9月〜12月_変更依頼3件反映後.xlsx・予備_差分ログ_変更依頼3件.csv を添付して、新しいチャットでNo.7-2から始める）</p><div class="file">使うファイル：<a href="data/%E4%BA%88%E5%82%99_%E6%9C%88%E5%88%A5%E8%A8%88%E7%94%BB_9%E6%9C%88%E3%80%9C12%E6%9C%88_%E5%A4%89%E6%9B%B4%E4%BE%9D%E9%A0%BC3%E4%BB%B6%E5%8F%8D%E6%98%A0%E5%BE%8C.xlsx" download>予備_月別計画_9月〜12月_変更依頼3件反映後.xlsx</a>・<a href="data/%E4%BA%88%E5%82%99_%E5%B7%AE%E5%88%86%E3%83%AD%E3%82%B0_%E5%A4%89%E6%9B%B4%E4%BE%9D%E9%A0%BC3%E4%BB%B6.csv" download>予備_差分ログ_変更依頼3件.csv</a></div>
+  <pre id="tp7_2">さきほどの反映を確かめてください（サンプルゴム工業の架空データ）。反映の前のファイルは、最初に添付した4本です。新しいチャットで始める場合は、元の4本と、予備の反映後のファイル（シート9月〜12月）と予備の差分ログを添付して使います。
+
+【やること】
+1. 抜き取り検算：差分ログから3件を選ぶ。注文変更・棚卸確定の両方と、12月のファイルを必ず入れる。依頼の数をそのまま入れたセル（棚卸確定の9月の月末在庫、注文変更の納品数）は、依頼の数と合うかで確かめる。それ以外の月末在庫と翌月からのセルは、月初在庫＋生産数−納品数 を式で書いて、変更後の値と合うかを確かめる
+2. 合計の比較：月ごとに、納品数・月初在庫・月末在庫の合計を、反映前と反映後で並べ、差を出す。差が、依頼から考えられる数と同じかを書く
+3. ログにない変更：反映前と反映後の全部のセルを比べ、値が変わったのに差分ログにないセルを挙げる（なければ「なし」）
+4. 目標在庫との比較：依頼のあった3品番について、反映後の月末在庫が目標在庫を下回る月を挙げる
+
+【ルール】
+・ファイルは書き換えない
+・原因の推測や、生産数の見直しの提案は書かない
+
+【出すもの】
+1〜4の結果を、それぞれ表で出す</pre>
+  <button type="button" class="copy" data-target="tp7_2">コピーする</button>
+</article><article class="card" id="p7_3">
+  <div class="head"><span class="no">No.7-3</span><a class="tool" href="https://claude.ai/" target="_blank" rel="noopener">Claudeで使う ↗</a></div>
+  <h3>演習：変更点を、上長向けに3行で報告する（No.7-2の続き）</h3>
+  <p class="files-note">反映した変更点を、上長に短く伝えるとき（上限で止まったら、予備_差分ログ_変更依頼3件.csv と 予備_月別計画_9月〜12月_変更依頼3件反映後.xlsx を添付して、新しいチャットでNo.7-3から始める）</p><div class="file">使うファイル：<a href="data/%E4%BA%88%E5%82%99_%E5%B7%AE%E5%88%86%E3%83%AD%E3%82%B0_%E5%A4%89%E6%9B%B4%E4%BE%9D%E9%A0%BC3%E4%BB%B6.csv" download>予備_差分ログ_変更依頼3件.csv</a>・<a href="data/%E4%BA%88%E5%82%99_%E6%9C%88%E5%88%A5%E8%A8%88%E7%94%BB_9%E6%9C%88%E3%80%9C12%E6%9C%88_%E5%A4%89%E6%9B%B4%E4%BE%9D%E9%A0%BC3%E4%BB%B6%E5%8F%8D%E6%98%A0%E5%BE%8C.xlsx" download>予備_月別計画_9月〜12月_変更依頼3件反映後.xlsx</a></div>
+  <pre id="tp7_3">ここまでの差分ログと検算の結果をもとに（新しいチャットで始める場合は、添付の予備の差分ログと反映後のファイルをもとに）、上長向けの報告文を3行で書いてください。
+
+【型】
+1行目：何をしたか（依頼の件数と種類、反映した範囲、変えたセルの数、差分ログを添付したこと）
+2行目：結果の数字（依頼のあった3品番の、12月末の在庫予測の変更前→変更後）
+3行目：見てほしいこと（反映後に目標在庫を下回る月と、その数・目標の数。なければ「下回る月はない」）
+
+【ルール】
+・3行を超えない
+・数字は、差分ログと検算の結果にあるものだけを使う
+・原因の推測、生産数を増やすなどの提案は書かない
+・取引先は「A社」「B社」などの記号のまま書く</pre>
+  <button type="button" class="copy" data-target="tp7_3">コピーする</button>
+</article></section>
+<footer>演習データはすべて研修用の架空のものです。© 2026 がだんだん株式会社</footer>
+</div>
+<script>
+document.querySelectorAll('.copy').forEach(function(b){
+  var label=b.textContent;
+  b.addEventListener('click',function(){
+    var el=document.getElementById(b.dataset.target), text=el.textContent;
+    function ok(){b.textContent='コピーしました';b.classList.add('done');setTimeout(function(){b.textContent=label;b.classList.remove('done')},2000)}
+    function fallback(){var r=document.createRange();r.selectNodeContents(el);var s=window.getSelection();s.removeAllRanges();s.addRange(r);b.textContent='選択しました。長押しでコピー'}
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(text).then(ok,fallback)}else{fallback()}
+  });
+});
+</script>
+</body>
+</html>

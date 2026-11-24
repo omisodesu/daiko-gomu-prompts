@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>営業 Day3 プロンプト集</title>
+<style>
+/* 研修テキストの続きとして読む一列のノート。朱は番号とボタンだけ */
+:root{
+  --bg:#fbfbfa; --paper:#ffffff; --fg:#1f1f1f; --sub:#5f5b58; --line:#d9d5d2; --acc:#b8431e; --acc-ink:#ffffff; --code:#f4f2f0;
+  --f-body:"BIZ UDPGothic","Hiragino Sans","Yu Gothic",sans-serif; --f-mono:"BIZ UDGothic","Hiragino Sans","Yu Gothic",monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#161514;--paper:#1f1e1c;--fg:#ecebe9;--sub:#a9a4a0;--line:#3a3734;--acc:#e0714a;--acc-ink:#1a0f0a;--code:#262422;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#161514;--paper:#1f1e1c;--fg:#ecebe9;--sub:#a9a4a0;--line:#3a3734;--acc:#e0714a;--acc-ink:#1a0f0a;--code:#262422;color-scheme:dark}
+body{background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:16px;line-height:1.7;padding-inline:16px;padding-block:20px 48px}
+.wrap{max-width:720px;margin:0 auto;display:flex;flex-direction:column;gap:28px}
+header h1{font-size:1.45rem;line-height:1.35;margin:4px 0 6px;text-wrap:balance}
+header p{margin:0;color:var(--sub);font-size:.92rem}
+.kicker{color:var(--acc);font-weight:700;font-size:.8rem;letter-spacing:.06em}
+.howto{border:1px solid var(--line);border-radius:10px;background:var(--paper);padding:14px 16px;font-size:.92rem}
+.howto ol{margin:6px 0 0;padding-left:1.3em}
+.jump{display:flex;flex-wrap:wrap;gap:6px}
+.jump a{min-width:2.4em;text-align:center;padding:4px 0;border:1px solid var(--line);border-radius:6px;color:var(--fg);text-decoration:none;font-variant-numeric:tabular-nums;background:var(--paper)}
+section{display:flex;flex-direction:column;gap:14px}
+h2{font-size:1.15rem;margin:8px 0 0;display:flex;flex-direction:column;gap:2px;border-bottom:1px solid var(--line);padding-bottom:8px}
+.eyebrow{font-size:.78rem;color:var(--acc);letter-spacing:.06em}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:14px 14px 16px;display:flex;flex-direction:column;gap:8px;scroll-margin-top:12px;min-width:0}
+.head{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap}
+.no{font-weight:700;color:var(--acc);font-variant-numeric:tabular-nums}
+.tool{font-size:.85rem;color:var(--sub);text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:2px 10px}
+h3{margin:0;font-size:1.02rem;line-height:1.45}
+pre{margin:0;white-space:pre-wrap;word-break:break-word;font-family:var(--f-mono);font-size:.86rem;line-height:1.65;background:var(--code);border-radius:8px;padding:12px;user-select:all;-webkit-user-select:all}
+.copy{align-self:stretch;appearance:none;border:0;border-radius:8px;background:var(--acc);color:var(--acc-ink);font:700 1rem var(--f-body);padding:12px;cursor:pointer}
+.copy.done{background:var(--fg);color:var(--bg)}
+.copy:focus-visible,.jump a:focus-visible,.tool:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
+.tbl{overflow-x:auto;min-width:0}
+table{border-collapse:collapse;width:100%;font-size:.84rem;font-variant-numeric:tabular-nums}
+th,td{border-bottom:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top}
+th{font-weight:700;border-bottom:1.5px solid var(--fg)}
+.note{margin:0;color:var(--sub);font-size:.78rem}
+footer{color:var(--sub);font-size:.8rem;border-top:1px solid var(--line);padding-top:12px}
+.demo{font-size:.78rem;color:var(--sub);border:1px dashed var(--line);border-radius:999px;padding:1px 9px}
+.file{font-size:.85rem;color:var(--sub)}
+.file a{color:var(--acc)}
+.dl{display:flex;flex-direction:column;gap:6px;margin:0;padding:0;list-style:none}
+.dl a{display:block;border:1px solid var(--line);border-radius:8px;padding:10px 12px;background:var(--paper);color:var(--fg);text-decoration:none}
+.dl a span{display:block;font-size:.8rem;color:var(--sub)}
+details{border:1px solid var(--line);border-radius:10px;background:var(--paper);padding:10px 14px}
+details summary{cursor:pointer;font-weight:700}
+details[open]{display:flex;flex-direction:column;gap:8px}
+details pre{max-height:320px;overflow:auto}
+*{box-sizing:border-box}
+
+.files-note{margin:0;color:var(--sub);font-size:.85rem}
+@media print{.copy,.jump,.tool{display:none}pre{user-select:text}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <div class="kicker">2026年12月3日（木）9:30〜12:30　営業職向け 生成AI業務活用研修 Day3：営業担当者：技術情報・FAQの作成と事実確認</div>
+  <h1>ダイコーゴム様 研修用プロンプト集（営業・Day3）</h1>
+  <p>スライドの「プロンプト No.」と同じ番号です。</p>
+</header>
+<div class="howto"><strong>使い方</strong>
+  <ol><li>演習のファイルをダウンロードする（スマホは、下の「コピーして貼る用」も使えます）</li><li>番号のボタンで使うプロンプトへ移動し「コピーする」</li><li>Claudeに貼り付け、＋ボタンからファイルを添付して送る</li><li>（　）の部分は、自分の内容に書き換える</li></ol>
+</div>
+<nav class="jump" aria-label="プロンプト番号"><a href="#p1">1</a><a href="#p2">2</a><a href="#p3">3</a><a href="#p4">4</a><a href="#p5">5</a><a href="#p6">6</a><a href="#p7">7</a><a href="#p7_2">7-2</a></nav>
+<section id="files"><h2><span class="eyebrow">最初にダウンロード</span>演習で使うファイル（すべて架空）</h2><ul class="dl"><li><a href="data/%E8%A3%BD%E5%93%81%E4%BB%95%E6%A7%98%E6%9B%B8_%E3%82%B5%E3%83%B3%E3%83%97%E3%83%AB%E3%82%B4%E3%83%A0%E5%B7%A5%E6%A5%AD_%E6%9E%B6%E7%A9%BA.txt" download>製品仕様書_サンプルゴム工業_架空.txt<span>No.1〜No.5・No.7・No.7-2で使う（架空の製品仕様書 第3版。何度も貼るので、メモ帳で開いておく）</span></a></li><li><a href="data/%E5%9B%9E%E7%AD%94%E4%BE%8B_%E7%B5%90%E8%AB%96%E3%81%8C%E3%81%82%E3%81%84%E3%81%BE%E3%81%84_%E8%AC%9B%E5%B8%AB%E9%85%8D%E5%B8%83.txt" download>回答例_結論があいまい_講師配布.txt<span>No.1で使う（講師が用意した、結論があいまいな回答例2件）</span></a></li><li><a href="data/%E5%AF%BE%E5%BF%9C%E5%A4%96%E3%81%A8%E6%9D%A1%E4%BB%B6%E4%BB%98%E3%81%8D%E3%81%AE%E8%B3%AA%E5%95%8F_%E6%9E%B6%E7%A9%BA.txt" download>対応外と条件付きの質問_架空.txt<span>No.3で使う（対応外・条件付きの架空の質問3件）</span></a></li><li><a href="data/%E5%95%8F%E3%81%84%E5%90%88%E3%82%8F%E3%81%9B%E5%82%BE%E5%90%91_Day1%E3%81%AE%E4%BB%95%E5%88%86%E3%81%91%E7%B5%90%E6%9E%9C_%E6%9E%B6%E7%A9%BA.txt" download>問い合わせ傾向_Day1の仕分け結果_架空.txt<span>No.4・No.7で使う（Day1の仕分け結果と、同じ種類の質問の件数）</span></a></li><li><a href="data/FAQ5%E5%95%8F_%E7%A2%BA%E8%AA%8D%E7%94%A8_%E8%AC%9B%E5%B8%AB%E9%85%8D%E5%B8%83.txt" download>FAQ5問_確認用_講師配布.txt<span>No.5で使う（講師が誤りを混ぜたFAQ 5問）</span></a></li><li><a href="data/%E6%97%A7%E8%BB%8A%E9%83%A8%E5%93%81%E3%83%A1%E3%83%A2_%E3%83%88%E3%83%A9%E3%83%B3%E3%82%AF%E3%81%AE%E3%81%B5%E3%81%A1%E3%81%AE%E3%82%B4%E3%83%A0_%E7%B7%B4%E7%BF%92%E7%94%A8%E5%9E%8B%E5%BC%8FA.txt" download>旧車部品メモ_トランクのふちのゴム_練習用型式A.txt<span>No.6で使う（練習用の型式Aの補修用ゴム部品のメモ。架空）</span></a></li><li><a href="data/%E4%BA%8B%E4%BE%8B%E3%83%A1%E3%83%A2_%E5%8F%97%E8%A8%97%E7%94%9F%E7%94%A3_%E6%9E%B6%E7%A9%BA.txt" download>事例メモ_受託生産_架空.txt<span>3コマ目のハンズオンとNo.7で使う（受託生産の架空の事例メモ）</span></a></li><li><a href="data/%E4%BA%88%E5%82%99_%E8%A8%98%E4%BA%8B2%E6%9C%AC_%E8%A6%8B%E6%9C%AC.txt" download>予備_記事2本_見本.txt<span>No.7で止まったときの予備（No.7の結果の見本）。新しいチャットでNo.7-2から始める</span></a></li></ul><details><summary>製品仕様書_サンプルゴム工業_架空.txt（コピーして貼る用）</summary><pre id="c1">【研修用・架空】サンプルゴム工業 製品仕様書（シール部品）
+第3版　2026年10月1日 改訂（架空）
+※ 研修のために作った架空の仕様書です。実在の会社・製品の値ではありません。
+※ 技術情報・FAQ・記事に書いてよい数値と対応範囲は、この仕様書に書いてあることだけです。
+
+1. 扱う製品
+・Oリング、パッキン、ガスケット（ゴムのシートから抜いて作るもの）
+・押出の長物（ウェザーストリップ＝ドアやトランクのふちのゴム など）
+
+2. 材質ごとの特性
+※ 記号：◎ よく合う　○ 使える　△ 条件による（要相談）　× 使えない
+※ 硬度は「タイプA」の数値（数字が大きいほどかたい）
+※ 温度は目安。触れる液体・圧力・使う時間で変わるため、使用条件を聞いてから材質を決める
+
+■ NBR（ニトリルゴム）
+・受け方：対応できる
+・硬度：A50〜A90
+・使用温度の目安：-20〜100℃
+・鉱物油（作動油・エンジンオイル）：◎
+・ガソリン：○
+・水・温水：○（80℃まで）
+・屋外（日光・雨）：△
+
+■ EPDM
+・受け方：対応できる
+・硬度：A50〜A80
+・使用温度の目安：-40〜120℃
+・鉱物油（作動油・エンジンオイル）：×
+・ガソリン：×
+・水・温水・蒸気：◎（120℃まで）
+・屋外（日光・雨）：◎
+
+■ シリコン
+・受け方：対応できる
+・硬度：A40〜A70
+・使用温度の目安：-50〜200℃
+・鉱物油（作動油・エンジンオイル）：△
+・ガソリン：×
+・水・温水：○（100℃まで）
+・屋外（日光・雨）：○
+・注意：引き裂きに弱い。こすれる場所には向かない
+
+■ フッ素ゴム
+・受け方：要相談（材料の取り寄せに時間がかかることがある）
+・硬度：A60〜A80
+・使用温度の目安：-10〜200℃
+・鉱物油（作動油・エンジンオイル）：◎
+・ガソリン：◎
+・水・温水：△
+・屋外（日光・雨）：◎
+
+3. 寸法の範囲
+・Oリング・パッキン：内径 3mm〜300mm
+・押出の長物：断面 30mm角まで。長さは相談
+・ガスケット：ゴムのシートから抜いて作る。大きさは相談
+・上の範囲の外（内径 3mm 未満、内径 300mm を超えるもの、断面 30mm角を超えるもの）：要相談
+
+4. ロット（数量）
+・試作：1個から
+・量産：月 100個程度から。月 100個より少ない量産は、品物によって相談
+
+5. 工程
+・成形・カット・抜き・検査・仕上げを社内で行う
+・現物からの採寸・図面起こしに対応する（現物をお預かりする）
+
+6. 受けていないもの（対応外）
+・この仕様書にない材質（例：ウレタンゴム、天然ゴム）
+・ゴム以外の部品（金属・樹脂）の製作
+
+7. 技術情報・FAQ・記事に書いてはいけないこと
+・価格、値引き、納期の確約（「〇日で出荷」「最短〇日」など）
+・「すべての材質に対応」「どんな形でも作れる」などの言い切り
+・他社の名前、他社との比較
+・この仕様書にない数値・規格・認証
+
+8. 問い合わせ案内
+・問い合わせフォーム・電話・FAX（番号は（　））
+・送ってほしいもの：図面または現物（写真でもよい）、使用環境（触れる液体・温度）、数量（試作・量産）
+</pre><button type="button" class="copy" data-target="c1">コピーする</button></details><details><summary>回答例_結論があいまい_講師配布.txt（コピーして貼る用）</summary><pre id="c2">【研修用・架空】結論があいまいな回答例（講師が用意したもの。2件）
+※ 架空の会社「サンプルゴム工業」のホームページにありそうな回答の例です
+
+---
+回答例1
+質問：Oリングは何個から頼めますか？
+回答：少量からでも柔軟に対応しております。数量にかかわらず、お気軽にご相談ください。用途に合わせて最適なご提案をいたします。
+
+---
+回答例2
+質問：シリコンゴムは何度まで使えますか？
+回答：シリコンは耐熱性に優れた材質で、高温の環境でも安心してお使いいただけます。さまざまな用途で実績があります。
+</pre><button type="button" class="copy" data-target="c2">コピーする</button></details><details><summary>対応外と条件付きの質問_架空.txt（コピーして貼る用）</summary><pre id="c3">【研修用・架空】「できない・条件付き」の回答を作る質問（3件）
+※ 会社名・人名はすべて架空で、記号に置き換えてあります
+
+---
+質問a（法人：取引先P社）
+今使っているパッキンがウレタンゴムです。同じウレタンゴムで作ってもらえますか？
+
+---
+質問b（法人：取引先Q社）
+EPDM のパッキン（内径 40mm）を、量産で毎月 20個ずつ納めてもらえますか？
+
+---
+質問c（法人：取引先R社）
+フッ素ゴムのOリング（内径 20mm）を1個だけ、来週までにほしいのですが、できますか？
+</pre><button type="button" class="copy" data-target="c3">コピーする</button></details><details><summary>問い合わせ傾向_Day1の仕分け結果_架空.txt（コピーして貼る用）</summary><pre id="c4">【研修用・架空】Day1 の問い合わせの仕分け結果と、同じ種類の質問の件数
+※ 会社名・人名はすべて架空です
+
+■ その1：Day1 で仕分けた問い合わせ（問い合わせ8件と、実践演習の3件）
+No.1　見込み案件：油圧ユニットに使うパッキンの見積（NBR・月 500個・図面あり）
+No.2　情報収集　：ゴム材質の一覧と、それぞれの耐熱温度が分かる資料がほしい
+No.3　相談　　　：昭和の国産クーペのトランクのふちのゴムを、1本だけ作れるか（個人）
+No.4　売り込み　：ホームページ制作の営業
+No.5　相談　　　：古い機械のゴム部品。現物はあるが図面がない。同じものを作れるか
+No.6　見込み案件：Oリングの見積（内径 30.0mm・線径 3.5mm・NBR・1,000個）
+No.7　売り込み　：人材派遣の営業
+No.8　人が判断　：ダイヤフラムの同等品を作れるか。まずは概算の価格を知りたい
+演習1　見込み案件：耐熱のガスケット（最高 150℃くらい）、月 300枚
+演習2　見込み案件：シリコンのOリング。ガソリンのタンクまわりで使う（材質の再確認が必要）
+演習3　相談　　　：1985年式の国産クーペのドアのまわりのゴムを、1台分だけほしい（個人）
+
+■ その2：同じ種類の質問の件数（講師が用意した架空の数。半年分）
+①　高い温度で使えるゴムの材質は？（No.2・演習1 と同じ種類）……18件
+②　図面がなく、現物だけでも作れるか（No.5 と同じ種類）……15件
+③　旧車のゴムを1本・1台分だけでも作れるか（No.3・演習3 と同じ種類）……12件
+④　油やガソリンに使えるゴムの材質は？（No.1・演習2 と同じ種類）……10件
+⑤　何個から頼めるか（試作・量産の数量）（No.6 と同じ種類）……8件
+⑥　概算の価格を知りたい（No.8 と同じ種類）……7件
+⑦　売り込み（No.4・No.7 と同じ種類）……9件
+</pre><button type="button" class="copy" data-target="c4">コピーする</button></details><details><summary>FAQ5問_確認用_講師配布.txt（コピーして貼る用）</summary><pre id="c5">【研修用】AIが作ったFAQ 5問（講師が誤りを混ぜてあります。製品仕様書と照らして確かめてください）
+サンプルゴム工業（架空）よくある質問
+
+Q1. 高い温度で使えるゴムの材質は？
+結論：高い温度では、シリコンとフッ素ゴムが使えます。
+条件：シリコンの使用温度の目安は -50〜230℃、硬度は A40〜A70 です。フッ素ゴムにも対応しています（-10〜200℃）。NBR は 100℃まで、EPDM は 120℃までが目安です。
+根拠：製品仕様書「2. 材質ごとの特性」
+
+Q2. 図面がなく、現物だけでも作れますか？
+結論：はい。現物をお預かりして、採寸・図面起こしを行います。
+条件：最短1週間で図面を起こします。Oリング・パッキンは内径 3mm〜300mm、押出の長物は断面 30mm角までが範囲です。
+根拠：製品仕様書「3. 寸法の範囲」「5. 工程」
+
+Q3. 旧車のゴムを1本・1台分だけでも作れますか？
+結論：試作は1個から作れます。現物をお預かりして採寸し、図面を起こすこともできます。
+条件：押出の長物（ドアやトランクのふちのゴム）は、断面 30mm角までです。長さは相談です。
+根拠：製品仕様書「3. 寸法の範囲」「4. ロット（数量）」「5. 工程」
+
+Q4. 油やガソリンに使えるゴムの材質は？
+結論：鉱物油（作動油・エンジンオイル）には NBR とフッ素ゴムが合います。ガソリンには EPDM も使えます。
+条件：NBR は -20〜100℃、硬度 A50〜A90 です。食品機械向けの認証を取得した NBR もあります。
+根拠：製品仕様書「2. 材質ごとの特性」
+
+Q5. 何個から頼めますか？
+結論：試作も量産も1個から承ります。
+条件：Oリングは内径 2mm〜300mm に対応しています。
+根拠：製品仕様書「3. 寸法の範囲」「4. ロット（数量）」
+</pre><button type="button" class="copy" data-target="c5">コピーする</button></details><details><summary>旧車部品メモ_トランクのふちのゴム_練習用型式A.txt（コピーして貼る用）</summary><pre id="c6">【研修用・架空】旧車の補修用ゴム部品のメモ（営業と製造部門がまとめたもの）
+※ 「練習用の型式A・型式B」は、研修のために作った架空の車の型式です。品番もすべて架空です。
+
+■ 品物
+・品名：トランクのふちのゴム（補修用）
+・当社の品番：SG-TR-A01
+・置き換える元の部品：純正品番 K-6401（練習用の型式A の部品表より。架空）
+・材質：EPDM（屋外・雨に強い材質）
+・形：1周の1本もの。長さ 約3,800mm、断面 約18mm×22mm
+
+■ 適合（どの型式に合うか）
+・型式A（セダン）：合うことを確かめた（純正品の現物と、形と長さを照らした）
+・型式A（ワゴン）：確かめていない。ワゴンはトランクではなく後ろのドアなので、形が違うかもしれない
+・型式B：確かめていない。型式Bのお客様から「同じ形では？」と聞かれたが、現物も部品表も見ていない
+
+■ 取り付けのときの注意（製造部門より）
+・古いゴムと、古い接着剤の残りをきれいに取ってから取り付ける
+・継ぎ目は、トランクの下側の真ん中にくるようにする
+・気温が低い日はゴムがかたいので、室内でしばらく置いて、やわらかくしてから取り付ける
+・取り付けたあと、水をかけて、水が入らないかを確かめる
+・接着剤は付いていない（別に用意する）
+
+■ 問い合わせ案内
+・適合が分からないときは、車の型式と、今のゴムの写真（全体と切り口）を送ってもらう
+
+■ 書かないこと
+・価格、在庫の数、届くまでの日数
+</pre><button type="button" class="copy" data-target="c6">コピーする</button></details><details><summary>事例メモ_受託生産_架空.txt（コピーして貼る用）</summary><pre id="c7">【研修用・架空】受託生産の事例メモ（営業がまとめたもの）
+※ 架空の事例です。お客様の社名は記事に出しません
+
+■ お客様
+・包装機械メーカー様（社名は出さない）
+
+■ お困りごと
+・お客様の工場で使っている包装機械のパッキンが廃番になり、同じ形のものが手に入らなかった
+
+■ 持ち込まれたもの
+・現物（使い終わったパッキン）と、古い図面（寸法の一部が読めない）
+
+■ 当社がしたこと
+・現物を採寸し、図面の読めない寸法を補って、図面を起こした
+・材質は NBR、硬度 A70
+・使う場所：機械の作動油（鉱物油）の中、40〜70℃
+
+■ 数量
+・試作 50個 → お客様の評価のあと、量産 月 500個
+
+■ お客様の声（架空。記事に載せてよいと了承をもらった）
+・「現物しかなくても相談できて助かった」
+
+■ 社内メモ（記事には書かない）
+・単価は、前の仕入れ先より下げた
+・試作は、ご依頼から3週間で出した
+・担当は営業の E012
+</pre><button type="button" class="copy" data-target="c7">コピーする</button></details><details><summary>予備_記事2本_見本.txt（コピーして貼る用）</summary><pre id="c8">【研修用・架空】予備：No.7 の結果の見本（FAQ記事1本・事例記事1本）
+※ サイトには掲載しません。上限で止まったときに、新しいチャットで No.7-2 から始めるために使います
+
+━━━━━━━━━━━━━━━━━━━━
+記事1（FAQ記事）
+━━━━━━━━━━━━━━━━━━━━
+更新日：（掲載する日を書く）
+もとにした資料：製品仕様書 第3版（2026年10月1日 改訂）
+
+■ 質問
+高い温度で使えるゴムの材質は？
+
+■ 結論
+120℃を超える高い温度で使えるのは、シリコンとフッ素ゴムです（どちらも目安は 200℃まで）。シリコンは対応できます。フッ素ゴムは要相談です。
+
+■ 条件
+・シリコン：使用温度の目安 -50〜200℃、硬度 A40〜A70。ガソリンには使えません。鉱物油（作動油・エンジンオイル）は条件によります（要相談）。引き裂きに弱く、こすれる場所には向きません。
+・フッ素ゴム：使用温度の目安 -10〜200℃、硬度 A60〜A80。鉱物油・ガソリンによく合います。材料の取り寄せに時間がかかることがあります。
+・NBR の目安は 100℃まで、EPDM の目安は 120℃までです。
+・温度は目安です。触れる液体・圧力・使う時間で変わるため、使用条件をうかがってから材質を決めます。
+
+■ 根拠
+製品仕様書（第3版）「2. 材質ごとの特性」の、シリコン・フッ素ゴム・NBR・EPDM の項目
+
+■ 問い合わせ案内
+問い合わせフォーム・電話・FAX（番号は（　））でご相談ください。図面または現物（写真でもよい）、使用環境（触れる液体・温度）、数量（試作・量産）をお送りいただくと、確認が早く進みます。
+
+━━━━━━━━━━━━━━━━━━━━
+記事2（受託生産の事例記事）
+━━━━━━━━━━━━━━━━━━━━
+更新日：（掲載する日を書く）
+もとにした資料：事例メモ（受託生産）、製品仕様書 第3版（2026年10月1日 改訂）
+
+■ 質問（見出し）
+廃番になったパッキンを、現物から作れますか？
+
+■ 結論
+現物をお預かりして採寸し、図面を起こして作ることに対応しています。包装機械メーカー様のご依頼では、廃番になったパッキンを、現物と古い図面から作りました。
+
+■ 条件
+・材質は NBR、硬度 A70 です。
+・使う場所は、機械の作動油（鉱物油）の中、40〜70℃です。
+
+■ 事例
+・お困りごと：お客様の工場で使っている包装機械のパッキンが廃番になり、同じ形のものが手に入りませんでした。
+・持ち込まれたもの：使い終わったパッキンの現物と、寸法の一部が読めない古い図面です。
+・当社がしたこと：現物を採寸し、図面の読めない寸法を補って、図面を起こしました。
+・数量：試作 50個を作り、お客様の評価のあと、量産 月 500個になりました。
+・お客様の声：「現物しかなくても相談できて助かった」
+
+■ 問い合わせ案内
+図面がなく現物だけの場合も、問い合わせフォーム・電話・FAX（番号は（　））でご相談ください。現物（写真でもよい）、使用環境（触れる液体・温度）、数量（試作・量産）をお送りください。
+</pre><button type="button" class="copy" data-target="c8">コピーする</button></details></section>
+<section id="s1"><h2><span class="eyebrow">1コマ目（55分）</span>技術情報・FAQを構造立てて書く（質問→結論→条件→根拠）</h2><article class="card" id="p1">
+  <div class="head"><span class="no">No.1</span><a class="tool" href="https://claude.ai/" target="_blank" rel="noopener">Claudeで使う ↗</a></div>
+  <h3>結論があいまいな回答を、4段に分けて書き直す</h3>
+  <p class="files-note">結論があいまいな技術情報やFAQを、4段構成に直すとき</p><div class="file">使うファイル（添付するか、中身を貼り付け）：<a href="data/%E5%9B%9E%E7%AD%94%E4%BE%8B_%E7%B5%90%E8%AB%96%E3%81%8C%E3%81%82%E3%81%84%E3%81%BE%E3%81%84_%E8%AC%9B%E5%B8%AB%E9%85%8D%E5%B8%83.txt" download>回答例_結論があいまい_講師配布.txt</a>・<a href="data/%E8%A3%BD%E5%93%81%E4%BB%95%E6%A7%98%E6%9B%B8_%E3%82%B5%E3%83%B3%E3%83%97%E3%83%AB%E3%82%B4%E3%83%A0%E5%B7%A5%E6%A5%AD_%E6%9E%B6%E7%A9%BA.txt" download>製品仕様書_サンプルゴム工業_架空.txt</a></div>
+  <pre id="tp1">あなたはゴム部品メーカー（研修用の架空の会社「サンプルゴム工業」）の営業担当です。以下の【回答例】2件は、ホームページにありそうな、結論があいまいな回答です。【製品仕様書】と照らして直してください。
+
+【やること】
+1. 回答例ごとに、「質問」「結論」「条件」「根拠」の4つの要素に分けて、表にする
+　表の列：回答例／要素／回答例の中の該当部分（なければ「なし」）／足りないこと
+2. 足りない要素を補い、4段構成の回答に書き直す
+
+【書き直すときのルール】
+・結論は最初の1〜2文で書き、「できる」「できない」「条件付き」のどれかが分かるようにする
+・条件は、材質・硬度・温度・寸法・ロットのうち、質問に関係するものを数値と範囲で書く
+・根拠は、製品仕様書の版と項目名を書く（例：製品仕様書 第3版「4. ロット（数量）」）
+・製品仕様書にないことは書かない。足りない情報は「記載なし」と書く
+・「柔軟に」「安心して」「最適な」などの、中身のない言葉は使わない
+・価格・値引き・納期の確約は書かない
+
+【出すもの】
+1. 4つの要素に分けた表（回答例1・回答例2）
+2. 書き直した回答2つ（「質問」「結論」「条件」「根拠」の見出しを付ける）
+
+【回答例】
+（ここに貼り付け）
+
+【製品仕様書】
+（ここに貼り付け）</pre>
+  <button type="button" class="copy" data-target="tp1">コピーする</button>
+</article><article class="card" id="p2">
+  <div class="head"><span class="no">No.2</span><a class="tool" href="https://claude.ai/" target="_blank" rel="noopener">Claudeで使う ↗</a></div>
+  <h3>仕様書から、条件付きの回答を作る（No.1の続き）</h3>
+  <p class="files-note">材質の向き・不向きを、条件と根拠つきで答えるとき（上限で止まったら、新しいチャットで、下の【製品仕様書】に仕様書を貼ってから送る）</p><div class="file">使うファイル（添付するか、中身を貼り付け）：<a href="data/%E8%A3%BD%E5%93%81%E4%BB%95%E6%A7%98%E6%9B%B8_%E3%82%B5%E3%83%B3%E3%83%97%E3%83%AB%E3%82%B4%E3%83%A0%E5%B7%A5%E6%A5%AD_%E6%9E%B6%E7%A9%BA.txt" download>製品仕様書_サンプルゴム工業_架空.txt</a></div>
+  <pre id="tp2">続けて、次の【質問】に、【製品仕様書】だけを使って答えてください。
+（同じチャットのときは、前に貼った製品仕様書を使います。新しいチャットのときは、いちばん下の【製品仕様書】に仕様書を貼ってください）
+
+【質問】
+耐油性が必要な用途に使える材質は？（機械の作動油やエンジンオイルなど、鉱物油に触れる場所で使う）
+
+【書き方】
+・結論→条件→根拠の順で書く
+・結論：使える材質と、使えない・条件による材質を両方書く。受け方が「要相談」の材質は「要相談」と書く
+・条件：材質ごとに、硬度と使用温度の目安を、数値と範囲で書く。温度は目安であることも書く
+・根拠：製品仕様書の版と項目名
+
+【ルール】
+・製品仕様書にないこと（ほかの性質・用途・実績など）は書かない
+・◎○△× の意味は、製品仕様書の記号の説明どおりにする
+
+【出すもの】
+1. 回答文（「質問」「結論」「条件」「根拠」の見出しを付ける）
+2. 根拠の表：回答の文／製品仕様書の項目／製品仕様書の引用（そのまま書き写す）
+　・製品仕様書に根拠のない文は、引用の欄に「根拠なし」と書く
+
+【製品仕様書】
+（新しいチャットのときだけ、ここに貼り付け）</pre>
+  <button type="button" class="copy" data-target="tp2">コピーする</button>
+</article><article class="card" id="p3">
+  <div class="head"><span class="no">No.3</span><a class="tool" href="https://claude.ai/" target="_blank" rel="noopener">Claudeで使う ↗</a></div>
+  <h3>対応外・条件付きの質問に答える（No.1の続き）</h3>
+  <p class="files-note">受けていないことや条件付きのことを、あいまいにせずに答えるとき（上限で止まったら、新しいチャットで、下の【製品仕様書】に仕様書を貼ってから送る）</p><div class="file">使うファイル（添付するか、中身を貼り付け）：<a href="data/%E5%AF%BE%E5%BF%9C%E5%A4%96%E3%81%A8%E6%9D%A1%E4%BB%B6%E4%BB%98%E3%81%8D%E3%81%AE%E8%B3%AA%E5%95%8F_%E6%9E%B6%E7%A9%BA.txt" download>対応外と条件付きの質問_架空.txt</a>・<a href="data/%E8%A3%BD%E5%93%81%E4%BB%95%E6%A7%98%E6%9B%B8_%E3%82%B5%E3%83%B3%E3%83%97%E3%83%AB%E3%82%B4%E3%83%A0%E5%B7%A5%E6%A5%AD_%E6%9E%B6%E7%A9%BA.txt" download>製品仕様書_サンプルゴム工業_架空.txt</a></div>
+  <pre id="tp3">続けて、以下の【質問】3件に、【製品仕様書】だけを使って、4段構成（質問→結論→条件→根拠）で答えてください。
+（同じチャットのときは、前に貼った製品仕様書を使います。新しいチャットのときは、いちばん下の【製品仕様書】に仕様書を貼ってください）
+
+【書き方】
+・結論の最初に、「できません」「条件付きでできます」「要相談です」のどれかを書く
+・できない理由や条件を、製品仕様書の項目（材質・寸法・ロット）に沿って書く
+・できない場合や要相談の場合は、製品仕様書の範囲でできる代わりの案を1つと、相談先（製品仕様書の「8. 問い合わせ案内」）を添える
+・お客様あての文として、ていねいに、短く書く
+
+【ルール】
+・価格・値引き・納期の確約は書かない（「来週までに」という希望にも、納期を約束しない書き方で答える）
+・製品仕様書にないことは書かない
+・「柔軟に対応」「ほぼすべて」などの、あいまいな言葉は使わない
+
+【出すもの】
+1. 3件の回答（「質問」「結論」「条件」「根拠」の見出しを付ける）
+2. 点検の表：3件の回答をお客様の立場で読み、誤解しそうな表現（できると受け取られる言い方・約束に聞こえる言い方）を挙げる
+　表の列：質問／誤解しそうな表現／なぜ誤解しそうか／直した表現
+3. 直した表現を反映した、3件の回答の最終版
+
+【質問】
+（ここに貼り付け）
+
+【製品仕様書】
+（新しいチャットのときだけ、ここに貼り付け）</pre>
+  <button type="button" class="copy" data-target="tp3">コピーする</button>
+</article></section><section id="s2"><h2><span class="eyebrow">2コマ目（55分）</span>FAQ・技術記事の作成と事実確認の手順</h2><article class="card" id="p4">
+  <div class="head"><span class="no">No.4</span><a class="tool" href="https://claude.ai/" target="_blank" rel="noopener">Claudeで使う ↗</a></div>
+  <h3>問い合わせの傾向から、FAQを5問作る</h3>
+  <p class="files-note">問い合わせの傾向から、よくある質問（FAQ）を作るとき</p><div class="file">使うファイル（添付するか、中身を貼り付け）：<a href="data/%E5%95%8F%E3%81%84%E5%90%88%E3%82%8F%E3%81%9B%E5%82%BE%E5%90%91_Day1%E3%81%AE%E4%BB%95%E5%88%86%E3%81%91%E7%B5%90%E6%9E%9C_%E6%9E%B6%E7%A9%BA.txt" download>問い合わせ傾向_Day1の仕分け結果_架空.txt</a>・<a href="data/%E8%A3%BD%E5%93%81%E4%BB%95%E6%A7%98%E6%9B%B8_%E3%82%B5%E3%83%B3%E3%83%97%E3%83%AB%E3%82%B4%E3%83%A0%E5%B7%A5%E6%A5%AD_%E6%9E%B6%E7%A9%BA.txt" download>製品仕様書_サンプルゴム工業_架空.txt</a></div>
+  <pre id="tp4">あなたはゴム部品メーカー（研修用の架空の会社「サンプルゴム工業」）の営業担当です。以下の【問い合わせの傾向】から、ホームページの「よくある質問（FAQ）」にする質問を5つ選び、【製品仕様書】だけを使ってFAQを作ってください。サイトには掲載しません。
+
+【質問の選び方】
+・件数が多いものから選ぶ
+・見込み案件・相談につながる質問を選ぶ
+・価格の質問（製品仕様書の「7. 書いてはいけないこと」に当たる）と、売り込みは選ばない
+・選んだ5つと、選ばなかった質問を、理由つきで最初に書く
+
+【FAQの書き方】
+・1問ごとに、質問→結論→条件→根拠 の4段で書く
+・質問は、お客様の言葉で、1つの問いにする
+・結論は最初の1〜2文。「できる」「できない」「条件付き」「要相談」が分かるようにする
+・条件は、数値と範囲で書く
+・根拠は、製品仕様書の版と項目名
+・専門用語には（　）で短い補足を付ける（例：硬度（ゴムのかたさ）、NBR（ニトリルゴム）、押出の長物（ドアやトランクのふちのゴムなど））
+・最後に「更新日：（　）」と「もとにした資料：製品仕様書 第3版（2026年10月1日 改訂）」を書く
+
+【ルール】
+・製品仕様書にないこと（数値・規格・認証・実績・納期）は書かない
+・価格・値引き・納期の確約、「すべて」「どんな形でも」などの言い切りは書かない
+・作れるかどうかを言い切れない質問には、送ってほしいもの（製品仕様書の「8. 問い合わせ案内」）を書く
+
+【出すもの】
+1. 選んだ5つと、選ばなかった質問（理由つき）
+2. FAQ 5問（チャットに文章で出す。あとでコピーして保存する）
+
+【問い合わせの傾向】
+（ここに貼り付け）
+
+【製品仕様書】
+（ここに貼り付け）</pre>
+  <button type="button" class="copy" data-target="tp4">コピーする</button>
+</article><article class="card" id="p5">
+  <div class="head"><span class="no">No.5</span><a class="tool" href="https://claude.ai/" target="_blank" rel="noopener">Claudeで使う ↗</a></div>
+  <h3>FAQの事実確認表を作る</h3>
+  <p class="files-note">AIが作った記事やFAQの数値・材質・対応範囲を、仕様書と照らして確かめるとき（時間があれば、No.4で作った自分のFAQも同じNo.5で確かめる）</p><div class="file">使うファイル（添付するか、中身を貼り付け）：<a href="data/FAQ5%E5%95%8F_%E7%A2%BA%E8%AA%8D%E7%94%A8_%E8%AC%9B%E5%B8%AB%E9%85%8D%E5%B8%83.txt" download>FAQ5問_確認用_講師配布.txt</a>・<a href="data/%E8%A3%BD%E5%93%81%E4%BB%95%E6%A7%98%E6%9B%B8_%E3%82%B5%E3%83%B3%E3%83%97%E3%83%AB%E3%82%B4%E3%83%A0%E5%B7%A5%E6%A5%AD_%E6%9E%B6%E7%A9%BA.txt" download>製品仕様書_サンプルゴム工業_架空.txt</a></div>
+  <pre id="tp5">あなたは、記事の事実を確かめる担当です。以下の【FAQ】に書いてある数値・材質・対応範囲を、【製品仕様書】と照らして、事実確認表を作ってください。FAQは直さず、確かめるだけにします。
+
+【やること】
+1. FAQの中の数値・材質・対応範囲（できる・できない・要相談・数量・寸法・温度・硬度・工程・納期・認証）を、1つずつ抜き出す。1つの文に2つ以上あれば、行を分ける
+2. それぞれを、製品仕様書の該当箇所と照らして判定する
+
+【判定のしかた】（この3つだけを使う）
+・一致：製品仕様書に同じことが書いてある
+・不一致：製品仕様書に書いてあることと違う（数値・受け方・記号の違いを含む）
+・仕様書に記載なし：製品仕様書のどこにも書いていない
+
+【ルール】
+・製品仕様書の該当箇所は、項目名と、そこに書いてある値をそのまま書く。推測で補わない
+・「ほぼ一致」「おおむね正しい」は使わない
+・FAQの文を書き換えない
+
+【出すもの】
+1. 事実確認表：No.／問／FAQの記述／種類（数値・材質・対応範囲）／製品仕様書の該当箇所／判定／確認先（不一致・記載なしのときだけ「製造部門」）／結果（空欄。人が書く）
+2. 判定ごとの件数（一致・不一致・仕様書に記載なし）
+3. 製造部門に確認する項目：不一致と記載なしの行について、製造部門に聞く文を1行ずつ（例：「Q1のシリコンの上限温度は、製品仕様書 第3版の200℃でよいですか」）
+・事実確認表は、Excelファイル（ファイル名：事実確認表_FAQ.xlsx）で出す。作れない場合は、表をチャットに出す
+
+【FAQ】
+（ここに貼り付け。講師配布のFAQか、No.4で作った自分のFAQ）
+
+【製品仕様書】
+（ここに貼り付け）</pre>
+  <button type="button" class="copy" data-target="tp5">コピーする</button>
+</article><article class="card" id="p6">
+  <div class="head"><span class="no">No.6</span><a class="tool" href="https://claude.ai/" target="_blank" rel="noopener">Claudeで使う ↗</a></div>
+  <h3>旧車部品の説明文を作る</h3>
+  <p class="files-note">旧車の補修部品の説明文を、適合型式・品番・取り付けの注意で書くとき</p><div class="file">使うファイル（添付するか、中身を貼り付け）：<a href="data/%E6%97%A7%E8%BB%8A%E9%83%A8%E5%93%81%E3%83%A1%E3%83%A2_%E3%83%88%E3%83%A9%E3%83%B3%E3%82%AF%E3%81%AE%E3%81%B5%E3%81%A1%E3%81%AE%E3%82%B4%E3%83%A0_%E7%B7%B4%E7%BF%92%E7%94%A8%E5%9E%8B%E5%BC%8FA.txt" download>旧車部品メモ_トランクのふちのゴム_練習用型式A.txt</a></div>
+  <pre id="tp6">あなたはゴム部品メーカー（研修用の架空の会社「サンプルゴム工業」）の営業担当です。以下の【部品メモ】だけを使って、旧車の補修用ゴム部品の説明文を作ってください。サイトには掲載しません。
+
+【項目】（この順に、見出しを付ける）
+1. 品名
+2. 品番（当社の品番と、置き換える元の純正品番）
+3. 適合型式（「確認済み」と「未確認」に分けて書く）
+4. 材質と形
+5. 取り付けのときの注意（付いていない物も書く）
+6. 問い合わせ案内
+
+【ルール】
+・適合を確かめていない型式は、「未確認」の欄に書く。「使えます」「同じ形です」「たぶん合います」とは書かない
+・部品メモにないことは書かない
+・専門用語は言い換える（例：ウェザーストリップ → ふちのゴム）
+・価格・在庫の数・届くまでの日数は書かない
+・400字程度。お客様が読みやすいように、短い文で書く
+
+【出すもの】
+1. 説明文
+2. 点検の表：説明文の文ごとに、部品メモの該当箇所を並べる。メモにない文は「メモになし」と書く
+
+【部品メモ】
+（ここに貼り付け）</pre>
+  <button type="button" class="copy" data-target="tp6">コピーする</button>
+</article></section><section id="ex"><h2><span class="eyebrow">実践演習（25分）</span>架空のシール部品メーカーのFAQ・事例記事</h2><article class="card" id="p7">
+  <div class="head"><span class="no">No.7</span><a class="tool" href="https://claude.ai/" target="_blank" rel="noopener">Claudeで使う ↗</a></div>
+  <h3>演習：FAQ記事と事例記事を作る</h3>
+  <p class="files-note">実践演習で、FAQ記事1本と受託生産の事例記事1本を作るとき</p><div class="file">使うファイル（添付するか、中身を貼り付け）：<a href="data/%E5%95%8F%E3%81%84%E5%90%88%E3%82%8F%E3%81%9B%E5%82%BE%E5%90%91_Day1%E3%81%AE%E4%BB%95%E5%88%86%E3%81%91%E7%B5%90%E6%9E%9C_%E6%9E%B6%E7%A9%BA.txt" download>問い合わせ傾向_Day1の仕分け結果_架空.txt</a>・<a href="data/%E8%A3%BD%E5%93%81%E4%BB%95%E6%A7%98%E6%9B%B8_%E3%82%B5%E3%83%B3%E3%83%97%E3%83%AB%E3%82%B4%E3%83%A0%E5%B7%A5%E6%A5%AD_%E6%9E%B6%E7%A9%BA.txt" download>製品仕様書_サンプルゴム工業_架空.txt</a>・<a href="data/%E4%BA%8B%E4%BE%8B%E3%83%A1%E3%83%A2_%E5%8F%97%E8%A8%97%E7%94%9F%E7%94%A3_%E6%9E%B6%E7%A9%BA.txt" download>事例メモ_受託生産_架空.txt</a></div>
+  <pre id="tp7">あなたはゴム部品メーカー（研修用の架空の会社「サンプルゴム工業」）の営業担当です。以下の資料だけを使って、ホームページ用の記事を2本作ってください。練習用なので、サイトには掲載しません。
+
+【記事1：FAQ記事】
+・【問い合わせの傾向】から質問を1つ選ぶ：（ここに選んだ質問を書く。決めていない場合は「① 高い温度で使えるゴムの材質は？」）
+・構成：質問→結論→条件→根拠→問い合わせ案内
+・条件は、数値と範囲で書く。根拠は、製品仕様書の版と項目名
+・400〜600字
+
+【記事2：受託生産の事例記事】
+・【事例メモ】の事例を使う
+・構成：質問（見出し）→結論→条件→事例→問い合わせ案内
+・事例は、お困りごと→持ち込まれたもの→当社がしたこと→数量→お客様の声 の順に書く
+・600字程度
+
+【2本に共通するルール】
+・製品仕様書と事例メモにない数値・言い切り・実績は書かない
+・事例メモの「社内メモ」の内容（単価・日数・担当者）は書かない
+・価格・値引き・納期の確約、お客様の社名、他社の名前は書かない
+・「業界トップクラス」「どんな部品も」「短納期」などの、誇張した言葉は使わない
+・各記事の最初に「更新日：（掲載する日を書く）」と「もとにした資料：（資料名と版）」を書く
+・問い合わせ案内は、製品仕様書の「8. 問い合わせ案内」に沿って書く（電話・FAXの番号は（　）のまま）
+
+【出すもの】
+Wordファイル（ファイル名：記事2本_演習.docx）。作れない場合は、2本の全文をチャットに出す
+
+【問い合わせの傾向】
+（ここに貼り付け）
+
+【製品仕様書】
+（ここに貼り付け）
+
+【事例メモ】
+（ここに貼り付け）</pre>
+  <button type="button" class="copy" data-target="tp7">コピーする</button>
+</article><article class="card" id="p7_2">
+  <div class="head"><span class="no">No.7-2</span><a class="tool" href="https://claude.ai/" target="_blank" rel="noopener">Claudeで使う ↗</a></div>
+  <h3>演習：記事ごとの事実確認表を作る（No.7の続き）</h3>
+  <p class="files-note">実践演習で、作った記事2本の事実を確かめるとき（上限で止まったら、予備の記事2本を添付して、新しいチャットでNo.7-2から始める）</p><div class="file">使うファイル（添付するか、中身を貼り付け）：<a href="data/%E4%BA%88%E5%82%99_%E8%A8%98%E4%BA%8B2%E6%9C%AC_%E8%A6%8B%E6%9C%AC.txt" download>予備_記事2本_見本.txt</a>・<a href="data/%E8%A3%BD%E5%93%81%E4%BB%95%E6%A7%98%E6%9B%B8_%E3%82%B5%E3%83%B3%E3%83%97%E3%83%AB%E3%82%B4%E3%83%A0%E5%B7%A5%E6%A5%AD_%E6%9E%B6%E7%A9%BA.txt" download>製品仕様書_サンプルゴム工業_架空.txt</a>・<a href="data/%E4%BA%8B%E4%BE%8B%E3%83%A1%E3%83%A2_%E5%8F%97%E8%A8%97%E7%94%9F%E7%94%A3_%E6%9E%B6%E7%A9%BA.txt" download>事例メモ_受託生産_架空.txt</a></div>
+  <pre id="tp7_2">さきほど作った記事2本の、事実確認表を作ってください。記事は直さず、確かめるだけにします。
+（新しいチャットで始めるときは、「予備_記事2本_見本.txt」を添付し、いちばん下の【資料】に製品仕様書と事例メモを貼ってください）
+
+【やること】
+・記事ごとに、数値・材質・対応範囲・事例の事実（お困りごと・したこと・数量）を、1つずつ抜き出す
+・FAQ記事は製品仕様書と、事例記事は事例メモと製品仕様書と照らす
+・判定は「一致」「不一致」「記載なし」の3つだけを使う（記載なし＝もとにした資料のどこにも書いていない）
+
+【ルール】
+・該当箇所は、資料名・項目名と、そこに書いてある値をそのまま書く
+・「ほぼ一致」は使わない。記事の文を書き換えない
+・事例メモの社内メモの内容（単価・日数・担当者）が記事に入っていたら、確認先に「書かない情報（削る）」と書く
+
+【出すもの】
+1. 事実確認表を記事ごとに：No.／記事の記述／種類／もとにした資料と該当箇所／判定／確認先（不一致・記載なしのとき：製造部門 または 営業）／結果（空欄。人が書く）
+2. 記事ごとの、判定ごとの件数
+3. 未確認の項目の一覧（不一致・記載なしで、まだ確かめていないもの。項目と理由）
+・Excelファイル（ファイル名：事実確認表_演習.xlsx。記事ごとにシートを分ける）で出す。作れない場合は、表をチャットに出す
+・最後に一言、「この記事はサイトには掲載しません」と書く
+
+【記事】
+（新しいチャットで、予備を添付しない場合は、ここに貼り付け）
+
+【資料】
+（新しいチャットのときだけ、製品仕様書と事例メモを貼り付け）</pre>
+  <button type="button" class="copy" data-target="tp7_2">コピーする</button>
+</article></section>
+<footer>演習データはすべて研修用の架空のものです。© 2026 がだんだん株式会社</footer>
+</div>
+<script>
+document.querySelectorAll('.copy').forEach(function(b){
+  var label=b.textContent;
+  b.addEventListener('click',function(){
+    var el=document.getElementById(b.dataset.target), text=el.textContent;
+    function ok(){b.textContent='コピーしました';b.classList.add('done');setTimeout(function(){b.textContent=label;b.classList.remove('done')},2000)}
+    function fallback(){var r=document.createRange();r.selectNodeContents(el);var s=window.getSelection();s.removeAllRanges();s.addRange(r);b.textContent='選択しました。長押しでコピー'}
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(text).then(ok,fallback)}else{fallback()}
+  });
+});
+</script>
+</body>
+</html>

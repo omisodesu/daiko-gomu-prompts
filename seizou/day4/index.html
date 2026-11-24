@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>製造 Day4 プロンプト集</title>
+<style>
+/* 研修テキストの続きとして読む一列のノート。朱は番号とボタンだけ */
+:root{
+  --bg:#fbfbfa; --paper:#ffffff; --fg:#1f1f1f; --sub:#5f5b58; --line:#d9d5d2; --acc:#b8431e; --acc-ink:#ffffff; --code:#f4f2f0;
+  --f-body:"BIZ UDPGothic","Hiragino Sans","Yu Gothic",sans-serif; --f-mono:"BIZ UDGothic","Hiragino Sans","Yu Gothic",monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#161514;--paper:#1f1e1c;--fg:#ecebe9;--sub:#a9a4a0;--line:#3a3734;--acc:#e0714a;--acc-ink:#1a0f0a;--code:#262422;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#161514;--paper:#1f1e1c;--fg:#ecebe9;--sub:#a9a4a0;--line:#3a3734;--acc:#e0714a;--acc-ink:#1a0f0a;--code:#262422;color-scheme:dark}
+body{background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:16px;line-height:1.7;padding-inline:16px;padding-block:20px 48px}
+.wrap{max-width:720px;margin:0 auto;display:flex;flex-direction:column;gap:28px}
+header h1{font-size:1.45rem;line-height:1.35;margin:4px 0 6px;text-wrap:balance}
+header p{margin:0;color:var(--sub);font-size:.92rem}
+.kicker{color:var(--acc);font-weight:700;font-size:.8rem;letter-spacing:.06em}
+.howto{border:1px solid var(--line);border-radius:10px;background:var(--paper);padding:14px 16px;font-size:.92rem}
+.howto ol{margin:6px 0 0;padding-left:1.3em}
+.jump{display:flex;flex-wrap:wrap;gap:6px}
+.jump a{min-width:2.4em;text-align:center;padding:4px 0;border:1px solid var(--line);border-radius:6px;color:var(--fg);text-decoration:none;font-variant-numeric:tabular-nums;background:var(--paper)}
+section{display:flex;flex-direction:column;gap:14px}
+h2{font-size:1.15rem;margin:8px 0 0;display:flex;flex-direction:column;gap:2px;border-bottom:1px solid var(--line);padding-bottom:8px}
+.eyebrow{font-size:.78rem;color:var(--acc);letter-spacing:.06em}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:14px 14px 16px;display:flex;flex-direction:column;gap:8px;scroll-margin-top:12px;min-width:0}
+.head{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap}
+.no{font-weight:700;color:var(--acc);font-variant-numeric:tabular-nums}
+.tool{font-size:.85rem;color:var(--sub);text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:2px 10px}
+h3{margin:0;font-size:1.02rem;line-height:1.45}
+pre{margin:0;white-space:pre-wrap;word-break:break-word;font-family:var(--f-mono);font-size:.86rem;line-height:1.65;background:var(--code);border-radius:8px;padding:12px;user-select:all;-webkit-user-select:all}
+.copy{align-self:stretch;appearance:none;border:0;border-radius:8px;background:var(--acc);color:var(--acc-ink);font:700 1rem var(--f-body);padding:12px;cursor:pointer}
+.copy.done{background:var(--fg);color:var(--bg)}
+.copy:focus-visible,.jump a:focus-visible,.tool:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
+.tbl{overflow-x:auto;min-width:0}
+table{border-collapse:collapse;width:100%;font-size:.84rem;font-variant-numeric:tabular-nums}
+th,td{border-bottom:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top}
+th{font-weight:700;border-bottom:1.5px solid var(--fg)}
+.note{margin:0;color:var(--sub);font-size:.78rem}
+footer{color:var(--sub);font-size:.8rem;border-top:1px solid var(--line);padding-top:12px}
+.demo{font-size:.78rem;color:var(--sub);border:1px dashed var(--line);border-radius:999px;padding:1px 9px}
+.file{font-size:.85rem;color:var(--sub)}
+.file a{color:var(--acc)}
+.dl{display:flex;flex-direction:column;gap:6px;margin:0;padding:0;list-style:none}
+.dl a{display:block;border:1px solid var(--line);border-radius:8px;padding:10px 12px;background:var(--paper);color:var(--fg);text-decoration:none}
+.dl a span{display:block;font-size:.8rem;color:var(--sub)}
+details{border:1px solid var(--line);border-radius:10px;background:var(--paper);padding:10px 14px}
+details summary{cursor:pointer;font-weight:700}
+details[open]{display:flex;flex-direction:column;gap:8px}
+details pre{max-height:320px;overflow:auto}
+*{box-sizing:border-box}
+
+.files-note{margin:0;color:var(--sub);font-size:.85rem}
+@media print{.copy,.jump,.tool{display:none}pre{user-select:text}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <div class="kicker">製造A：2026年12月16日（水）13:00〜16:00／製造B：2026年12月15日（火）13:00〜16:00　生産管理職向け 生成AI業務活用研修 Day4：生産管理の異常値検知と作業指示書</div>
+  <h1>ダイコーゴム様 研修用プロンプト集（製造・Day4）</h1>
+  <p>スライドの「プロンプト No.」と同じ番号です。</p>
+</header>
+<div class="howto"><strong>使い方</strong>
+  <ol><li>演習のファイルをダウンロードする（スマホは、下の「コピーして貼る用」も使えます）</li><li>番号のボタンで使うプロンプトへ移動し「コピーする」</li><li>Claudeに貼り付け、＋ボタンからファイルを添付して送る</li><li>（　）の部分は、自分の内容に書き換える</li></ol>
+</div>
+<nav class="jump" aria-label="プロンプト番号"><a href="#p1">1</a><a href="#p1_2">1-2</a><a href="#p2">2</a><a href="#p3">3</a><a href="#p3_2">3-2</a><a href="#p4">4</a><a href="#p4_2">4-2</a><a href="#p5">5</a><a href="#p6">6</a><a href="#p7">7</a><a href="#p8">8</a><a href="#p8_2">8-2</a></nav>
+<section id="files"><h2><span class="eyebrow">最初にダウンロード</span>演習で使うファイル（すべて架空）</h2><ul class="dl"><li><a href="data/%E4%BD%9C%E6%A5%AD%E8%A8%98%E9%8C%B2_9%E6%9C%88.csv" download>作業記録_9月.csv<span>No.1・No.1-2で使う（作業者8名・9月の作業記録。320行）</span></a></li><li><a href="data/%E5%93%81%E7%95%AA%E5%88%A5_8%E6%9C%88%E5%AE%9F%E7%B8%BE.csv" download>品番別_8月実績.csv<span>No.1で使う（8月の品番別の不良率・1個あたり工数）</span></a></li><li><a href="data/%E5%B7%A5%E7%A8%8B%E5%88%A5%E5%AE%9F%E7%B8%BE_10%E6%9C%8819%E6%97%A5%E3%80%9C23%E6%97%A5.csv" download>工程別実績_10月19日〜23日.csv<span>No.3で使う（B社5品番の1週間分の工程別実績）</span></a></li><li><a href="data/%E5%B7%A5%E7%A8%8B%E5%88%A5%E5%AE%9F%E7%B8%BE_10%E6%9C%8826%E6%97%A5%E3%80%9C30%E6%97%A5.csv" download>工程別実績_10月26日〜30日.csv<span>No.4で使う（別の週のデータ）</span></a></li><li><a href="data/%E4%BA%88%E5%82%99_%E4%BD%9C%E6%A5%AD%E6%8C%87%E7%A4%BA%E6%9B%B8_%E9%80%B1%E6%AC%A1%E5%B7%A5%E7%A8%8B%E5%88%A5%E9%9B%86%E8%A8%88_%E7%AC%AC1%E7%89%88.txt" download>予備_作業指示書_週次工程別集計_第1版.txt<span>No.4で、自分の指示書ができなかったときに貼る予備（No.3-2の結果の見本）</span></a></li><li><a href="data/%E4%BD%9C%E6%A5%AD%E5%A0%B1%E5%91%8A%E6%9B%B8_10%E6%9C%8830%E6%97%A5_No01.jpg" download>作業報告書_10月30日_No01.jpg<span>No.5で使う（手書き風の作業報告書・2枚）</span></a></li><li><a href="data/%E4%BD%9C%E6%A5%AD%E5%A0%B1%E5%91%8A%E6%9B%B8_10%E6%9C%8830%E6%97%A5_No02.jpg" download>作業報告書_10月30日_No02.jpg<span>No.5で使う</span></a></li><li><a href="data/%E4%BA%88%E5%82%99_%E4%B8%AD%E9%96%93%E8%A1%A8_10%E6%9C%8830%E6%97%A5_%E7%A2%BA%E5%AE%9A%E7%89%88.csv" download>予備_中間表_10月30日_確定版.csv<span>実践演習（No.6）で使う（原票を確かめた確定版の中間表。No.5の結果の見本）</span></a></li><li><a href="data/%E4%BD%9C%E6%A5%AD%E7%B5%8C%E6%AD%B4%E8%A1%A8_%E6%88%90%E5%BD%A2_10%E6%9C%88_A%E7%A4%BE.xlsx" download>作業経歴表_成形_10月_A社.xlsx<span>No.6で使う（A社5品番の成形の作業経歴表。10月30日より前の分）</span></a></li><li><a href="data/%E4%BA%88%E5%82%99_%E4%BD%9C%E6%A5%AD%E7%B5%8C%E6%AD%B4%E8%A1%A8_%E6%88%90%E5%BD%A2_10%E6%9C%88_A%E7%A4%BE_%E8%BF%BD%E8%A8%98%E5%BE%8C.xlsx" download>予備_作業経歴表_成形_10月_A社_追記後.xlsx<span>No.7を新しいチャットから始めるときの予備（No.6の結果の見本）</span></a></li><li><a href="data/%E5%B7%A5%E7%A8%8B%E5%88%A5%E5%AE%9F%E7%B8%BE_10%E6%9C%88_A%E7%A4%BE_%E6%88%90%E5%BD%A2%E4%BB%A5%E5%A4%96.csv" download>工程別実績_10月_A社_成形以外.csv<span>No.7で使う（A社5品番の10月の工程別実績。成形は作業経歴表を使う）</span></a></li><li><a href="data/%E6%9C%88%E5%88%9D%E5%9C%A8%E5%BA%AB_10%E6%9C%881%E6%97%A5_A%E7%A4%BE.csv" download>月初在庫_10月1日_A社.csv<span>No.7で使う（10月1日の朝の状態別在庫）</span></a></li><li><a href="data/%E4%BA%88%E5%82%99_%E7%8A%B6%E6%85%8B%E5%88%A5%E5%9C%A8%E5%BA%AB_10%E6%9C%8830%E6%97%A5_A%E7%A4%BE.csv" download>予備_状態別在庫_10月30日_A社.csv<span>No.8を新しいチャットから始めるときの予備（No.7の結果の見本）</span></a></li><li><a href="data/%E6%9C%88%E5%88%A5%E8%A8%88%E7%94%BB_2026%E5%B9%B410%E6%9C%88_Day3%E5%8F%8D%E6%98%A0%E6%B8%88%E3%81%BF.xlsx" download>月別計画_2026年10月_Day3反映済み.xlsx<span>No.8で使う（Day3の変更を反映済みの月別計画。Day3のファイルとは中身が違う）</span></a></li><li><a href="data/%E6%9C%88%E5%88%A5%E8%A8%88%E7%94%BB_2026%E5%B9%B411%E6%9C%88_Day3%E5%8F%8D%E6%98%A0%E6%B8%88%E3%81%BF.xlsx" download>月別計画_2026年11月_Day3反映済み.xlsx<span>No.8で使う</span></a></li><li><a href="data/%E6%9C%88%E5%88%A5%E8%A8%88%E7%94%BB_2026%E5%B9%B412%E6%9C%88_Day3%E5%8F%8D%E6%98%A0%E6%B8%88%E3%81%BF.xlsx" download>月別計画_2026年12月_Day3反映済み.xlsx<span>No.8で使う</span></a></li><li><a href="data/%E9%80%9A%E3%81%97%E5%87%A6%E7%90%86_%E6%A4%9C%E7%AE%97%E8%A1%A8.csv" download>通し処理_検算表.csv<span>No.8-2で使う（工程ごとの検算表のひな形）</span></a></li></ul><details><summary>品番別_8月実績.csv（コピーして貼る用）</summary><pre id="c2">品番,成形数（8月合計）,不良数（8月合計）,作業時間（分・8月合計）,不良率（%）,1個あたり工数（分）
+SG-1002,1217,42,3610,3.45,2.97
+SG-1005,1376,14,4657,1.02,3.38
+SG-1008,1608,28,3503,1.74,2.18
+SG-1012,2113,20,4967,0.95,2.35
+SG-1015,1717,55,5856,3.20,3.41
+SG-1018,1108,14,3931,1.26,3.55
+SG-1021,1260,32,4115,2.54,3.27
+SG-1024,1145,19,1959,1.66,1.71
+SG-1027,1184,22,3076,1.86,2.60
+SG-1030,1513,34,5237,2.25,3.46
+</pre><button type="button" class="copy" data-target="c2">コピーする</button></details><details><summary>予備_作業指示書_週次工程別集計_第1版.txt（コピーして貼る用）</summary><pre id="c5">作業指示書：週次の工程別集計（サンプルゴム工業・研修用の架空の題材）
+第1版
+
+1. 目的
+1週間分の工程別実績から、品番ごと・工程ごとの完了数と不良数を集計し、前の週と比べられる形にそろえる。
+
+2. 入力
+工程別実績のCSV（1週間分）。列は 品番／工程／日付／完了数／不良数。
+
+3. 出力
+・表1：品番×工程の完了数。列は 品番／成形／カット／抜き／検査（社内）／検査（内職）／仕上げ。品番は番号の小さい順。単位は個。
+・表2：工程ごとの合計。列は 工程／完了数／不良数／不良率（%。小数第1位まで）。
+・ファイル名：週次集計_（期間）.csv。ファイルが作れない場合は、表をチャットに出す。
+
+4. 手順
+(1) CSVを読み、行数を数える。
+(2) 工程が「内職へ渡す」「出荷」の行は集計しない。
+(3) 品番ごと・工程ごとに、完了数と不良数を合計する。
+(4) 表1・表2を作る。
+
+5. 確認
+・元のデータの工程ごとの合計と、表2の合計が一致するか。
+・元のデータの行数＝集計に使った行数＋集計しなかった行数 になっているか。
+
+6. 禁止事項
+・元のデータの数字を書き換えない。
+・推測で数字を埋めない。
+
+7. 自信度の申告
+・自信がない所は「要確認」として、行と理由を書く。
+
+改訂履歴
+第1版：作成
+</pre><button type="button" class="copy" data-target="c5">コピーする</button></details><details><summary>予備_中間表_10月30日_確定版.csv（コピーして貼る用）</summary><pre id="c8">報告書No,行,日付,作業者No,工程,品番,品名,開始,終了,成形数,不良数,確認状況
+01,1,2026/10/30,101,成形,SG-1002,Oリング P10,8:30,10:30,120,1,確定
+01,2,2026/10/30,101,成形,SG-1008,パッキン A,10:40,15:30,240,2,確定
+02,1,2026/10/30,102,成形,SG-1005,Oリング P20,8:30,10:20,120,0,確定
+02,2,2026/10/30,102,成形,SG-1012,パッキン B,10:30,14:40,240,3,確定
+02,3,2026/10/30,102,成形,SG-1015,ガスケット 50,14:50,17:00,200,1,確定
+</pre><button type="button" class="copy" data-target="c8">コピーする</button></details><details><summary>月初在庫_10月1日_A社.csv（コピーして貼る用）</summary><pre id="c12">品番,品名,成形後,カット後,抜き後（社内）,内職先（検査待ち）,検査後,仕上げ後
+SG-1002,Oリング P10,160,60,40,50,80,100
+SG-1005,Oリング P20,80,60,100,30,110,200
+SG-1008,パッキン A,80,90,40,30,50,100
+SG-1012,パッキン B,120,90,70,50,50,100
+SG-1015,ガスケット 50,160,60,40,50,110,100
+</pre><button type="button" class="copy" data-target="c12">コピーする</button></details><details><summary>予備_状態別在庫_10月30日_A社.csv（コピーして貼る用）</summary><pre id="c13">品番,成形後,カット後,抜き後（社内）,内職先（検査待ち）,検査後,仕上げ後
+SG-1002,138,119,75,34,59,184
+SG-1005,67,56,17,43,44,66
+SG-1008,64,86,35,91,133,142
+SG-1012,81,181,45,89,172,272
+SG-1015,71,81,20,33,30,81
+</pre><button type="button" class="copy" data-target="c13">コピーする</button></details><details><summary>通し処理_検算表.csv（コピーして貼る用）</summary><pre id="c17">工程,確かめたこと,結果（一致／不一致）,数字,メモ
+1 中間表,報告書の行数・成形数の合計・要確認,,,
+2 作業経歴表,追記した件数・追記前後の合計・式が残っているか,,,
+3 状態別在庫,使った式の説明・マイナスなど不自然な値,,,
+4 月別計画,差分ログの件数・抜き取り3件・合計の比較,,,
+</pre><button type="button" class="copy" data-target="c17">コピーする</button></details></section>
+<section id="s1"><h2><span class="eyebrow">1コマ目（55分）</span>不良数・工数データの異常値の検知と報告</h2><article class="card" id="p1">
+  <div class="head"><span class="no">No.1</span><a class="tool" href="https://claude.ai/" target="_blank" rel="noopener">Claudeで使う ↗</a></div>
+  <h3>品番別の不良率と、1個あたり工数を集計する</h3>
+  <p class="files-note">1か月分の作業記録から、品番ごとの不良率と工数を出し、前の月と比べるとき</p><div class="file">使うファイル（添付するか、中身を貼り付け）：<a href="data/%E4%BD%9C%E6%A5%AD%E8%A8%98%E9%8C%B2_9%E6%9C%88.csv" download>作業記録_9月.csv</a>・<a href="data/%E5%93%81%E7%95%AA%E5%88%A5_8%E6%9C%88%E5%AE%9F%E7%B8%BE.csv" download>品番別_8月実績.csv</a></div>
+  <pre id="tp1">あなたは生産管理の担当者です。添付の2つのファイル（サンプルゴム工業の架空データ）を使って、品番別の不良率と1個あたり工数を集計してください。
+・作業記録_9月.csv：9月の作業記録（列：行No／日付／作業者No／品番／成形数／不良数／作業時間（分））
+・品番別_8月実績.csv：8月の品番別の合計と、不良率・1個あたり工数
+
+【計算のしかた】
+・不良率（%）＝不良数÷成形数×100
+・1個あたり工数（分）＝作業時間÷成形数
+・品番別の値は、品番ごとに成形数・不良数・作業時間を合計してから割る（行ごとの率を平均しない）
+・8月との差（%）＝9月の値÷8月の値−1
+
+【ルール】
+・元のデータの数字は書き換えない
+・作業者別の集計や比較はしない
+・小数は第2位まで
+
+【出すもの】
+1. 品番別の表：品番／成形数／不良数／作業時間／不良率／1個あたり工数／8月の不良率／8月の工数／不良率の差（%）／工数の差（%）
+2. 検算：元のデータの行数と、成形数・不良数・作業時間の合計が、表の合計と一致するか</pre>
+  <button type="button" class="copy" data-target="tp1">コピーする</button>
+</article><article class="card" id="p1_2">
+  <div class="head"><span class="no">No.1-2</span><a class="tool" href="https://claude.ai/" target="_blank" rel="noopener">Claudeで使う ↗</a></div>
+  <h3>基準に当たる行を、根拠付きで挙げさせる（No.1の続き）</h3>
+  <p class="files-note">作業記録の中から、記入の誤りやいつもと違う値を、決めた基準で漏れなく探すとき</p>
+  <pre id="tp1_2">続けて、作業記録_9月.csv の行ごとに、次の基準に当たる行をすべて挙げてください。
+
+【基準】
+① 1行の1個あたり工数（作業時間÷成形数）が、その品番の8月の1個あたり工数から30%以上外れている（多い・少ないの両方）
+② 1行の不良率（不良数÷成形数）が10%を超えている
+③ 不良数が成形数を超えている
+
+【ルール】
+・全部の行を調べる。基準に当たらない行は挙げない
+・原因の推測や、改善策は書かない
+・作業者ごとの比較や評価はしない
+・数字は書き換えない
+
+【出すもの】
+1. 基準に当たった行の一覧：行No／日付／品番／成形数／不良数／作業時間／計算した値（工数・不良率）／8月の値／当たった基準（①〜③）
+2. 基準ごとの件数
+3. 品番別の集計で、8月から30%以上外れた品番があれば、その原因になっている行No</pre>
+  <button type="button" class="copy" data-target="tp1_2">コピーする</button>
+</article><article class="card" id="p2">
+  <div class="head"><span class="no">No.2</span><a class="tool" href="https://claude.ai/" target="_blank" rel="noopener">Claudeで使う ↗</a></div>
+  <h3>上長向けに、5行以内で報告する（No.1-2の続き）</h3>
+  <p class="files-note">見つけた異常な値を、根拠付きで上長に伝えるとき</p>
+  <pre id="tp2">ここまでの結果をもとに、上長向けの報告文を5行以内で書いてください。
+
+【書くこと】
+・1行目：何を、何と比べて確かめたか
+・基準に当たった行ごとに1行：行No・日付・品番・元の数字・どの基準にどれだけ外れたか
+・最後に「元の記録の確認をお願いします」
+
+【ルール】
+・5行を超えない
+・事実と根拠の数字だけを書く。原因の推測（記入ミス、機械の不調 など）や改善策は書かない
+・作業者Noは書かない。作業者の評価につながる書き方をしない</pre>
+  <button type="button" class="copy" data-target="tp2">コピーする</button>
+</article></section><section id="s2"><h2><span class="eyebrow">2コマ目（55分）</span>定型の集計作業をAIへの作業指示書として書く（架空題材）</h2><article class="card" id="p3">
+  <div class="head"><span class="no">No.3</span><a class="tool" href="https://claude.ai/" target="_blank" rel="noopener">Claudeで使う ↗</a></div>
+  <h3>週次の工程別集計を、チャットで1回やってみる</h3>
+  <p class="files-note">1週間分の工程別実績を、品番×工程の表にまとめるとき</p><div class="file">使うファイル（添付するか、中身を貼り付け）：<a href="data/%E5%B7%A5%E7%A8%8B%E5%88%A5%E5%AE%9F%E7%B8%BE_10%E6%9C%8819%E6%97%A5%E3%80%9C23%E6%97%A5.csv" download>工程別実績_10月19日〜23日.csv</a></div>
+  <pre id="tp3">あなたは生産管理の担当者です。添付のCSV（サンプルゴム工業の架空データ。10月19日〜23日の工程別実績。列：品番／工程／日付／完了数／不良数）を、週次の工程別集計にしてください。
+
+【やること】
+・品番ごと・工程ごとに、完了数と不良数を合計する
+・工程は 成形／カット／抜き／検査（社内）／検査（内職）／仕上げ の6つ
+・「内職へ渡す」「出荷」の行は集計しない
+・工程ごとの合計を最後に付ける
+
+【ルール】
+・元のデータの数字は書き換えない
+
+【出すもの】
+1. 表：品番／成形／カット／抜き／検査（社内）／検査（内職）／仕上げ（完了数）
+2. 工程ごとの合計：工程／完了数／不良数／不良率（%）
+3. 元のデータの行数と、集計に使った行数・使わなかった行数</pre>
+  <button type="button" class="copy" data-target="tp3">コピーする</button>
+</article><article class="card" id="p3_2">
+  <div class="head"><span class="no">No.3-2</span><a class="tool" href="https://claude.ai/" target="_blank" rel="noopener">Claudeで使う ↗</a></div>
+  <h3>やり取りをもとに、作業指示書の下書きを書かせる（No.3の続き）</h3>
+  <p class="files-note">うまくいった作業の手順を、次も同じ形で使える指示書にするとき</p>
+  <pre id="tp3_2">これまでのやり取りをもとに、サンプルゴム工業の週次の工程別集計を、毎回同じ形で行うための作業指示書を書いてください。別の週のデータで、別のチャットに貼って使います。
+
+【見出し】次の7つを見出しにする
+1. 目的
+2. 入力（ファイルと列）
+3. 出力（表の形・列名・並び順・単位・ファイル名）
+4. 手順（番号付き）
+5. 確認（合計・件数の照合、要確認の出し方）
+6. 禁止事項（推測で埋めない、など）
+7. 自信度の申告（自信がない所の書き方）
+
+【ルール】
+・やさしい日本語で、1つの文は短く
+・この週のデータにしかない数字（合計の値など）は書かない
+・最後に「改訂履歴」の欄を作り、「第1版：作成」と書く
+
+【出すもの】
+作業指示書の全文（テキスト）。ファイルが作れる場合は、作業指示書_週次工程別集計_第1版.txt としても出す</pre>
+  <button type="button" class="copy" data-target="tp3_2">コピーする</button>
+</article><article class="card" id="p4">
+  <div class="head"><span class="no">No.4</span><a class="tool" href="https://claude.ai/" target="_blank" rel="noopener">Claudeで使う ↗</a></div>
+  <h3>別の週のデータで、指示書どおりに再実行する</h3>
+  <p class="files-note">作業指示書だけで、同じ結果が出るかを確かめるとき（必ず新しいチャットで。指示書ができなかったときは、予備の指示書を貼る）</p><div class="file">使うファイル（添付するか、中身を貼り付け）：<a href="data/%E5%B7%A5%E7%A8%8B%E5%88%A5%E5%AE%9F%E7%B8%BE_10%E6%9C%8826%E6%97%A5%E3%80%9C30%E6%97%A5.csv" download>工程別実績_10月26日〜30日.csv</a>・<a href="data/%E4%BA%88%E5%82%99_%E4%BD%9C%E6%A5%AD%E6%8C%87%E7%A4%BA%E6%9B%B8_%E9%80%B1%E6%AC%A1%E5%B7%A5%E7%A8%8B%E5%88%A5%E9%9B%86%E8%A8%88_%E7%AC%AC1%E7%89%88.txt" download>予備_作業指示書_週次工程別集計_第1版.txt</a></div>
+  <pre id="tp4">下の作業指示書のとおりに、添付のCSV（サンプルゴム工業の架空データ。10月26日〜30日の工程別実績）を集計してください。
+
+【ルール】
+・指示書に書いていないことは、自分で決めずに「要確認」に書く
+・指示書の内容は変えない
+
+【作業指示書】
+（ここに貼り付け）</pre>
+  <button type="button" class="copy" data-target="tp4">コピーする</button>
+</article><article class="card" id="p4_2">
+  <div class="head"><span class="no">No.4-2</span><a class="tool" href="https://claude.ai/" target="_blank" rel="noopener">Claudeで使う ↗</a></div>
+  <h3>ずれの原因を探し、指示書を改訂する（No.4の続き）</h3>
+  <p class="files-note">別のデータで結果がそろわなかったとき、指示書を直すとき</p>
+  <pre id="tp4_2">前の週（10月19日〜23日）の結果と比べて、今回の結果にずれがありました。
+
+【ずれ】
+（例：工程の列が7つになった／合計が合わない／品番の行の数が違う など、気づいたことを書く）
+
+【やること】
+1. ずれの原因になったデータの行と、指示書の記述（または書いていなかったこと）を挙げる
+2. 指示書を直した第2版を書く。直した所が分かるように【改訂】と印を付ける
+3. 改訂履歴に、版・日付・変えた所・理由を1行ずつ書く
+
+【ルール】
+・データは書き換えない。指示書だけを直す
+・この週のデータにしかない数字は、指示書に書かない
+
+【出すもの】
+作業指示書 第2版の全文と、改訂履歴</pre>
+  <button type="button" class="copy" data-target="tp4_2">コピーする</button>
+</article></section><section id="s3"><h2><span class="eyebrow">3コマ目（30分）</span>実践演習の準備：通し処理の流れと、工程ごとの検算</h2><article class="card" id="p5">
+  <div class="head"><span class="no">No.5</span><a class="tool" href="https://claude.ai/" target="_blank" rel="noopener">Claudeで使う ↗</a></div>
+  <h3>作業報告書2枚を、中間表にする</h3>
+  <p class="files-note">手書きの作業報告書を、確かめやすい1行1件の表にするとき（通し処理の1工程目）</p><div class="file">使うファイル：<a href="data/%E4%BD%9C%E6%A5%AD%E5%A0%B1%E5%91%8A%E6%9B%B8_10%E6%9C%8830%E6%97%A5_No01.jpg" download>作業報告書_10月30日_No01.jpg</a>・<a href="data/%E4%BD%9C%E6%A5%AD%E5%A0%B1%E5%91%8A%E6%9B%B8_10%E6%9C%8830%E6%97%A5_No02.jpg" download>作業報告書_10月30日_No02.jpg</a></div>
+  <pre id="tp5">あなたは生産管理の担当者です。添付は、サンプルゴム工業の架空の手書き作業報告書2枚（10月30日・成形）です。1行1件の中間表にしてください。
+
+【列】
+報告書No／行／日付／作業者No／工程／品番／品名／開始／終了／成形数／不良数／確認状況
+
+【ルール】
+・読み取りに自信がない値は空欄にし、確認状況に「要確認」と書く。推測で埋めない
+・読み候補が2つあるときは、要確認一覧に両方と理由を書く
+・この報告書の品番のふだんの成形数は、1日120〜300個（研修用の目安）。大きく外れる値も要確認にする
+・確かめられた行の確認状況は「確定」と書く
+
+【出すもの】
+1. 中間表（CSV。ファイル名：中間表_10月30日.csv）。ファイルが作れない場合は、表をチャットに出す
+2. 要確認一覧：報告書No／行／項目／読み取り候補／理由
+3. 行数と、成形数・不良数の合計</pre>
+  <button type="button" class="copy" data-target="tp5">コピーする</button>
+</article></section><section id="ex"><h2><span class="eyebrow">実践演習（25分）</span>作業報告書から月次計画までの通し処理と、習得度の確認</h2><article class="card" id="p6">
+  <div class="head"><span class="no">No.6</span><a class="tool" href="https://claude.ai/" target="_blank" rel="noopener">Claudeで使う ↗</a></div>
+  <h3>演習：中間表を、作業経歴表に追記する</h3>
+  <p class="files-note">中間表の数を、履歴式の形のまま作業経歴表に足すとき（中間表がなければ、予備の確定版を使う）</p><div class="file">使うファイル：<a href="data/%E4%BD%9C%E6%A5%AD%E7%B5%8C%E6%AD%B4%E8%A1%A8_%E6%88%90%E5%BD%A2_10%E6%9C%88_A%E7%A4%BE.xlsx" download>作業経歴表_成形_10月_A社.xlsx</a>・<a href="data/%E4%BA%88%E5%82%99_%E4%B8%AD%E9%96%93%E8%A1%A8_10%E6%9C%8830%E6%97%A5_%E7%A2%BA%E5%AE%9A%E7%89%88.csv" download>予備_中間表_10月30日_確定版.csv</a></div>
+  <pre id="tp6">あなたは生産管理の担当者です。添付の作業経歴表（サンプルゴム工業の架空データ。A社5品番の成形。10月30日より前の分が入っている。最終追記日はE列）に、中間表の10月30日分を追記してください。中間表は、No.5で作ったもの（要確認を講師の確定値で直したもの）か、添付の予備_中間表_10月30日_確定版.csv を使います。
+
+【表の構造】
+・作業経歴表「成形_10月」シート：A列 品番、B列 品名、C列 10月の成形数（履歴式）、D列 10月の不良数（履歴式）、E列 最終追記日
+
+【追記のしかた】
+・品番で行を探し、C列・D列の式の末尾に「+当日数」を足す（例：=120+240 → =120+240+120）
+・E列の最終追記日を 10/30 にする
+
+【ルール】
+・既存の式は消さない。合計の値で上書きしない
+・中間表で「要確認」のままの行は追記せず、一覧に出す
+・元のファイルは上書きせず、ファイル名の最後に「_追記後」を付ける
+
+【出すもの】
+1. 追記後のExcelファイル。ファイルが作れない場合は、品番ごとの追記前と追記後の式の一覧
+2. 追記した件数と、品番ごとの成形数・不良数の「追記前の合計／足した数／追記後の合計」
+3. 足した成形数の合計が、中間表の成形数の合計と同じか</pre>
+  <button type="button" class="copy" data-target="tp6">コピーする</button>
+</article><article class="card" id="p7">
+  <div class="head"><span class="no">No.7</span><a class="tool" href="https://claude.ai/" target="_blank" rel="noopener">Claudeで使う ↗</a></div>
+  <h3>演習：10月30日の状態別在庫を出す（No.6の続き）</h3>
+  <p class="files-note">工程別の実績から、月末の状態別在庫を出すとき（上限で止まったら、予備の追記後の作業経歴表と2つのCSVを添付して、新しいチャットでNo.7から始める）</p><div class="file">使うファイル：<a href="data/%E5%B7%A5%E7%A8%8B%E5%88%A5%E5%AE%9F%E7%B8%BE_10%E6%9C%88_A%E7%A4%BE_%E6%88%90%E5%BD%A2%E4%BB%A5%E5%A4%96.csv" download>工程別実績_10月_A社_成形以外.csv</a>・<a href="data/%E6%9C%88%E5%88%9D%E5%9C%A8%E5%BA%AB_10%E6%9C%881%E6%97%A5_A%E7%A4%BE.csv" download>月初在庫_10月1日_A社.csv</a>・<a href="data/%E4%BA%88%E5%82%99_%E4%BD%9C%E6%A5%AD%E7%B5%8C%E6%AD%B4%E8%A1%A8_%E6%88%90%E5%BD%A2_10%E6%9C%88_A%E7%A4%BE_%E8%BF%BD%E8%A8%98%E5%BE%8C.xlsx" download>予備_作業経歴表_成形_10月_A社_追記後.xlsx</a></div>
+  <pre id="tp7">続けて、A社5品番の、10月30日の終わり時点の状態別在庫を出してください（10月31日は休み）。使うファイル（どれもサンプルゴム工業の架空データ）：
+・作業経歴表（追記後）：成形の完了数＝C列の10月の成形数の合計
+・工程別実績_10月_A社_成形以外.csv：品番・工程・日付・完了数・不良数（工程には「内職へ渡す」「出荷」も入っている。どちらも数は完了数の列）
+・月初在庫_10月1日_A社.csv：10月1日の朝の状態別在庫
+（新しいチャットで始める場合は、予備_作業経歴表_成形_10月_A社_追記後.xlsx と2つのCSVを添付）
+
+【状態と式】月末在庫＝月初在庫＋入ってきた数−出ていった数
+・成形後＝月初＋成形の完了−カットの完了−カットの不良
+・カット後＝月初＋カットの完了−抜きの完了−抜きの不良
+・抜き後（社内）＝月初＋抜きの完了−検査（社内）の完了−検査（社内）の不良−内職へ渡す
+・内職先（検査待ち）＝月初＋内職へ渡す−検査（内職）の完了−検査（内職）の不良
+・検査後＝月初＋検査（社内）の完了＋検査（内職）の完了−仕上げの完了−仕上げの不良
+・仕上げ後＝月初＋仕上げの完了−出荷
+
+【ルール】
+・成形の不良数（作業経歴表のD列）は、この式には使わない
+・計算結果は直さない。マイナスなど不自然な値は、直さずに確認欄に書く
+
+【出すもの】
+1. 状態別在庫の表：品番／成形後／カット後／抜き後（社内）／内職先（検査待ち）／検査後／仕上げ後／確認（CSV。ファイル名：状態別在庫_10月30日_A社.csv。ファイルが作れない場合は表をチャットに出す）
+2. 列ごとの式の説明（どのファイルの、どの数を足し引きしたか）</pre>
+  <button type="button" class="copy" data-target="tp7">コピーする</button>
+</article><article class="card" id="p8">
+  <div class="head"><span class="no">No.8</span><a class="tool" href="https://claude.ai/" target="_blank" rel="noopener">Claudeで使う ↗</a></div>
+  <h3>演習：10月末の確定在庫を、月別計画に反映する（No.7の続き）</h3>
+  <p class="files-note">状態別在庫で出した完成品の在庫を、月別の計画に確定値として反映するとき（上限で止まったら、予備の状態別在庫と月別計画3本を添付して、新しいチャットでNo.8から始める）</p><div class="file">使うファイル：<a href="data/%E6%9C%88%E5%88%A5%E8%A8%88%E7%94%BB_2026%E5%B9%B410%E6%9C%88_Day3%E5%8F%8D%E6%98%A0%E6%B8%88%E3%81%BF.xlsx" download>月別計画_2026年10月_Day3反映済み.xlsx</a>・<a href="data/%E6%9C%88%E5%88%A5%E8%A8%88%E7%94%BB_2026%E5%B9%B411%E6%9C%88_Day3%E5%8F%8D%E6%98%A0%E6%B8%88%E3%81%BF.xlsx" download>月別計画_2026年11月_Day3反映済み.xlsx</a>・<a href="data/%E6%9C%88%E5%88%A5%E8%A8%88%E7%94%BB_2026%E5%B9%B412%E6%9C%88_Day3%E5%8F%8D%E6%98%A0%E6%B8%88%E3%81%BF.xlsx" download>月別計画_2026年12月_Day3反映済み.xlsx</a>・<a href="data/%E4%BA%88%E5%82%99_%E7%8A%B6%E6%85%8B%E5%88%A5%E5%9C%A8%E5%BA%AB_10%E6%9C%8830%E6%97%A5_A%E7%A4%BE.csv" download>予備_状態別在庫_10月30日_A社.csv</a></div>
+  <pre id="tp8">続けて、Day4のページの月別計画3本（月別計画_2026年10月〜12月_Day3反映済み。サンプルゴム工業の架空データ。Day3の変更は反映済み）を添付し、状態別在庫の「仕上げ後」を、10月末の確定在庫（完成品の在庫）として反映してください。新しいチャットで始める場合は、予備_状態別在庫_10月30日_A社.csv も添付します。
+各ファイルの「計画」シート：A列 取引先、B列 品番、C列 月初在庫、D列 生産数、E列 納品数、F列 月末在庫、G列 目標在庫（値だけで式はない）
+
+【照合キー】
+取引先と品番が、両方とも一致する行
+
+【反映する列】
+・10月のファイル：月末在庫（F列）を、確定値（仕上げ後の在庫）にする
+・11月・12月のファイル：月初在庫（C列）＝前の月のファイルの月末在庫、月末在庫（F列）＝月初在庫＋生産数−納品数
+
+【範囲】
+・3本の、A社の5品番の行だけ。予測と確定が同じ品番は変えない
+・生産数・納品数・目標在庫、ほかの取引先の行は変えない
+
+【検算方法】
+・作業の前に、変わるはずのセルの数を数えて書き、差分ログの件数と比べる
+・差分ログから3件を選んで確かめる。確定値を入れた10月の月末在庫は、状態別在庫の仕上げ後と合うかで確かめる。月初＋生産数−納品数 の式で確かめるのは、11月・12月のセル
+・各ファイルの月初在庫・月末在庫の列の合計を、反映の前と後で比べる
+
+【ルール】
+・元のファイルは上書きしない。ファイル名の最後に「_反映後」を付けて出す
+・数字は推測しない
+
+【出すもの】
+1. 10月末の予測と確定の比較表：品番／予測（10月のファイルの月末在庫）／確定（仕上げ後）／差
+2. 作業の前に数えた、変わるはずのセルの数
+3. 反映後のファイル3本。ファイルが作れない場合は、変わる行だけをチャットに表で出す
+4. 差分ログ（CSV。ファイル名：差分ログ_10月末確定.csv。列：No／ファイル／セル／取引先・品番／項目／変更前／変更後／変更理由）
+5. 抜き取り3件の計算と、合計の比較表</pre>
+  <button type="button" class="copy" data-target="tp8">コピーする</button>
+</article><article class="card" id="p8_2">
+  <div class="head"><span class="no">No.8-2</span><a class="tool" href="https://claude.ai/" target="_blank" rel="noopener">Claudeで使う ↗</a></div>
+  <h3>演習：工程ごとの検算を、1枚の表にまとめる（No.8の続き）</h3>
+  <p class="files-note">通し処理の最後に、工程ごとに何を確かめたかを1枚にまとめるとき</p><div class="file">使うファイル（添付するか、中身を貼り付け）：<a href="data/%E9%80%9A%E3%81%97%E5%87%A6%E7%90%86_%E6%A4%9C%E7%AE%97%E8%A1%A8.csv" download>通し処理_検算表.csv</a></div>
+  <pre id="tp8_2">ここまでの工程（作業報告書→中間表→作業経歴表→状態別在庫→月別計画）について、工程ごとの検算の結果を、添付の通し処理_検算表.csv の形で1枚の表にまとめてください。
+
+【列】
+工程／確かめたこと／結果（一致・不一致）／数字／メモ
+
+【ルール】
+・このチャットで実際に確かめたことだけを書く。確かめていない工程は「未確認」と書く
+・数字は推測しない
+・別のチャットで行った工程は「別のチャットで実施」と書き、分かる数字だけを書く
+
+【出すもの】
+表（CSV。ファイル名：通し処理_検算表_記入済み.csv）。ファイルが作れない場合は、表をチャットに出す</pre>
+  <button type="button" class="copy" data-target="tp8_2">コピーする</button>
+</article></section>
+<footer>演習データはすべて研修用の架空のものです。© 2026 がだんだん株式会社</footer>
+</div>
+<script>
+document.querySelectorAll('.copy').forEach(function(b){
+  var label=b.textContent;
+  b.addEventListener('click',function(){
+    var el=document.getElementById(b.dataset.target), text=el.textContent;
+    function ok(){b.textContent='コピーしました';b.classList.add('done');setTimeout(function(){b.textContent=label;b.classList.remove('done')},2000)}
+    function fallback(){var r=document.createRange();r.selectNodeContents(el);var s=window.getSelection();s.removeAllRanges();s.addRange(r);b.textContent='選択しました。長押しでコピー'}
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(text).then(ok,fallback)}else{fallback()}
+  });
+});
+</script>
+</body>
+</html>
